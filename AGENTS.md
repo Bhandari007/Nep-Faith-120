@@ -17,13 +17,13 @@ Single-context layout (`GLOSSARY.md` + `docs/adr/` at the repo root). See `docs/
 ## Core Operational Documents
 
 All work in this repository is strictly governed by:
-- [`WORKFLOW.md`](file:///home/leapfrog/Personal/ResearchProjects/NepFaith-120/WORKFLOW.md) — The five pillars of the research workflow, session startup rules, and boundaries.
-- [`CODING_STANDARDS.md`](file:///home/leapfrog/Personal/ResearchProjects/NepFaith-120/CODING_STANDARDS.md) — Research code standards (the 5 properties, research testing taxonomy, repo shape, LLM rules, paper gate).
+- [`docs/WORKFLOW.md`](file:///home/leapfrog/Personal/ResearchProjects/NepFaith-120/docs/WORKFLOW.md) — The five pillars of the research workflow, session startup rules, and boundaries.
+- [`docs/CODING_STANDARDS.md`](file:///home/leapfrog/Personal/ResearchProjects/NepFaith-120/docs/CODING_STANDARDS.md) — Research code standards (the 5 properties, research testing taxonomy, repo shape, LLM rules, paper gate).
 
 ## Session Startup Sequence (Mandatory)
 
 1. **Freeze check:** If the Sprint 1 freeze tag exists, diff `src/analyze/` and `src/report/` against the tag before anything else. Any change is a **HARD STOP**.
-2. **Code standards:** Read `CODING_STANDARDS.md` to uphold engineering discipline.
+2. **Code standards:** Read `docs/CODING_STANDARDS.md` to uphold engineering discipline.
 3. **Docket inspection:** Open the latest docket in `researcher/` (earliest unanswered docket gates).
    - If any question is blank or incomplete: **HARD STOP**. The agent does not write pipeline code and does not advance tickets. Name the source and section, and wait.
    - **The researcher writes the answer first.** The agent responds only after written answers exist (challenging/correcting).
