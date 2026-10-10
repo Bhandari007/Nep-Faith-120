@@ -21,8 +21,10 @@ Exit criteria:
   - Pre-registration is written by hand; no ticket is created for it.
 
 ## Decisions so far
-
-<!-- Closed tickets will be indexed here as they resolve -->
+- [MultiWikiQHalluA 215-Language Release Nepali Coverage Check](issues/01-multiwikiqhallua-nepali-check.md): MultiWikiQHalluA has zero benchmark overlap (monolingual extractive QA token tagging, not cross-lingual RAG faithfulness) and poor item utility (short extractive answers, no typed edits). Recommendation for Gate 0: differentiate deliberately with our own 3-domain corpus.
+- [Hunt for Prior MT-vs-Alignment Decomposition of Faithfulness Evaluators](issues/02-mt-vs-alignment-decomposition-prior-art.md): Novelty check confirmed Fork A (Clear Novelty) — no prior work decomposes MT error ($\Delta_{MT}$) vs cross-lingual evaluator alignment ($\Delta_{XL}$) using a human post-edited MT ceiling ($C3$). Fork C (Scooped) is 100% ruled out.
+- [Flagged Papers Read and Note: mFACT, ANHALTEN, and Kannada Cross-Lingual RAG](issues/03-flagged-papers-read-and-note.md): mFACT (summarization, excludes Nepali, no MT/alignment split), ANHALTEN (German reference-free token tagging), and Kannada RAG (retrieval-only, no faithfulness eval) leave NepFaith-120's causal decomposition and Nepali Devanagari RAG benchmark completely unaddressed.
+- [Evaluate PPI-Efficiency Literature Angle](issues/04-ppi-efficiency-literature-evaluation.md): Demote PPI efficiency to supporting methodology (claimed by Gao et al. 2026 & StratPPI); keep error decomposition primary, and use cluster-robust stratified paired PPI for nested claims.
 
 ## Not yet specified
 
