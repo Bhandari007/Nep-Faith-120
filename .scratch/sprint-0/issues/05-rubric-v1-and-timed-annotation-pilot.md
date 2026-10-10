@@ -3,6 +3,7 @@
 Type: task
 Status: open
 Priority: critical path (parallel track)
+Cap: 1 day (timed pilot & rubric v1)
 
 ## Question
 

@@ -18,11 +18,16 @@ Exit criteria:
   - **Agent Role**: Organizing, coding, pipeline engineering, statistical modeling, data schemas, and environment tracking.
   - Pre-registration is written by hand; no ticket is created for it.
 
-## Decisions so far
-- [MultiWikiQHalluA 215-Language Release Nepali Coverage Check](issues/01-multiwikiqhallua-nepali-check.md): MultiWikiQHalluA has zero benchmark overlap (monolingual extractive QA token tagging, not cross-lingual RAG faithfulness) and poor item utility (short extractive answers, no typed edits). Recommendation for Gate 0: differentiate deliberately with our own 3-domain corpus.
-- [Hunt for Prior MT-vs-Alignment Decomposition of Faithfulness Evaluators](issues/02-mt-vs-alignment-decomposition-prior-art.md): Novelty check confirmed Fork A (Clear Novelty) — no prior work decomposes MT error ($\Delta_{MT}$) vs cross-lingual evaluator alignment ($\Delta_{XL}$) using a human post-edited MT ceiling ($C3$). Fork C (Scooped) is 100% ruled out.
-- [Flagged Papers Read and Note: mFACT, ANHALTEN, and Kannada Cross-Lingual RAG](issues/03-flagged-papers-read-and-note.md): mFACT (summarization, excludes Nepali, no MT/alignment split), ANHALTEN (German reference-free token tagging), and Kannada RAG (retrieval-only, no faithfulness eval) leave NepFaith-120's causal decomposition and Nepali Devanagari RAG benchmark completely unaddressed.
-- [Evaluate PPI-Efficiency Literature Angle](issues/04-ppi-efficiency-literature-evaluation.md): Demote PPI efficiency to supporting methodology (claimed by Gao et al. 2026 & StratPPI); keep error decomposition primary, and use cluster-robust stratified paired PPI for nested claims.
+## Findings (agent)
+
+- 2026-10-10 · [T01 · MultiWikiQHalluA Coverage](issues/01-multiwikiqhallua-nepali-check.md): MultiWikiQHalluA truncated to 215 languages; Nepali was never evaluated or trained on (30 European languages only). Monolingual extractive QA format with continuous Beta LLM perturbations. No direct overlap with cross-lingual RAG faithfulness or typed edits.
+- 2026-10-10 · [T02 · MT-vs-Alignment Prior Art](issues/02-mt-vs-alignment-decomposition-prior-art.md): Searched arXiv, ACL Anthology, EMNLP, ICLR, and MT evaluation literature for decomposition of MT error vs cross-lingual evaluator alignment using human post-edited MT ($C3$). Found zero prior work. Closest hits: symmetric Translate-Test vs Zero-Shot XNLI without post-edited oracle (Conneau 2018, Agrawal 2024); multilingual summarization transfer without decomposition (Qiu 2023). Fork C (Scooped) has no evidence.
+- 2026-10-10 · [T03 · Flagged Papers Analysis](issues/03-flagged-papers-read-and-note.md): mFACT (summarization, excludes Nepali, no MT/alignment split), ANHALTEN (German reference-free token tagging), and Kannada RAG (retrieval-only, no faithfulness eval). None address causal decomposition in Nepali Devanagari RAG.
+- 2026-10-10 · [T04 · PPI Efficiency Literature](issues/04-ppi-efficiency-literature-evaluation.md): Gao et al. (EMNLP 2026 / arXiv:2608.26638) and StratPPI (NeurIPS 2024) already established that PPI saves 50%–80% human annotation. Claims nested in items violate i.i.d. ($\rho_{\text{ICC}} > 0$). Evidence indicates using cluster-robust stratified paired PPI and keeping error decomposition primary.
+
+## Verdicts (researcher)
+
+<!-- A verdict line requires researcher initials and date. A ticket cannot close with an empty verdict. -->
 
 ## Not yet specified
 

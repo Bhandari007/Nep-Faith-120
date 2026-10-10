@@ -3,6 +3,7 @@
 Type: task
 Status: open
 Blocked by: 01, 05, 07
+Cap: 1 day (schema specification & consumer audit)
 
 ## Question
 

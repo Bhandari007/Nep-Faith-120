@@ -2,6 +2,7 @@
 
 Type: research
 Status: open
+Cap: 0.5 day (licensing & redistribution format)
 
 ## Question
 

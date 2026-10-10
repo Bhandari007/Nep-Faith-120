@@ -2,6 +2,7 @@
 
 Type: task
 Status: open
+Cap: 0.5 day (pinned checkpoints & lockfile)
 
 ## Question
 
