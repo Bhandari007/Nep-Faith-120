@@ -14,10 +14,8 @@ Exit criteria:
 - **Domain**: Cross-lingual faithfulness evaluation in Nepali → English RAG; error decomposition between Machine Translation ($\Delta_{MT}$) and cross-lingual alignment/scoring ($\Delta_{XL}$).
 - **Key Skills**: `/grilling`, `/domain-modeling`, `/research`.
 - **Standing Preferences & Constraints**:
-  - Agent gathers research evidence for 01–04; the novelty verdict (Fork choice) is strictly a human decision.
-  - Priority: Tickets 01 (MultiWikiQHalluA) and 02 (MT-vs-alignment decomposition) are go/no-go gates.
-  - Hard cap of 2 days total across 01–04.
-  - Ticket 05 (Rubric v1 & Timed Pilot) runs on an independent parallel track on the critical path.
+  - **Reading Boundary**: The agent does NOT read/summarize papers autonomously. The agent prepares structured reading assignments, questions, and paper dockets for the human researcher. The researcher reads the literature to develop deep scientific domain expertise.
+  - **Agent Role**: Organizing, coding, pipeline engineering, statistical modeling, data schemas, and environment tracking.
   - Pre-registration is written by hand; no ticket is created for it.
 
 ## Decisions so far
