@@ -1,0 +1,35 @@
+# NepFaith-120 Locked Environment Dependencies
+# Python 3.12+
+
+# Core Scientific & Statistical Computing
+numpy>=1.26.4,<2.0.0
+scipy>=1.13.0
+pandas>=2.2.2
+statsmodels>=0.14.2
+pydantic>=2.7.0,<3.0.0
+
+# Deep Learning & Models
+torch>=2.3.0
+torchvision
+torchaudio
+transformers>=4.41.0
+accelerate>=0.30.0
+sentencepiece>=0.2.0
+sentence-transformers>=3.0.0
+
+# Evaluation & Metrics
+ragas>=0.1.9
+nltk>=3.8.1
+sacrebleu>=2.4.2
+krippendorff>=0.6.0
+
+# Statistical Inference (Prediction-Powered Inference)
+# Note: GLIDE / PPI algorithms implemented under src/analyze/
+scikit-learn>=1.5.0
+
+# Utilities & Tracking
+tqdm>=4.66.4
+pyyaml>=6.0.1
+requests>=2.32.0
+python-dotenv>=1.0.1
+pytest>=8.2.0

@@ -1,0 +1,267 @@
+{
+  "$defs": {
+    "AtomicClaim": {
+      "description": "Atomic factual proposition extracted from the generated answer.",
+      "properties": {
+        "claim_id": {
+          "description": "Unique claim identifier, formatted as {item_id}_c{idx}",
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "claim_text": {
+          "description": "Self-contained atomic proposition in English",
+          "title": "Claim Text",
+          "type": "string"
+        },
+        "is_critical": {
+          "default": true,
+          "description": "Critical to user query; triggers item-level failure if ungrounded",
+          "title": "Is Critical",
+          "type": "boolean"
+        },
+        "gold_label": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ClaimLabel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Human consensus ground truth label"
+        },
+        "c1_pred": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ClaimLabel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Prediction under Condition C1 (Cross-lingual Nepali context)"
+        },
+        "c2_pred": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ClaimLabel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Prediction under Condition C2 (Raw MT English context)"
+        },
+        "c3_pred": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ClaimLabel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Prediction under Condition C3 (Post-edited MT English context)"
+        }
+      },
+      "required": [
+        "claim_id",
+        "claim_text"
+      ],
+      "title": "AtomicClaim",
+      "type": "object"
+    },
+    "ClaimLabel": {
+      "enum": [
+        "Supported",
+        "Contradicted",
+        "Not-in-context"
+      ],
+      "title": "ClaimLabel",
+      "type": "string"
+    },
+    "Domain": {
+      "enum": [
+        "wikipedia",
+        "government_report",
+        "news"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "PerturbationType": {
+      "enum": [
+        "entity_swap",
+        "number_date_alteration",
+        "negation_flip",
+        "misattribution",
+        "register_shift",
+        "unsupported_addition",
+        "invented_causality"
+      ],
+      "title": "PerturbationType",
+      "type": "string"
+    },
+    "Provenance": {
+      "enum": [
+        "natural",
+        "perturbed"
+      ],
+      "title": "Provenance",
+      "type": "string"
+    },
+    "RetrievalCondition": {
+      "enum": [
+        "full_support",
+        "partial_support",
+        "distractor_present"
+      ],
+      "title": "RetrievalCondition",
+      "type": "string"
+    }
+  },
+  "description": "Core evaluation record representing a single paired item.",
+  "properties": {
+    "item_id": {
+      "description": "Unique item identifier, formatted as {domain}_{idx}",
+      "title": "Item Id",
+      "type": "string"
+    },
+    "domain": {
+      "$ref": "#/$defs/Domain",
+      "description": "Corpus source domain for stratified variance estimation"
+    },
+    "source_provenance": {
+      "$ref": "#/$defs/Provenance",
+      "description": "Natural RAG generation vs. perturbed counterfactual"
+    },
+    "perturbation_type": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PerturbationType"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Typed edit category for hypothesis H2 testing; null for natural items"
+    },
+    "perturbation_span": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Target text span altered by perturbation",
+      "title": "Perturbation Span"
+    },
+    "passage_ne": {
+      "description": "Original Nepali reference passage (Condition C1)",
+      "title": "Passage Ne",
+      "type": "string"
+    },
+    "query_ne": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Original Nepali query if applicable",
+      "title": "Query Ne"
+    },
+    "query_en": {
+      "description": "English query submitted to the RAG system",
+      "title": "Query En",
+      "type": "string"
+    },
+    "answer_en": {
+      "description": "Generated English response subject to faithfulness verification",
+      "title": "Answer En",
+      "type": "string"
+    },
+    "c2_raw_mt": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "IndicTrans2 raw machine translation of passage_ne",
+      "title": "C2 Raw Mt"
+    },
+    "c3_post_edited_mt": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Human post-edited translation of c2_raw_mt",
+      "title": "C3 Post Edited Mt"
+    },
+    "retrieval_condition": {
+      "$ref": "#/$defs/RetrievalCondition",
+      "description": "Stratification factor: full, partial, or distractor support"
+    },
+    "sampling_weight": {
+      "default": 1.0,
+      "description": "Inverse probability sampling stratum weight",
+      "minimum": 0.0,
+      "title": "Sampling Weight",
+      "type": "number"
+    },
+    "claims": {
+      "description": "List of segmented atomic factual claims",
+      "items": {
+        "$ref": "#/$defs/AtomicClaim"
+      },
+      "minItems": 1,
+      "title": "Claims",
+      "type": "array"
+    },
+    "derived_item_label": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Overall faithfulness verdict: True iff all claims Supported and no critical failure",
+      "title": "Derived Item Label"
+    }
+  },
+  "required": [
+    "item_id",
+    "domain",
+    "source_provenance",
+    "passage_ne",
+    "query_en",
+    "answer_en",
+    "retrieval_condition",
+    "claims"
+  ],
+  "title": "EvaluationItem",
+  "type": "object"
+}

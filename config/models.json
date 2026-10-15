@@ -1,0 +1,64 @@
+{
+  "version": "1.0.0",
+  "seed": 42,
+  "generator": {
+    "model_id": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "family": "llama",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_new_tokens": 512,
+    "quantization": "Q4_K_M",
+    "device_map": "auto",
+    "cache_enabled": true
+  },
+  "translation": {
+    "model_id": "ai4bharat/indictrans2-indic-en-dist-200M",
+    "source_lang": "npi_Deva",
+    "target_lang": "eng_Latn",
+    "batch_size": 8,
+    "max_length": 512,
+    "torch_dtype": "float16",
+    "device": "cuda"
+  },
+  "evaluator_arms": {
+    "arm_1_hhem": {
+      "name": "HHEM-2.1-Open",
+      "model_id": "vectara/hallucination_evaluation_model",
+      "revision": "main",
+      "torch_dtype": "float16",
+      "device": "cuda"
+    },
+    "arm_2_bge_m3": {
+      "name": "BGE-M3",
+      "model_id": "BAAI/bge-m3",
+      "revision": "main",
+      "torch_dtype": "float16",
+      "device": "cuda"
+    },
+    "arm_3_mdeberta_xnli": {
+      "name": "mDeBERTa-v3-XNLI",
+      "model_id": "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7",
+      "revision": "main",
+      "torch_dtype": "float16",
+      "device": "cuda"
+    },
+    "arm_4_indictrans2_en_nli": {
+      "name": "IndicTrans2-to-English-NLI",
+      "translation_model_id": "ai4bharat/indictrans2-indic-en-dist-200M",
+      "nli_model_id": "cross-encoder/nli-deberta-v3-large",
+      "torch_dtype": "float16",
+      "device": "cuda"
+    },
+    "arm_5_llm_judge": {
+      "name": "LLM-Judge-Gemini",
+      "model_id": "gemini-2.5-flash",
+      "family": "gemini",
+      "independent_from_generator": true,
+      "temperature": 0.0,
+      "seed": 42,
+      "cache_strategy": "sha256_prompt_model",
+      "api_key_env_var": "GEMINI_API_KEYS",
+      "key_rotation_strategy": "round_robin_with_exponential_backoff"
+    }
+  }
+}

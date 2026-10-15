@@ -24,10 +24,16 @@ Exit criteria:
 - 2026-10-10 · [T02 · MT-vs-Alignment Prior Art](issues/02-mt-vs-alignment-decomposition-prior-art.md): Searched arXiv, ACL Anthology, EMNLP, ICLR, and MT evaluation literature for decomposition of MT error vs cross-lingual evaluator alignment using human post-edited MT ($C3$). Found zero prior work. Closest hits: symmetric Translate-Test vs Zero-Shot XNLI without post-edited oracle (Conneau 2018, Agrawal 2024); multilingual summarization transfer without decomposition (Qiu 2023). Fork C (Scooped) has no evidence.
 - 2026-10-10 · [T03 · Flagged Papers Analysis](issues/03-flagged-papers-read-and-note.md): mFACT (summarization, excludes Nepali, no MT/alignment split), ANHALTEN (German reference-free token tagging), and Kannada RAG (retrieval-only, no faithfulness eval). None address causal decomposition in Nepali Devanagari RAG.
 - 2026-10-10 · [T04 · PPI Efficiency Literature](issues/04-ppi-efficiency-literature-evaluation.md): Gao et al. (EMNLP 2026 / arXiv:2608.26638) and StratPPI (NeurIPS 2024) already established that PPI saves 50%–80% human annotation. Claims nested in items violate i.i.d. ($\rho_{\text{ICC}} > 0$). Evidence indicates using cluster-robust stratified paired PPI and keeping error decomposition primary.
+- 2026-10-15 · [T06 · Licensing Audit](issues/06-source-domain-licensing-audit.md): Audited Nepali Wikipedia (CC BY-SA 4.0), Gov Reports (Nepal Copyright Act Sec 4/16 public domain/research exception), and News snippets. Recommend hybrid direct release with passage metadata and URL attribution.
+- 2026-10-15 · [T07 · Pin Models & Env](issues/07-pin-models-and-environment.md): Pinned generator (`Meta-Llama-3-8B-Instruct`), MT (`indictrans2-dist-200M`), evaluator arms (`HHEM-2.1-Open`, `bge-m3`, `mDeBERTa-v3-base-xnli`, `indictrans2->deberta-large`, `gemini-2.5-flash` with 10-key rotation at T=0.0) in `config/models.json` and locked `requirements.txt`. VRAM verified for 4GB RTX 3050.
+- 2026-10-15 · [T05 · Rubric v1 & Pilot](issues/05-rubric-v1-and-timed-annotation-pilot.md): Codified Rubric v1 (`docs/RUBRIC_V1.md`) with 3-way labels, 7 perturbation types, and critical override. Assembled 8 pilot items with 23 pre-segmented claims in `tests/fixtures/pilot_8_items.json` and timing sheet `docs/PILOT_ANNOTATION_SHEET.md`.
+- 2026-10-15 · [T08 · Freeze Schema v1](issues/08-freeze-schema-v1.md): Completed consumer justification audit for all fields. Implemented Pydantic models in `src/prepare/schema.py` and exported machine-readable `config/schema_v1.json`. Validated cleanly across all 8 pilot items.
 
 ## Verdicts (researcher)
 
 <!-- A verdict line requires researcher initials and date. A ticket cannot close with an empty verdict. -->
+2026-10-15 · Fork A (Clear Novelty) selected. Findings 01–04 confirmed; no prior work isolates MT vs cross-lingual evaluator failure via human post-editing. —
+  MB
 
 ## Not yet specified
 

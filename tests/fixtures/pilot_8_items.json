@@ -1,0 +1,244 @@
+[
+  {
+    "item_id": "pilot_01",
+    "domain": "wikipedia",
+    "provenance": "natural",
+    "perturbation_type": null,
+    "passage_ne": "सगरमाथा संसारको सबैभन्दा अग्लो हिमाल हो। यसको उचाइ समुद्र सतहबाट ८,८४८.८६ मिटर छ। यो हिमाल नेपाल र चीनको सीमानामा पर्दछ। वि.सं. २०१० (सन् १९५३) मा तेन्जिङ नोर्गे शेर्पा र एडमण्ड हिलारीले पहिलोपटक यसको सफल आरोहण गरेका थिए।",
+    "query_en": "What is the height of Mount Everest and who were the first climbers to summit it?",
+    "answer_en": "Mount Everest is the tallest mountain in the world with an elevation of 8,848.86 meters above sea level, located on the border between Nepal and China. It was first successfully summited in 1953 by Tenzing Norgay Sherpa and Edmund Hillary.",
+    "claims": [
+      {
+        "claim_id": "pilot_01_c1",
+        "claim_text": "Mount Everest is the tallest mountain in the world.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_01_c2",
+        "claim_text": "Mount Everest has an elevation of 8,848.86 meters above sea level.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_01_c3",
+        "claim_text": "Mount Everest is located on the border between Nepal and China.",
+        "is_critical": false,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_01_c4",
+        "claim_text": "Tenzing Norgay Sherpa and Edmund Hillary first successfully summited Mount Everest in 1953.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      }
+    ],
+    "C2_raw_mt": "Sagarmatha is the highest mountain in the world. Its height is 8,848.86 meters from sea level. This mountain lies on the border of Nepal and China. In B.S. 2010 (1953 AD), Tenzing Norgay Sherpa and Edmund Hillary had climbed it successfully for the first time.",
+    "C3_post_edited_mt": "Mount Everest is the highest mountain in the world. Its elevation is 8,848.86 meters above sea level. This mountain lies on the border between Nepal and China. In 1953 (2010 BS), Tenzing Norgay Sherpa and Edmund Hillary successfully summited it for the first time."
+  },
+  {
+    "item_id": "pilot_02",
+    "domain": "wikipedia",
+    "provenance": "perturbed",
+    "perturbation_type": "entity_swap",
+    "passage_ne": "लुम्बिनी गौतम बुद्धको जन्मस्थल हो। यो नेपालको रूपन्देही जिल्लामा अवस्थित छ। सन् १९९७ मा युनेस्कोले लुम्बिनीलाई विश्व सम्पदा सूचीमा सूचीकृत गरेको थियो। यहाँ मायादेवी मन्दिर र अशोक स्तम्भ मुख्य आकर्षण हुन्।",
+    "query_en": "Where was Gautam Buddha born and when was the site designated as a UNESCO World Heritage Site?",
+    "answer_en": "Gautam Buddha was born in Janakpur, which is situated in Rupandehi district. The site was designated as a UNESCO World Heritage Site in 1997, and its main attractions include the Mayadevi Temple and the Ashoka Pillar.",
+    "claims": [
+      {
+        "claim_id": "pilot_02_c1",
+        "claim_text": "Gautam Buddha was born in Janakpur.",
+        "is_critical": true,
+        "ground_truth_label": "Contradicted"
+      },
+      {
+        "claim_id": "pilot_02_c2",
+        "claim_text": "Janakpur is situated in Rupandehi district.",
+        "is_critical": true,
+        "ground_truth_label": "Contradicted"
+      },
+      {
+        "claim_id": "pilot_02_c3",
+        "claim_text": "The birthplace was designated as a UNESCO World Heritage Site in 1997.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_02_c4",
+        "claim_text": "The site's main attractions include the Mayadevi Temple and the Ashoka Pillar.",
+        "is_critical": false,
+        "ground_truth_label": "Supported"
+      }
+    ],
+    "C2_raw_mt": "Lumbini is the birthplace of Gautam Buddha. It is located in Rupandehi district of Nepal. In 1997, UNESCO listed Lumbini in the World Heritage List. Here Mayadevi temple and Ashoka pillar are main attractions.",
+    "C3_post_edited_mt": "Lumbini is the birthplace of Gautam Buddha. It is located in Rupandehi district of Nepal. In 1997, UNESCO inscribed Lumbini on the World Heritage List. The Mayadevi Temple and Ashoka Pillar are the primary attractions here."
+  },
+  {
+    "item_id": "pilot_03",
+    "domain": "government_report",
+    "provenance": "natural",
+    "perturbation_type": null,
+    "passage_ne": "राष्ट्रिय तथ्याङ्क कार्यालयका अनुसार नेपालको पछिल्लो जनगणना २०७८ अनुसार कुल जनसङ्ख्या २ करोड ९१ लाख ६४ हजार ५७८ पुगेको छ। जनसङ्ख्या वृद्धिदर वार्षिक ०.९२ प्रतिशत रहेको छ, जुन अघिल्लो दशकको तुलनामा कम हो। कुल जनसङ्ख्यामध्ये महिलाको हिस्सा ५१.०२ प्रतिशत रहेको छ।",
+    "query_en": "What is the total population of Nepal according to the 2078 census and what is the female proportion?",
+    "answer_en": "According to the 2078 national census, Nepal's total population stands at 29,164,578 with an annual growth rate of 0.92 percent. Females constitute 51.02 percent of the total population.",
+    "claims": [
+      {
+        "claim_id": "pilot_03_c1",
+        "claim_text": "Nepal's total population according to the 2078 census is 29,164,578.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_03_c2",
+        "claim_text": "The annual population growth rate of Nepal is 0.92 percent.",
+        "is_critical": false,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_03_c3",
+        "claim_text": "Females constitute 51.02 percent of the total population.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      }
+    ],
+    "C2_raw_mt": "According to the National Statistics Office, according to the latest census of Nepal 2078, the total population has reached 2 crore 91 lakh 64 thousand 578. The population growth rate is 0.92 percent annually, which is lower compared to previous decade. The share of females in the total population is 51.02 percent.",
+    "C3_post_edited_mt": "According to the National Statistics Office's 2078 (2021) census, Nepal's total population reached 29,164,578. The annual population growth rate is 0.92 percent, which is lower than the previous decade. Females account for 51.02 percent of the total population."
+  },
+  {
+    "item_id": "pilot_04",
+    "domain": "government_report",
+    "provenance": "perturbed",
+    "perturbation_type": "number_date_alteration",
+    "passage_ne": "नेपाल राष्ट्र बैंकको प्रतिवेदन अनुसार आर्थिक वर्ष २०८०/८१ को पहिलो ६ महिनामा कुल विप्रेषण आप्रवाह (रेमिट्यान्स) ७ खर्ब ३३ अर्ब रुपैयाँ पुगेको छ। यो अघिल्लो वर्षको सोही अवधिको तुलनामा २५.३ प्रतिशतले बढी हो।",
+    "query_en": "What was the total remittance inflow during the first six months of fiscal year 2080/81?",
+    "answer_en": "During the first six months of fiscal year 2080/81, total remittance inflow to Nepal reached 933 billion rupees, representing a 25.3 percent increase over the previous fiscal period.",
+    "claims": [
+      {
+        "claim_id": "pilot_04_c1",
+        "claim_text": "Total remittance inflow in the first six months of FY 2080/81 was 933 billion rupees.",
+        "is_critical": true,
+        "ground_truth_label": "Contradicted"
+      },
+      {
+        "claim_id": "pilot_04_c2",
+        "claim_text": "Remittance inflow grew by 25.3 percent compared to the same period in the previous fiscal year.",
+        "is_critical": false,
+        "ground_truth_label": "Supported"
+      }
+    ],
+    "C2_raw_mt": "According to the report of Nepal Rastra Bank, in the first 6 months of financial year 2080/81, the total remittance inflow has reached 7 kharab 33 arab rupees. This is 25.3 percent higher compared to the same period of last year.",
+    "C3_post_edited_mt": "According to the Nepal Rastra Bank report, in the first six months of fiscal year 2080/81, total remittance inflow reached 733 billion rupees. This represents a 25.3 percent increase compared to the same period last year."
+  },
+  {
+    "item_id": "pilot_05",
+    "domain": "government_report",
+    "provenance": "perturbed",
+    "perturbation_type": "negation_flip",
+    "passage_ne": "स्वास्थ्य तथा जनसङ्ख्या मन्त्रालयले जारी गरेको सूचना अनुसार ५ वर्ष मुनिका बालबालिकालाई दिइने राष्ट्रिय भिटामिन 'ए' र जुकाको औषधि खुवाउने कार्यक्रम स्थगित गरिएको छैन। यो अभियान तोकिएकै मिति कात्तिक २ र ३ गते सञ्चालन हुनेछ।",
+    "query_en": "Has the national Vitamin A supplementation program for children under five been cancelled?",
+    "answer_en": "The Ministry of Health and Population announced that the national Vitamin A and deworming campaign for children under 5 years has been postponed until further notice.",
+    "claims": [
+      {
+        "claim_id": "pilot_05_c1",
+        "claim_text": "The Ministry of Health and Population announced the status of the national Vitamin A and deworming campaign.",
+        "is_critical": false,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_05_c2",
+        "claim_text": "The national Vitamin A and deworming campaign for children under 5 years has been postponed.",
+        "is_critical": true,
+        "ground_truth_label": "Contradicted"
+      }
+    ],
+    "C2_raw_mt": "According to notice issued by Ministry of Health and Population, the program of feeding national Vitamin 'A' and deworming medicine to children below 5 years has not been postponed. This campaign will run on the specified date of Kartik 2 and 3.",
+    "C3_post_edited_mt": "According to a notice issued by the Ministry of Health and Population, the national campaign administering Vitamin A and deworming medication to children under five has not been postponed. The campaign will proceed on the scheduled dates of Kartik 2 and 3."
+  },
+  {
+    "item_id": "pilot_06",
+    "domain": "news",
+    "provenance": "natural",
+    "perturbation_type": null,
+    "passage_ne": "नेपाल विद्युत प्राधिकरणले काठमाडौँ उपत्यकाका मुख्य सडकहरूमा विद्युतीय तार भूमिगत गर्ने कार्यलाई तीव्रता दिएको छ। प्राधिकरणका कार्यकारी निर्देशक कुलमान घिसिङले सन् २०२४ भित्र मुख्य फिडरहरूको तार भूमिगत गरिसक्ने लक्ष्य राखिएको बताएका छन्।",
+    "query_en": "What infrastructure work is the Nepal Electricity Authority undertaking in Kathmandu and what is the completion target?",
+    "answer_en": "The Nepal Electricity Authority is actively working on placing electrical distribution cables underground along major thoroughfares in Kathmandu Valley. Managing Director Kulman Ghising stated that the goal is to complete the undergrounding of primary feeders by 2024.",
+    "claims": [
+      {
+        "claim_id": "pilot_06_c1",
+        "claim_text": "The Nepal Electricity Authority is placing electrical cables underground along major roads in Kathmandu Valley.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_06_c2",
+        "claim_text": "Kulman Ghising is the Managing Director of the Nepal Electricity Authority.",
+        "is_critical": false,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_06_c3",
+        "claim_text": "The target is to complete undergrounding primary electrical feeders by 2024.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      }
+    ],
+    "C2_raw_mt": "Nepal Electricity Authority has accelerated the work of making electric wires underground in main roads of Kathmandu valley. Executive Director of Authority Kulman Ghising said that target has been kept to make wires of main feeders underground within 2024.",
+    "C3_post_edited_mt": "The Nepal Electricity Authority has accelerated work to place electrical wires underground along major roads in Kathmandu Valley. The Authority's Managing Director, Kulman Ghising, stated that the target is to complete placing the main feeders underground by 2024."
+  },
+  {
+    "item_id": "pilot_07",
+    "domain": "news",
+    "provenance": "perturbed",
+    "perturbation_type": "misattribution",
+    "passage_ne": "गृह मन्त्रालयले मनसुनजन्य विपद्बाट जोगिन तटीय क्षेत्रका नागरिकलाई सतर्कता अपनाउन अनुरोध गरेको छ। राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरणले बाढी र पहिरोको उच्च जोखिम रहेका २४ जिल्लाको पहिचान गरेको छ।",
+    "query_en": "Which agency identified the 24 districts at high risk of floods and landslides?",
+    "answer_en": "The Ministry of Home Affairs identified 24 districts at high risk of floods and landslides and urged riverside residents to remain vigilant.",
+    "claims": [
+      {
+        "claim_id": "pilot_07_c1",
+        "claim_text": "The Ministry of Home Affairs urged residents in coastal and riverine areas to remain vigilant against monsoon disasters.",
+        "is_critical": false,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_07_c2",
+        "claim_text": "The Ministry of Home Affairs identified 24 districts at high risk of floods and landslides.",
+        "is_critical": true,
+        "ground_truth_label": "Contradicted"
+      }
+    ],
+    "C2_raw_mt": "Home Ministry has requested citizens of coastal areas to adopt alertness to avoid monsoon disaster. National Disaster Risk Reduction and Management Authority has identified 24 districts having high risk of flood and landslide.",
+    "C3_post_edited_mt": "The Ministry of Home Affairs requested residents in riverine areas to take precautions against monsoon disasters. The National Disaster Risk Reduction and Management Authority identified 24 districts at high risk of floods and landslides."
+  },
+  {
+    "item_id": "pilot_08",
+    "domain": "news",
+    "provenance": "perturbed",
+    "perturbation_type": "unsupported_addition",
+    "passage_ne": "त्रिभुवन अन्तर्राष्ट्रिय विमानस्थलको धावनमार्ग स्तरोन्नतिको काम सम्पन्न भएको छ। नेपाल नागरिक उड्डयन प्राधिकरणका अनुसार स्तरोन्नतिपछि विमानस्थल दैनिक २१ घण्टा सञ्चालन गर्न सकिनेछ।",
+    "query_en": "What was the result of the runway rehabilitation at Tribhuvan International Airport?",
+    "answer_en": "Runway rehabilitation at Tribhuvan International Airport has concluded, enabling 21 hours of daily operation. The upgrade project was completed at a total cost of 4.5 billion rupees.",
+    "claims": [
+      {
+        "claim_id": "pilot_08_c1",
+        "claim_text": "Runway rehabilitation at Tribhuvan International Airport has been completed.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_08_c2",
+        "claim_text": "Following the runway upgrade, the airport can operate 21 hours daily.",
+        "is_critical": true,
+        "ground_truth_label": "Supported"
+      },
+      {
+        "claim_id": "pilot_08_c3",
+        "claim_text": "The runway upgrade project cost a total of 4.5 billion rupees.",
+        "is_critical": false,
+        "ground_truth_label": "Not-in-context"
+      }
+    ],
+    "C2_raw_mt": "The work of runway upgrading of Tribhuvan International Airport has completed. According to Civil Aviation Authority of Nepal, after upgrading, airport can be operated 21 hours daily.",
+    "C3_post_edited_mt": "Runway upgrading at Tribhuvan International Airport has been completed. According to the Civil Aviation Authority of Nepal, the airport can now operate 21 hours daily following the upgrade."
+  }
+]
