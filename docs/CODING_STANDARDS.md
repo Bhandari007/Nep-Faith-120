@@ -66,6 +66,17 @@ Cache expensive calls aggressively — keyed on input hash plus model version, s
 
 Standard unit tests check that code does what you told it. Research code needs tests that check whether what you told it was *right*. Five kinds, roughly in order of value:
 
+### Mandatory Test-Driven Development (TDD)
+
+**Tests are written first, always.** Before writing any implementation code in `src/`, the test suite must be established in `tests/`:
+1. **Red (Specification First):** Write tests defining expected input/output schemas, statistical bounds, invariants, and failure modes. Verify tests fail or raise expected errors before implementation exists.
+2. **Green (Minimal Correctness):** Implement the minimal pipeline logic in `src/` to satisfy the tests cleanly.
+3. **Refactor (Clean & Traceable):** Refactor for performance, loud failure, and determinism while ensuring tests stay green.
+
+Never commit implementation code without its accompanying or preceding test suite.
+
+### The Five Research Test Classes
+
 **Recovery tests.** Generate synthetic data where you chose the ground truth. Confirm the pipeline recovers it. This is the single highest-value test in research code and it has no production equivalent. If your estimator can't recover an effect you planted, it can't find a real one.
 
 **Coverage tests.** For anything producing a confidence interval: run many replicates, confirm the 95% CI contains the truth about 95% of the time. If it doesn't, your intervals are decoration.

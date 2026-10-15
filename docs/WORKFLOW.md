@@ -134,8 +134,9 @@ meaning a human opened the actual paper and confirmed the authors, year and venu
 
 ## Pillar 5 — Code standards
 
-The agent reads `CONTRIBUTING.md` at session start and follows it. The short version:
+The agent reads `CONTRIBUTING.md` (and `docs/CODING_STANDARDS.md`) at session start and follows it. The short version:
 
+- **Test-Driven Development (TDD):** Always write tests in `tests/` before writing actual implementation in `src/`. Red-Green-Refactor is mandatory for all pipeline components.
 - Determinism: one seed, pinned versions, no network in the analysis path, identical outputs across runs.
 - Traceability: every output stamped with commit and config hash.
 - Loud failure: no bare except, no silent row drops, row counts logged at every stage boundary, NaN rates reported rather than filtered.

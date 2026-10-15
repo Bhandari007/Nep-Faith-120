@@ -30,6 +30,11 @@ All work in this repository is strictly governed by:
    - **Clearance:** Only the researcher signs `Status: Cleared` with initials and date. The agent may only set `Status: Clearance proposed — awaiting researcher` and stop.
    - **No broad exemptions:** Sprints 1 and 2 are NOT exempt from reading dockets.
 
+## Engineering Discipline: Mandatory Test-Driven Development (TDD)
+
+- **Test First, Always:** Before writing any actual implementation code in `src/`, the agent MUST write tests first in `tests/` specifying expected behaviors, invariants, and edge cases.
+- **Red-Green-Refactor:** Implementation code is written strictly to satisfy previously committed or written failing test specifications. No implementation PR or commit without preceding or co-designed tests.
+
 ## The Four Absolute Prohibitions
 
 1. **The Freeze:** After the Sprint 1 freeze tag, never modify estimators, metrics, arms, or report generator. Diff at startup.
