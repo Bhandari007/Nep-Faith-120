@@ -51,7 +51,7 @@
     },
     "arm_5_llm_judge": {
       "name": "LLM-Judge-Gemini",
-      "model_id": "gemini-2.5-flash",
+      "model_id": "gemini-3.6-flash",
       "family": "gemini",
       "independent_from_generator": true,
       "temperature": 0.0,
