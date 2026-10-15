@@ -46,3 +46,22 @@ To avoid label imbalance where generated answers are overwhelmingly faithful, 50
 3. `mDeBERTa-v3-base-xnli`: Matched multilingual NLI encoder across C1, C2, and C3.
 4. `IndicTrans2 → English NLI`: Machine translation pipeline into DeBERTa-v3-large-mnli.
 5. `LLM-as-a-Judge`: Pinned open-weights/commercial LLMs at temperature 0.0 across C1, C2, and C3.
+
+## 5. Source Corpus Stratification & Multi-Format Ingestion
+
+### Domain Stratification
+1. **Nepali Wikipedia (`wikipedia`, ~33%):** Geography, conservation areas, UNESCO World Heritage monuments, and historical biographies under CC BY-SA 4.0.
+2. **Nepali Government & Public Reports (`government_report`, ~33%):**
+   - High-density numerical data with near-zero pretraining contamination.
+   - Sources: Nepal Rastra Bank (NRB) Macroeconomic Bulletins, National Statistics Office (NSO / CBS) Census 2078, Ministry of Finance Economic Surveys, Ministry of Health & Population annual health reports.
+3. **Contemporary News & Dedicated Sports Stratum (`news`, ~33%):**
+   - General News: *OnlineKhabar*, *Setopati*, *Kantipur Daily*, *Gorkhapatra*.
+   - **Sports Sub-Stratum (30% of News):** *HamroKhelkud*, Cricket Association of Nepal (CAN), All Nepal Football Association (ANFA). Features match scores, overs, run rates, tournament years, and player named entities for fine-grained perturbation testing.
+
+### Multi-Format Ingestion Strategy
+To prevent PDF formatting artifacts from contaminating faithfulness evaluation:
+- **Digital Searchable PDFs:** Extracted via `pypdf` with Unicode Normalization Form C (`unicodedata.normalize('NFC')`) to resolve conjunct splitting (halant ्) and vowel diacritics.
+- **Legacy 8-bit Font PDFs:** Automated detection and character-mapping transliteration for legacy Preeti/Kantipur encoding.
+- **Scanned Image PDFs:** Automated routing to Gemini Vision OCR (`gemini-3.6-flash`) with prompt-constrained verbatim transcription preserving tables, numbers, and dates.
+- **Passage Bounding:** Chunks bounded to 150–350 tokens (1–3 paragraphs); fragments < 80 tokens discarded.
+
