@@ -30,5 +30,6 @@ htmlcov/
 *.pth
 *.onnx
 
-# LLM raw response cache (keep local; or selectively commit hashed cache)
-cache/llm_raw/
+# Local caches
+cache/
+

@@ -21,7 +21,25 @@ Exit criteria:
 
 ## Findings (agent)
 
-<!-- Agent records engineering findings, test run outputs, and benchmarks here -->
+1. **Ingestion & Corpus Pipeline (`src/prepare/ingest.py`):**
+   - Implemented NFC Unicode normalization, 8-bit Preeti/Kantipur transliteration, and multi-format PDF extraction with Gemini OCR fallback.
+   - Seed corpus with sports quota (30% of news stratum) validated and saved to `data/derived/corpus_passages.jsonl`.
+2. **Claim Extraction Engine (`src/prepare/claims.py`):**
+   - Decomposes English answers into 2–5 atomic, decontextualized propositions adhering to `docs/RUBRIC_V1.md` with criticality labeling.
+3. **7-Type Perturbation Engine (`src/prepare/perturb.py`):**
+   - Built deterministic generators for the 7 negative categories: `entity_swap`, `number_date_alteration`, `negation_flip`, `misattribution`, `register_shift`, `unsupported_addition`, `invented_causality`.
+4. **Local IndicTrans2 Translation Runner (`src/run/translate.py`):**
+   - FP16 GPU runner with `ai4bharat/indictrans2-indic-en-dist-200M` (`npi_Deva` -> `eng_Latn`) with SHA-256 disk caching under `cache/translations/`.
+5. **5 Evaluator Arms (`src/run/scorers.py`, `src/run/gemini_client.py`):**
+   - Arm 1 (HHEM-2.1), Arm 2 (BGE-M3), Arm 3 (mDeBERTa-v3), Arm 4 (Pipeline NLI), Arm 5 (Gemini Flash judge).
+   - Gemini rotator tested with 10 keys: 100% success (HTTP 200) with deterministic disk caching under `cache/llm_raw/` and `cache/scorers/`.
+6. **Cluster-Robust Stratified PPI++ Engine (`src/analyze/estimators.py`):**
+   - Huber-White sandwich variance clustered by `item_id`, adaptive $\lambda^*$ tuning with finite-sample variance protection, stratum weighting, and paired difference $(C2 - C1)$ covariance cancellation.
+7. **Monte Carlo Planted Effect Recovery Simulation (`tests/recovery/test_ppi_recovery.py`):**
+   - 100 trials with planted gap $\Delta^* = 0.1200$: Mean recovered delta $= 0.1178$ (bias: $0.0022$), empirical 95% CI coverage $= 95.0\%$, mean PPSR $= 1.730\times$.
+8. **Invariants & Full Test Suite:**
+   - 26/26 tests passing across `tests/` in 3.55s. Zero writes to `data/raw/labels/`.
+   - All 8 issues in Sprint 1 have proposed clearance awaiting researcher verdict.
 
 ## Verdicts (researcher)
 

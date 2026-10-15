@@ -106,3 +106,17 @@ class EvaluationItem(BaseModel):
             if c.gold_label != ClaimLabel.SUPPORTED:
                 return False
         return True
+
+
+class CorpusPassage(BaseModel):
+    """Raw or preprocessed reference passage before answer generation."""
+    passage_id: str = Field(description="Unique passage identifier, e.g. wiki_001, gov_014, sports_003")
+    domain: Domain = Field(description="Corpus domain: wikipedia | government_report | news")
+    sub_genre: Optional[str] = Field(default=None, description="Sub-genre descriptor, e.g. 'sports', 'macroeconomics', 'census'")
+    source_title: str = Field(description="Title of document, article, or gazette")
+    source_url: Optional[str] = Field(default=None, description="Original source URL or formal citation")
+    license: str = Field(description="License tag, e.g. CC-BY-SA-4.0, Nepal-Gov-Public-Domain, Academic-Fair-Dealing")
+    passage_ne: str = Field(description="Normalized Nepali passage text in Devanagari script")
+    token_count: int = Field(description="Word/token count of passage_ne")
+    publication_year: Optional[int] = Field(default=None, description="Year of publication or report release")
+
