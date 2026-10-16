@@ -1,7 +1,7 @@
 # 5 Evaluator Arms & Key-Rotation Client
 
 Type: engineering
-Status: Clearance proposed — awaiting researcher
+Status: Cleared - [MB, 2026-10-16]
 Cap: 2 days (runner implementations & multi-key client)
 
 ## Question
@@ -11,11 +11,12 @@ Build `src/run/scorers.py` and `src/run/gemini_client.py` implementing all 5 eva
 2. **Arm 2 (BGE-M3)**: Dense cosine similarity runner using `BAAI/bge-m3`.
 3. **Arm 3 (mDeBERTa-v3-base-xnli)**: Cross-lingual NLI runner evaluated across $C1, C2, C3$.
 4. **Arm 4 (IndicTrans2 -> DeBERTa-v3-large)**: Pipeline MT into English NLI.
-5. **Arm 5 (Gemini 2.5/3.6 Flash)**: Cloud LLM judge with:
+5. **Arm 5 (Gemini 2.5/3.6 Flash / Configurable Frontier LLM Judge)**: Cloud LLM judge with:
    - Round-robin key rotation across user-supplied API keys in `GEMINI_API_KEYS`.
    - Automatic exponential backoff on HTTP 429 (`RESOURCE_EXHAUSTED`).
    - Strict JSON structured output mode adhering to Schema v1 claim verdicts.
    - Deterministic cache keyed by `SHA-256(prompt + model_id)` stored under `cache/llm_raw/`.
+   - Provider abstraction (`Arm5LLMJudge`) supporting both `gemini` and `openai_compatible` endpoints (OpenAI, OpenRouter, vLLM, Ollama) with model-isolated caching.
 
 ## Findings & Evidence (agent)
 
@@ -28,14 +29,17 @@ Build `src/run/scorers.py` and `src/run/gemini_client.py` implementing all 5 eva
      - `arm2_bgem3`: Dense Semantic Similarity baseline.
      - `arm3_mdeberta`: Matched Cross-Lingual NLI instrument.
      - `arm4_pipeline_nli`: Pipeline MT into English NLI.
-     - `arm5_gemini`: Frontier LLM-as-a-Judge.
-   - All arms integrate deterministic disk caching under `cache/scorers/` keyed on SHA-256.
+     - `arm5_gemini`: Configurable Frontier LLM-as-a-Judge (`Arm5LLMJudge`) supporting Gemini rotation and OpenAI-compatible endpoints with model-aware cache isolation.
+   - All arms integrate deterministic disk caching under `cache/scorers/` keyed on SHA-256 with model tags.
 3. **Unit Tests Passing**:
-   - `tests/test_scorers.py` (2/2 passed): Verified suite factory and deterministic disk caching.
+   - `tests/test_scorers.py` (4/4 passed): Verified suite factory, deterministic disk caching, OpenAI-compatible endpoint evaluation, and multi-model cache isolation.
 
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, 16 October 2026
+
+Need to make gemini as frontier judge configurable since once we have first set of results done we want to run the pipeline lets say for openai or other frontier or oss models too to make the experiment results.
 
 
 

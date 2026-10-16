@@ -1,7 +1,7 @@
 # Planted Effect Recovery Simulation Tests
 
 Type: testing
-Status: Clearance proposed — awaiting researcher
+Status: Cleared - [MB, 2026-10-16]
 Cap: 1 day (Monte Carlo recovery test suite & coverage validation)
 
 ## Question
@@ -35,4 +35,5 @@ Build `tests/recovery/test_ppi_recovery.py` to verify the statistical engine via
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, 16 October 2026
 

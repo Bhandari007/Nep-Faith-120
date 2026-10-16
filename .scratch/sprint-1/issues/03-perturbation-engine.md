@@ -1,7 +1,7 @@
 # 7-Type Perturbation Engine
 
 Type: engineering
-Status: Clearance proposed — awaiting researcher
+Status: Cleared - [MB, 2026-10-16]
 Cap: 2 days (perturbation operators, validation & unit tests)
 
 ## Question
@@ -36,3 +36,4 @@ Requirements:
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, 16 October 2026

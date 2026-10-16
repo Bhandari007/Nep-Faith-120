@@ -27,3 +27,89 @@ def test_scorer_deterministic_caching(tmp_path):
     # Second call must hit cache
     res2 = scorer.score_claim(passage, claim, use_cache=True)
     assert res1 == res2
+
+
+def test_configurable_arm5_llm_judge_openai_compatible(tmp_path, monkeypatch):
+    """Verifies that Arm 5 can be configured with an OpenAI-compatible / OSS endpoint."""
+    from src.run.scorers import Arm5LLMJudge
+    import unittest.mock as mock
+
+    judge = Arm5LLMJudge(
+        provider="openai_compatible",
+        model_id="gpt-4o",
+        api_key="mock-api-key",
+        base_url="https://api.openai.com/v1",
+        cache_dir=tmp_path,
+    )
+    assert judge.provider == "openai_compatible"
+    assert judge.model_id == "gpt-4o"
+
+    # Mock requests.post
+    mock_response = mock.Mock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        "choices": [
+            {
+                "message": {
+                    "content": '{"verdict": "Supported", "confidence": 0.98, "rationale": "Directly supported by the text."}'
+                }
+            }
+        ]
+    }
+
+    with mock.patch("requests.post", return_value=mock_response):
+        passage = "Kathmandu is the capital of Nepal."
+        claim = "Kathmandu is Nepal's capital."
+        res = judge.score_claim(passage, claim, use_cache=False)
+        assert res["score"] == 1.0
+        assert res["predicted_label"] == ClaimLabel.SUPPORTED.value
+        assert res["confidence"] == 0.98
+        assert res["provider"] == "openai_compatible"
+        assert res["model_id"] == "gpt-4o"
+
+
+def test_arm5_cache_isolation_across_models(tmp_path):
+    """Verifies that Arm 5 isolates cache entries across different models/providers."""
+    from src.run.scorers import Arm5LLMJudge
+    import unittest.mock as mock
+
+    mock_resp1 = mock.Mock()
+    mock_resp1.status_code = 200
+    mock_resp1.json.return_value = {
+        "choices": [{"message": {"content": '{"verdict": "Supported", "confidence": 0.9}'}}]
+    }
+
+    mock_resp2 = mock.Mock()
+    mock_resp2.status_code = 200
+    mock_resp2.json.return_value = {
+        "choices": [{"message": {"content": '{"verdict": "Contradicted", "confidence": 0.8}'}}]
+    }
+
+    judge_a = Arm5LLMJudge(
+        provider="openai_compatible",
+        model_id="model-alpha",
+        api_key="mock",
+        cache_dir=tmp_path,
+    )
+    judge_b = Arm5LLMJudge(
+        provider="openai_compatible",
+        model_id="model-beta",
+        api_key="mock",
+        cache_dir=tmp_path,
+    )
+
+    passage = "Sample passage"
+    claim = "Sample claim"
+
+    with mock.patch("requests.post", return_value=mock_resp1):
+        res_a = judge_a.score_claim(passage, claim, use_cache=True)
+
+    with mock.patch("requests.post", return_value=mock_resp2):
+        res_b = judge_b.score_claim(passage, claim, use_cache=True)
+
+    # Different models must have independent cache files and results
+    assert res_a["predicted_label"] == "Supported"
+    assert res_b["predicted_label"] == "Contradicted"
+    cache_files = list(tmp_path.glob("*.json"))
+    assert len(cache_files) == 2
+

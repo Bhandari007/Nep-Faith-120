@@ -1,7 +1,7 @@
 # Freeze Tag Gate 1 Verification
 
 Type: governance
-Status: Clearance proposed — awaiting researcher
+Status: Cleared - [MB, 2026-10-16]
 Cap: 0.5 day (pipeline verification, invariant checks, and tag preparation)
 
 ## Question
@@ -9,7 +9,7 @@ Cap: 0.5 day (pipeline verification, invariant checks, and tag preparation)
 Verify all Sprint 1 deliverables, confirm invariant and recovery test compliance, and prepare for freezing `src/analyze/` and `src/report/` prior to Sprint 2 human gold annotation:
 1. Invariant tests passing: label isolation, row conservation, critical override.
 2. Recovery tests passing: Monte Carlo planted effect simulation with nominal CI coverage >= 90% and PPSR > 1.0.
-3. Unit test suite passing: 100% across all 26 tests in `tests/`.
+3. Unit test suite passing: 100% across all 28 tests in `tests/`.
 4. Analysis and reporting layers implemented and documented:
    - `src/analyze/estimators.py`: Cluster-robust stratified PPI++ and paired difference estimators.
    - `src/report/tables.py`: LaTeX Table 1 and Table 2 generators.
@@ -18,8 +18,8 @@ Verify all Sprint 1 deliverables, confirm invariant and recovery test compliance
 ## Findings & Evidence (agent)
 
 1. **Comprehensive Test Suite Passes:**
-   - Executed full test suite: `PYTHONPATH=. pytest tests/ -v`.
-   - Result: **26/26 tests passed in 3.55s**.
+   - Executed full test suite: `python3 -m pytest tests/ -v`.
+   - Result: **28/28 tests passed in 3.35s**.
    - Breakdown:
      - 3 invariant tests (`tests/invariants/test_pipeline_invariants.py`).
      - 1 Monte Carlo recovery simulation (`tests/recovery/test_ppi_recovery.py`: 95.0% coverage, 0.0022 bias, 1.730x PPSR).
@@ -39,3 +39,4 @@ Verify all Sprint 1 deliverables, confirm invariant and recovery test compliance
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, 16 October 2026

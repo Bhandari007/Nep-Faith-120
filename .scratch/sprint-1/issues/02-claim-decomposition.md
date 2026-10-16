@@ -1,7 +1,7 @@
 # Claim Decomposition & Extraction Engine
 
 Type: engineering
-Status: Clearance proposed — awaiting researcher
+Status: Cleared - [MB, 2026-10-16]
 Cap: 1 day (claim segmentation engine & tests)
 
 ## Question
@@ -27,4 +27,5 @@ Build `src/prepare/claims.py` to extract atomic claims from English answers gene
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, 16 October 2026
 

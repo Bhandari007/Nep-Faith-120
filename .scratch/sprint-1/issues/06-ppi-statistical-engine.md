@@ -1,7 +1,7 @@
 # Cluster-Robust Stratified PPI++ Engine
 
 Type: statistical
-Status: Clearance proposed — awaiting researcher
+Status: Cleared - [MB, 2026-10-16]
 Cap: 2 days (PPI++ estimator, cluster sandwich variance, paired covariance cancellation & tests)
 
 ## Question
@@ -31,4 +31,5 @@ Build `src/analyze/estimators.py` implementing the complete statistical inferenc
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, 16 October 2026
 

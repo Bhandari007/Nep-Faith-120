@@ -50,7 +50,8 @@
       "device": "cuda"
     },
     "arm_5_llm_judge": {
-      "name": "LLM-Judge-Gemini",
+      "name": "LLM-Judge-Configurable",
+      "provider": "gemini",
       "model_id": "gemini-3.6-flash",
       "family": "gemini",
       "independent_from_generator": true,

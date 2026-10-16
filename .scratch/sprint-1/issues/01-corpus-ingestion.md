@@ -1,7 +1,7 @@
 # Corpus Ingestion & Passages Pipeline
 
 Type: engineering
-Status: Clearance proposed — awaiting researcher
+Status: Cleared - [MB, 2026-10-16]
 Cap: 1 day (ingestion scripts & schema validation)
 
 ## Question
@@ -36,4 +36,5 @@ Requirements:
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, 16 October 2026
 

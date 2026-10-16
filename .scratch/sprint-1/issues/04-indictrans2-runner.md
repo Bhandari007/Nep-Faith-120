@@ -1,7 +1,7 @@
 # IndicTrans2 Local Translation Runner
 
 Type: engineering
-Status: Clearance proposed — awaiting researcher
+Status: Cleared - [MB, 2026-10-16]
 Cap: 1 day (runner implementation, device detection, and caching)
 
 ## Question
@@ -28,4 +28,5 @@ Build `src/run/translate.py` to translate Nepali contexts ($p_{ne}$) into Englis
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, 16 October 2026
 

@@ -38,20 +38,21 @@ Exit criteria:
 7. **Monte Carlo Planted Effect Recovery Simulation (`tests/recovery/test_ppi_recovery.py`):**
    - 100 trials with planted gap $\Delta^* = 0.1200$: Mean recovered delta $= 0.1178$ (bias: $0.0022$), empirical 95% CI coverage $= 95.0\%$, mean PPSR $= 1.730\times$.
 8. **Invariants & Full Test Suite:**
-   - 26/26 tests passing across `tests/` in 3.55s. Zero writes to `data/raw/labels/`.
-   - All 8 issues in Sprint 1 have proposed clearance awaiting researcher verdict.
+   - 28/28 tests passing across `tests/` in 3.35s. Zero writes to `data/raw/labels/`.
+   - Arm 5 configurable frontier judge (`Arm5LLMJudge`) operational for Gemini rotation and OpenAI-compatible endpoints with cache isolation.
+   - All 8 issues in Sprint 1 cleared by researcher.
 
 ## Verdicts (researcher)
 
-<!-- Researcher records verdicts with initials and date here -->
+2026-10-16 · Sprint 1 pipeline, estimators, and recovery benchmarks verified. Invariant tests and Monte Carlo recovery pass. Arm 5 configurable interface approved for frontier/OSS models. Gate 1 cleared for freeze. — MB
 
 ## Active Frontier Tickets
 
-- [ ] [01 · Corpus Ingestion & Passages Pipeline](issues/01-corpus-ingestion.md) (Cap: 1 day)
-- [ ] [02 · Claim Decomposition & Extraction Engine](issues/02-claim-decomposition.md) (Cap: 1 day)
-- [ ] [03 · 7-Type Perturbation Engine](issues/03-perturbation-engine.md) (Cap: 2 days)
-- [ ] [04 · IndicTrans2 Local Translation Runner](issues/04-indictrans2-runner.md) (Cap: 1 day)
-- [ ] [05 · 5 Evaluator Arms & Key-Rotation Client](issues/05-evaluator-arms-runner.md) (Cap: 2 days)
-- [ ] [06 · Cluster-Robust Stratified PPI++ Engine](issues/06-ppi-statistical-engine.md) (Cap: 2 days)
-- [ ] [07 · Planted Effect Recovery Simulation Tests](issues/07-recovery-tests.md) (Cap: 1 day)
-- [ ] [08 · Freeze Tag Gate 1 Verification](issues/08-freeze-gate-1.md) (Cap: 0.5 day)
+- [x] [01 · Corpus Ingestion & Passages Pipeline](issues/01-corpus-ingestion.md) (Cap: 1 day)
+- [x] [02 · Claim Decomposition & Extraction Engine](issues/02-claim-decomposition.md) (Cap: 1 day)
+- [x] [03 · 7-Type Perturbation Engine](issues/03-perturbation-engine.md) (Cap: 2 days)
+- [x] [04 · IndicTrans2 Local Translation Runner](issues/04-indictrans2-runner.md) (Cap: 1 day)
+- [x] [05 · 5 Evaluator Arms & Key-Rotation Client](issues/05-evaluator-arms-runner.md) (Cap: 2 days)
+- [x] [06 · Cluster-Robust Stratified PPI++ Engine](issues/06-ppi-statistical-engine.md) (Cap: 2 days)
+- [x] [07 · Planted Effect Recovery Simulation Tests](issues/07-recovery-tests.md) (Cap: 1 day)
+- [x] [08 · Freeze Tag Gate 1 Verification](issues/08-freeze-gate-1.md) (Cap: 0.5 day)
