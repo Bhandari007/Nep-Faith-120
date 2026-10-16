@@ -24,7 +24,7 @@ Exit criteria:
 
 ## Findings (agent)
 
-<!-- Agent records empirical progress, commands executed, and verified deliverables here -->
+- 2026-10-16 · [T01 · Stratified Sampling 120](issues/01-stratified-sampling-120.md): Assembled 120 candidate items across 10 approved sub-genres (40 Wikipedia, 40 Gov Reports, 40 News [12 sports], 60 natural / 60 across 7 perturbation types) into `data/interim/preannotations/gold_candidates_120.jsonl`. Invariant tests passing (29/29 total tests passed). Zero writes to `data/raw/labels/`. Status: Clearance proposed.
 
 ## Verdicts (researcher)
 

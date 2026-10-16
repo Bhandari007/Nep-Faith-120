@@ -1,7 +1,7 @@
 # Stratified Sampling & 120 Candidate Corpus Assembly
 
 Type: engineering
-Status: Active
+Status: Clearance proposed — awaiting researcher
 Cap: 1 day (sampling script, schema validation, and balance checks)
 
 ## Question
@@ -39,7 +39,22 @@ Assemble the 120 candidate evaluation items adhering strictly to `docs/PREREGIST
 
 ## Findings & Evidence (agent)
 
-<!-- Agent records execution outputs, passage balance, and schema validation here -->
+1. **Assembly Engine Implemented (`src/prepare/assemble_candidates.py`)**:
+   - Built `CandidateAssembler` with curated seed bank across all 10 approved topical domains.
+   - Implemented exact allocation matrix:
+     - 40 Wikipedia items: `culture_heritage` (15), `biodiversity_parks` (15), `infrastructure_tourism` (10).
+     - 40 Government Report items: `health` (10), `agriculture` (10), `education` (10), `economy_finance` (10).
+     - 40 News items: `sports` (12), `disaster_geography` (10), `governance_law` (10), `infrastructure_tourism` (8).
+   - Provenance balance: Exactly 60 Natural and 60 Perturbed items (cycling through all 7 typed edits with $\ge 8$ items per type).
+2. **Schema & Label Isolation Verified**:
+   - Every candidate item validated against `EvaluationItem` with decomposed `AtomicClaim` objects.
+   - Every item contains at least one claim flagged `is_critical=True`.
+   - Hard Rule verified: All candidate claims have `gold_label=None` (zero machine pre-population of gold fields).
+   - Output written strictly to `data/interim/preannotations/gold_candidates_120.jsonl` (120 lines, verified).
+   - `data/raw/labels/` remains pristine with zero automated writes.
+3. **Automated TDD Test Suite**:
+   - Implemented `tests/test_candidate_assembly.py` (all 5 invariant checks passing in 0.08s).
+   - Full repository test suite passes: **29/29 tests passed in 3.38s**.
 
 ## Verdict (researcher)
 

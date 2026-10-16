@@ -59,6 +59,7 @@ class EvaluationItem(BaseModel):
     """Core evaluation record representing a single paired item."""
     item_id: str = Field(description="Unique item identifier, formatted as {domain}_{idx}")
     domain: Domain = Field(description="Corpus source domain for stratified variance estimation")
+    sub_genre: Optional[str] = Field(default=None, description="Sub-genre descriptor, e.g. 'health', 'agriculture', 'sports'")
     source_provenance: Provenance = Field(description="Natural RAG generation vs. perturbed counterfactual")
     perturbation_type: Optional[PerturbationType] = Field(
         default=None, description="Typed edit category for hypothesis H2 testing; null for natural items"
