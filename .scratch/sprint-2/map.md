@@ -24,11 +24,11 @@ Exit criteria:
 
 ## Findings (agent)
 
-- 2026-10-16 · [T01 · Stratified Sampling 120](issues/01-stratified-sampling-120.md): Assembled 120 candidate items across 10 approved sub-genres (40 Wikipedia, 40 Gov Reports, 40 News [12 sports], 60 natural / 60 across 7 perturbation types) into `data/interim/preannotations/gold_candidates_120.jsonl`. Invariant tests passing (29/29 total tests passed). Zero writes to `data/raw/labels/`. Status: Clearance proposed.
-- 2026-10-16 · [T02 · Claim Decomposition 120](issues/02-atomic-claim-decomposition.md): Exported and validated 340 atomic claims (mean: 2.83 claims/item, [2, 5] bounds) into `data/interim/preannotations/claims_120.jsonl`. 100% criticality coverage. 30/30 tests pass. Status: Clearance proposed.
-- 2026-10-16 · [T03 · IndicTrans2 C2 Generation](issues/03-indictrans2-c2-batch-generation.md): Generated Condition C2 raw machine translations for all 120 items via local IndicTrans2 inference. Deduplicated across 61 unique passages, cached with SHA-256 keys under `cache/translations/`. 100% C2 coverage, zero leakage to C3 or gold labels. Status: Clearance proposed.
-- 2026-10-16 · [T04 · Annotation Workbench Setup](issues/04-annotation-workbench-setup.md): Built `src/prepare/export_workbenches.py` and exported dual blinded workbenches `workbench_annotator_1.md` and `workbench_annotator_2.md` under `data/interim/preannotations/`. 120 items, 340 claims, explicit criticality tags, stopwatch timing fields. Tests passing. Status: Clearance proposed.
-- 2026-10-16 · [T05 · C3 Post-Editing Workbench](issues/05-c3-post-editing-workbench.md): Built `src/prepare/export_c3_workbench.py` and exported `data/interim/preannotations/post_edit_c3_workbench.md`. Deduplicated to 61 unique passages with side-by-side MT and editable slot initialized to C2 for minimal edit distance. Tests passing. Status: Clearance proposed.
+- 2026-10-16 · [T01 · Stratified Sampling 120](issues/01-stratified-sampling-120.md): Completed Path 2 Authentic Ingestion via Tavily Search and official Wikimedia API. 60 authentic reference passages harvested and verified (100% HTTP 200 OK across all URLs). Assembled 120 candidate items across 10 approved sub-genres (40 Wikipedia, 40 Gov Reports, 40 News [12 sports], 60 natural / 60 across 7 perturbation types) into `data/interim/preannotations/gold_candidates_120.jsonl`. Invariant tests passing (36/36 total tests passed). Zero writes to `data/raw/labels/`. Status: Clearance proposed.
+- 2026-10-16 · [T02 · Claim Decomposition 120](issues/02-atomic-claim-decomposition.md): Exported and validated 340 atomic claims (mean: 2.83 claims/item, [2, 5] bounds) into `data/interim/preannotations/claims_120.jsonl`. 100% criticality coverage. 36/36 tests pass. Status: Clearance proposed.
+- 2026-10-16 · [T03 · IndicTrans2 C2 Generation](issues/03-indictrans2-c2-batch-generation.md): Generated Condition C2 raw machine translations for all 120 items via local IndicTrans2 inference on RTX 3050 Ti GPU. Deduplicated across 60 unique authentic passages, cached with SHA-256 keys under `cache/translations/`. 100% C2 coverage, zero leakage to C3 or gold labels. Status: Clearance proposed.
+- 2026-10-16 · [T04 · Annotation Workbench Setup](issues/04-annotation-workbench-setup.md): Built `src/prepare/export_workbenches.py` and exported dual blinded workbenches `workbench_annotator_1.md` and `workbench_annotator_2.md` under `data/interim/preannotations/`. 120 items, 340 claims, verified clickable live source links, explicit criticality tags, stopwatch timing fields. Tests passing. Status: Clearance proposed.
+- 2026-10-16 · [T05 · C3 Post-Editing Workbench](issues/05-c3-post-editing-workbench.md): Built `src/prepare/export_c3_workbench.py` and exported `data/interim/preannotations/post_edit_c3_workbench.md`. Deduplicated to 60 unique authentic passages with side-by-side MT and editable slot initialized to C2 for minimal edit distance. Tests passing. Status: Clearance proposed.
 
 ## Verdicts (researcher)
 
@@ -36,11 +36,11 @@ Exit criteria:
 
 ## Active Frontier Tickets
 
-- [ ] [01 · Stratified Sampling & 120 Candidate Corpus Assembly](issues/01-stratified-sampling-120.md) (Cap: 1 day)
-- [ ] [02 · Atomic Claim Decomposition & Criticality Tagging](issues/02-atomic-claim-decomposition.md) (Cap: 1 day)
-- [ ] [03 · IndicTrans2 C2 Batch Translation Runner](issues/03-indictrans2-c2-batch-generation.md) (Cap: 1 day)
-- [ ] [04 · Human Dual-Annotation Workbench & Tooling Setup](issues/04-annotation-workbench-setup.md) (Cap: 1 day)
-- [ ] [05 · Condition C3 Human Post-Editing Workbench Setup](issues/05-c3-post-editing-workbench.md) (Cap: 1 day)
-- [ ] [06 · Dual Human Annotation & Stopwatch Timing Intake](issues/06-dual-annotation-execution.md) (Cap: 14 days / Human Task ~8.5h)
-- [ ] [07 · Adjudication Protocol & Gold Label Data Intake](issues/07-adjudication-and-gold-intake.md) (Cap: 2 days / Human Task)
+- [x] [01 · Stratified Sampling & 120 Candidate Corpus Assembly](issues/01-stratified-sampling-120.md) (Engineering complete; clearance proposed)
+- [x] [02 · Atomic Claim Decomposition & Criticality Tagging](issues/02-atomic-claim-decomposition.md) (Engineering complete; clearance proposed)
+- [x] [03 · IndicTrans2 C2 Batch Translation Runner](issues/03-indictrans2-c2-batch-generation.md) (Engineering complete; clearance proposed)
+- [x] [04 · Human Dual-Annotation Workbench & Tooling Setup](issues/04-annotation-workbench-setup.md) (Engineering complete; clearance proposed)
+- [x] [05 · Condition C3 Human Post-Editing Workbench Setup](issues/05-c3-post-editing-workbench.md) (Engineering complete; clearance proposed)
+- [ ] [06 · Dual Human Annotation & Stopwatch Timing Intake](issues/06-dual-annotation-execution.md) (ACTIVE FRONTIER: Human Annotation in progress; Cap: 14 days / ~8.5h)
+- [ ] [07 · Adjudication Protocol & Gold Label Data Intake](issues/07-adjudication-and-gold-intake.md) (Cap: 2 days / Human Adjudication)
 - [ ] [08 · Gate 2 Verification & Data Lock](issues/08-gate-2-verification-and-lock.md) (Cap: 0.5 day)
