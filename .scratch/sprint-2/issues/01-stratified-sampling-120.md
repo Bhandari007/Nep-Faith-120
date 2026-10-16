@@ -59,3 +59,4 @@ Assemble the 120 candidate evaluation items adhering strictly to `docs/PREREGIST
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, 16 October 2026

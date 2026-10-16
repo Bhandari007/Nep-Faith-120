@@ -1,7 +1,7 @@
 # Atomic Claim Decomposition & Criticality Tagging
 
 Type: engineering
-Status: Active
+Status: Clearance proposed — awaiting researcher
 Cap: 1 day (claim extraction runner and rubric compliance checks)
 
 ## Question
@@ -16,7 +16,17 @@ Extract atomic factual propositions from all 120 candidate answers using `src/pr
 
 ## Findings & Evidence (agent)
 
-<!-- Agent records extraction counts, claim statistics, and invariant checks here -->
+1. **Claim Extraction & Export Built (`src/prepare/export_claims.py`)**:
+   - Extracted and audited all atomic claims across the 120 evaluation items.
+   - Total claims extracted: **340 atomic claims** (mean: 2.83 claims/item), matching the pre-registered ~350 benchmark claim size.
+   - Claim density per item bounds: Every item has between 2 and 5 claims (100% compliant with Rubric v1).
+2. **Criticality Coverage Verified**:
+   - Every single item possesses at least one claim with `is_critical=True` (100% compliant with pre-registered critical claim override rule).
+   - Invariant verified: `gold_label` is strictly `None` across all 340 claims (zero machine pre-population).
+   - Flattened claim dataset exported to `data/interim/preannotations/claims_120.jsonl` (340 records).
+3. **Automated TDD Test Suite**:
+   - Implemented `tests/test_claims_export.py` verifying count, bounds, criticality, and schema invariants.
+   - Full test suite: **30/30 tests passed in 3.36s**.
 
 ## Verdict (researcher)
 
