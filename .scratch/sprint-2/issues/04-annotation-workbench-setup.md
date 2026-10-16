@@ -35,7 +35,17 @@ Build and export human dual-annotation workbenches to `data/interim/preannotatio
   - Criticality tagging: All critical claims explicitly demarcated with `**[CRITICAL CLAIM]**` and non-critical claims with `*[NON-CRITICAL CLAIM]*`.
   - Blinded protocol: Perturbation categories and synthetic perturbation spans are strictly omitted from item text to prevent annotator bias.
   - Ergonomics: Standardized stopwatch timing fields (`Stopwatch Elapsed Time: [ mm:ss ]`) and item/claim notes fields included.
-  - Invariant tests: `tests/test_workbench_export.py` passing. Zero writes to `data/raw/labels/`.
+  - **Spreadsheet Workbenches (XLSX / CSV for Excel and Google Sheets):**
+    - Implemented `export_annotation_sheets` and `export_c3_sheet` in `src/prepare/export_sheets.py`.
+    - Generated styled Excel workbooks with dropdown data validation (`Supported`, `Contradicted`, `Not-in-context`), instructions tabs, frozen header panes, and auto-wrapped text:
+      - `data/interim/preannotations/workbench_annotator_1.xlsx` (76 KB)
+      - `data/interim/preannotations/workbench_annotator_2.xlsx` (76 KB)
+      - `data/interim/preannotations/post_edit_c3_workbench.xlsx` (37 KB)
+    - Generated standardized CSV equivalents for 1-click import into Google Sheets:
+      - `data/interim/preannotations/workbench_annotator_1.csv` (510 KB, 340 claim rows)
+      - `data/interim/preannotations/workbench_annotator_2.csv` (510 KB, 340 claim rows)
+      - `data/interim/preannotations/post_edit_c3_workbench.csv` (110 KB, 60 unique passages)
+  - Invariant tests: `tests/test_workbench_export.py` and `tests/test_sheet_export.py` passing (38/38 repo tests green). Zero writes to `data/raw/labels/`.
 
 ## Verdict (researcher)
 
