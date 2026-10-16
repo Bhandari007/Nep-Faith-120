@@ -29,7 +29,7 @@ class BatchC2Translator:
         input_path: Path = Path("data/interim/preannotations/gold_candidates_120.jsonl"),
         output_path: Optional[Path] = None,
         cache_dir: Path = Path("cache/translations"),
-        batch_size: int = 8,
+        batch_size: int = 2,
     ):
         self.input_path = Path(input_path)
         self.output_path = Path(output_path or input_path)

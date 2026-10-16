@@ -21,7 +21,7 @@ Build and export the Condition $C3$ post-editing workbench to `data/interim/prea
 - **Workbench Generation & Architecture:**
   - Implemented `src/prepare/export_c3_workbench.py`.
   - Generated `data/interim/preannotations/post_edit_c3_workbench.md` (1,975 lines, 137 KB).
-  - Deduplicated by passage: Grouped the 120 candidate items into exactly 61 unique reference passages ($p_{ne}$), cutting human post-editing burden by 50% while guaranteeing cross-item consistency.
+  - Deduplicated by passage: Grouped the 120 candidate items into exactly 60 unique authentic reference passages ($p_{ne}$), cutting human post-editing burden by 50% while guaranteeing cross-item consistency.
   - Side-by-side layout:
     1. Source Nepali text ($p_{ne}$)
     2. Raw IndicTrans2 MT ($p_{c2}$)

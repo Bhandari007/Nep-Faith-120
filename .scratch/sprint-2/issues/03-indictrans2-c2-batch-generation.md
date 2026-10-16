@@ -17,7 +17,7 @@ Generate Condition $C2$ raw machine translations for all 120 Nepali passages usi
 - **Execution & Invariant Verification:**
   - Ran `BatchC2Translator` (`src/run/batch_translate_c2.py`) across `data/interim/preannotations/gold_candidates_120.jsonl`.
   - Exactly 120/120 candidate items have `c2_raw_mt` populated with non-empty English translations (100% coverage).
-  - Deduplicated translation: 61 unique reference passages were translated and mapped to all 120 items.
+  - Deduplicated translation: 60 unique reference passages were translated and mapped to all 120 items.
   - Deterministic caching: 62 translation cache records created under `cache/translations/*.json` keyed on SHA-256 of `(text, npi_Deva, eng_Latn, model_id)`.
   - Condition $C3$ post-edited MT strictly unpopulated (`c3_post_edited_mt: None` for 120/120 items).
   - Physical label isolation verified: Zero writes to `data/raw/labels/`. All claims maintain `gold_label: None`.

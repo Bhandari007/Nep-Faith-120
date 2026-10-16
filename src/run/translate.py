@@ -184,10 +184,26 @@ class IndicTrans2Translator:
                     max_length=512,
                 ).to(self.device)
 
-                with torch.no_grad():
-                    outputs = self.model.generate(**inputs, num_beams=4, max_length=512)
+                try:
+                    with torch.no_grad():
+                        outputs = self.model.generate(**inputs, num_beams=2, max_length=512)
+                    batch_trans = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
+                except torch.cuda.OutOfMemoryError:
+                    if torch.cuda.is_available():
+                        torch.cuda.empty_cache()
+                    # Fallback to single item execution
+                    batch_trans = []
+                    for single_t in tagged_batch:
+                        s_inp = self.tokenizer([single_t], return_tensors="pt", padding=True, truncation=True, max_length=512).to(self.device)
+                        with torch.no_grad():
+                            s_out = self.model.generate(**s_inp, num_beams=2, max_length=512)
+                        batch_trans.append(self.tokenizer.batch_decode(s_out, skip_special_tokens=True)[0])
+                        if torch.cuda.is_available():
+                            torch.cuda.empty_cache()
 
-                batch_trans = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+
                 for rel_idx, trans in enumerate(batch_trans):
                     global_idx = uncached_indices[b_start + rel_idx]
                     clean_trans = trans.strip()

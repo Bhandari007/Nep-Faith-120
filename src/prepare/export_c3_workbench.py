@@ -15,14 +15,14 @@ Features:
 
 import json
 from pathlib import Path
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 
 
 C3_WORKBENCH_HEADER = """# NepFaith-120 Condition C3 Post-Editing Workbench
 
 **Version:** 1.0 (Locked Protocol)  
 **Editor:** Human Bilingual Post-Editor  
-**Target:** 61 Unique Reference Passages (spanning all 120 candidate items)  
+**Target:** 60 Unique Reference Passages (spanning all 120 candidate items)  
 **Storage Protocol:** Save completed post-edits directly to `data/interim/preannotations/post_edit_c3_workbench.md`.
 
 ---
@@ -45,18 +45,25 @@ To ensure that $C3$ differs from $C2$ **only** by the absence of translation err
 
 def format_passage_block(
     passage_idx: int,
+    total_passages: int,
     passage_ne: str,
     c2_raw_mt: str,
     linked_items: List[str],
     domain: str,
     sub_genre: str,
+    source_title: Optional[str] = None,
+    source_url: Optional[str] = None,
 ) -> str:
     """Formats a single passage into a side-by-side minimal-pair post-editing block."""
     items_str = ", ".join(f"`{item_id}`" for item_id in linked_items)
+    meta_line = f"**Domain:** {domain} | **Topic Sub-Genre:** {sub_genre}"
+    if source_title:
+        meta_line += f" | **Source:** [{source_title}]({source_url})" if source_url else f" | **Source:** {source_title}"
+
     lines = [
-        f"## Passage {passage_idx:02d} / 61",
+        f"## Passage {passage_idx:02d} / {total_passages}",
         f"**Linked Candidate Items:** {items_str}",
-        f"**Domain:** {domain} | **Topic Sub-Genre:** {sub_genre}",
+        meta_line,
         "",
         "### 1. Source Passage (Nepali · Condition C1)",
         f"> {passage_ne}",
@@ -118,21 +125,27 @@ def export_c3_workbench(
                 "linked_items": [it["item_id"]],
                 "domain": it.get("domain", "unknown"),
                 "sub_genre": it.get("sub_genre", "general"),
+                "source_title": it.get("source_title"),
+                "source_url": it.get("source_url"),
             }
         else:
             unique_passages[p_ne]["linked_items"].append(it["item_id"])
 
     # Build workbench markdown
     lines = [C3_WORKBENCH_HEADER]
+    total_unique = len(unique_passages)
     for idx, (_, p_data) in enumerate(unique_passages.items(), start=1):
         lines.append(
             format_passage_block(
                 passage_idx=idx,
+                total_passages=total_unique,
                 passage_ne=p_data["passage_ne"],
                 c2_raw_mt=p_data["c2_raw_mt"],
                 linked_items=p_data["linked_items"],
                 domain=p_data["domain"],
                 sub_genre=p_data["sub_genre"],
+                source_title=p_data.get("source_title"),
+                source_url=p_data.get("source_url"),
             )
         )
 

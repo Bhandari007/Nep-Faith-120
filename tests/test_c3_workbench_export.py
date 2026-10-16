@@ -19,7 +19,7 @@ def test_export_c3_post_editing_workbench(tmp_path):
     )
 
     assert out_file.exists()
-    assert unique_count == 61  # Exactly 61 unique passages across 120 items
+    assert unique_count == 60  # Exactly 60 unique authentic passages across 120 items
 
     content = out_file.read_text(encoding="utf-8")
     assert "NepFaith-120 Condition C3 Post-Editing Workbench" in content

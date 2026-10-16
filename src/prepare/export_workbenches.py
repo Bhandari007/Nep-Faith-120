@@ -48,9 +48,15 @@ def format_item_markdown(item: Dict[str, Any], item_index: int) -> str:
     answer_en = item.get("answer_en", "").strip()
     claims = item.get("claims", [])
 
+    source_title = item.get("source_title")
+    source_url = item.get("source_url")
+    meta_line = f"**Domain:** {domain} | **Topic Sub-Genre:** {sub_genre}"
+    if source_title:
+        meta_line += f" | **Source:** [{source_title}]({source_url})" if source_url else f" | **Source:** {source_title}"
+
     lines = [
         f"## Item: `{item_id}` ({item_index}/120)",
-        f"**Domain:** {domain} | **Topic Sub-Genre:** {sub_genre}",
+        meta_line,
         "",
         "### Context Passage (Nepali · Condition C1)",
         f"> {passage_ne}",

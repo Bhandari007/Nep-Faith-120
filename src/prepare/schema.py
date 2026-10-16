@@ -61,6 +61,8 @@ class EvaluationItem(BaseModel):
     domain: Domain = Field(description="Corpus source domain for stratified variance estimation")
     sub_genre: Optional[str] = Field(default=None, description="Sub-genre descriptor, e.g. 'health', 'agriculture', 'sports'")
     source_provenance: Provenance = Field(description="Natural RAG generation vs. perturbed counterfactual")
+    source_url: Optional[str] = Field(default=None, description="Traceable live URL or published report identifier")
+    source_title: Optional[str] = Field(default=None, description="Published article or report title")
     perturbation_type: Optional[PerturbationType] = Field(
         default=None, description="Typed edit category for hypothesis H2 testing; null for natural items"
     )

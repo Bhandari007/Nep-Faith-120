@@ -39,22 +39,30 @@ Assemble the 120 candidate evaluation items adhering strictly to `docs/PREREGIST
 
 ## Findings & Evidence (agent)
 
-1. **Assembly Engine Implemented (`src/prepare/assemble_candidates.py`)**:
-   - Built `CandidateAssembler` with curated seed bank across all 10 approved topical domains.
+1. **Path 2 Authentic External Harvesting (`src/prepare/crawl_authentic_corpus.py`)**:
+   - Built live harvesting engine using Tavily Search API and official Wikimedia endpoints.
+   - Harvested exactly 60 authentic, verifiable Nepali reference passages across all 10 approved topical domains:
+     - 20 Wikipedia passages (Culture & Heritage, Biodiversity & Parks, Tourism & Geography) via `ne.wikipedia.org`.
+     - 20 Government & Public Report passages (Health, Agriculture, Education, Economy & Finance) from Gorkhapatra National Gazette, Ministry of Finance, CEHRD, and Nepal Rastra Bank.
+     - 20 Contemporary News passages (including 6 Sports passages fulfilling the 30% quota) from OnlineKhabar and HamroKhelkud.
+   - **100% HTTP 200 Verification**: Programmatically asserted `status_code == 200` on every single URL (`test_all_60_urls.py`: 60 passed, 0 failed). Zero 404 dead links.
+   - Saved to `data/derived/authentic_passages_60.jsonl` with full provenance, publisher, year, and clean Devanagari text.
+2. **Assembly Engine Implemented (`src/prepare/assemble_candidates.py`)**:
+   - Built `CandidateAssembler` directly ingesting the 60 authentic passages mapped by `(domain, sub_genre)`.
    - Implemented exact allocation matrix:
      - 40 Wikipedia items: `culture_heritage` (15), `biodiversity_parks` (15), `infrastructure_tourism` (10).
      - 40 Government Report items: `health` (10), `agriculture` (10), `education` (10), `economy_finance` (10).
      - 40 News items: `sports` (12), `disaster_geography` (10), `governance_law` (10), `infrastructure_tourism` (8).
    - Provenance balance: Exactly 60 Natural and 60 Perturbed items (cycling through all 7 typed edits with $\ge 8$ items per type).
-2. **Schema & Label Isolation Verified**:
+3. **Schema & Label Isolation Verified**:
    - Every candidate item validated against `EvaluationItem` with decomposed `AtomicClaim` objects.
    - Every item contains at least one claim flagged `is_critical=True`.
    - Hard Rule verified: All candidate claims have `gold_label=None` (zero machine pre-population of gold fields).
    - Output written strictly to `data/interim/preannotations/gold_candidates_120.jsonl` (120 lines, verified).
    - `data/raw/labels/` remains pristine with zero automated writes.
-3. **Automated TDD Test Suite**:
-   - Implemented `tests/test_candidate_assembly.py` (all 5 invariant checks passing in 0.08s).
-   - Full repository test suite passes: **29/29 tests passed in 3.38s**.
+4. **Automated TDD Test Suite**:
+   - Implemented `tests/test_candidate_assembly.py` and `tests/test_authentic_crawl.py` (all invariant checks passing).
+   - Full repository test suite passes: **36/36 tests passed in 2.35s**.
 
 ## Verdict (researcher)
 

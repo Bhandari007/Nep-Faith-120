@@ -827,6 +827,21 @@ class CandidateAssembler:
             sg = s["sub_genre"]
             seeds_by_genre.setdefault(sg, []).append(s)
 
+        # Load authentic harvested passages to enrich seeds with authentic URLs and titles
+        auth_file = Path("data/derived/authentic_passages_60.jsonl")
+        auth_by_key: Dict[tuple, List[Dict[str, Any]]] = {}
+        auth_by_genre: Dict[str, List[Dict[str, Any]]] = {}
+        if auth_file.exists():
+            with open(auth_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.strip():
+                        r = json.loads(line)
+                        genre_key = r["sub_genre"]
+                        if genre_key == "infrastructure_energy":
+                            genre_key = "infrastructure_tourism"
+                        auth_by_key.setdefault((r["domain"], genre_key), []).append(r)
+                        auth_by_genre.setdefault(genre_key, []).append(r)
+
         items: List[EvaluationItem] = []
         item_counter = 1
         perturb_idx = 0
@@ -837,10 +852,16 @@ class CandidateAssembler:
             natural_count = alloc["natural"]
             perturbed_count = alloc["perturbed"]
             genre_seeds = seeds_by_genre[sub_genre]
+            auth_list = auth_by_key.get((domain.value, sub_genre)) or auth_by_genre.get(sub_genre, [])
 
             # Assemble Natural items
             for i in range(natural_count):
                 seed = genre_seeds[i % len(genre_seeds)]
+                auth_meta = auth_list[i % len(auth_list)] if auth_list else {}
+                source_url = auth_meta.get("source_url", seed.get("source_url"))
+                source_title = auth_meta.get("source_title", seed.get("source_title"))
+                p_ne = auth_meta.get("passage_ne") or seed["passage_ne"]
+
                 item_id = f"item_{item_counter:03d}"
                 claims = [
                     AtomicClaim(
@@ -856,9 +877,11 @@ class CandidateAssembler:
                     domain=domain,
                     sub_genre=sub_genre,
                     source_provenance=Provenance.NATURAL,
+                    source_url=source_url,
+                    source_title=source_title,
                     perturbation_type=None,
                     perturbation_span=None,
-                    passage_ne=seed["passage_ne"],
+                    passage_ne=p_ne,
                     query_en=seed["query_en"],
                     answer_en=seed["base_answer"],
                     retrieval_condition=RetrievalCondition.FULL_SUPPORT,
@@ -871,6 +894,11 @@ class CandidateAssembler:
             # Assemble Perturbed items
             for i in range(perturbed_count):
                 seed = genre_seeds[(i + natural_count) % len(genre_seeds)]
+                auth_meta = auth_list[(i + natural_count) % len(auth_list)] if auth_list else {}
+                source_url = auth_meta.get("source_url", seed.get("source_url"))
+                source_title = auth_meta.get("source_title", seed.get("source_title"))
+                p_ne = auth_meta.get("passage_ne") or seed["passage_ne"]
+
                 item_id = f"item_{item_counter:03d}"
                 p_type = PERTURBATION_CYCLE[perturb_idx % len(PERTURBATION_CYCLE)]
                 perturb_idx += 1
@@ -885,9 +913,11 @@ class CandidateAssembler:
                     domain=domain,
                     sub_genre=sub_genre,
                     source_provenance=Provenance.PERTURBED,
+                    source_url=source_url,
+                    source_title=source_title,
                     perturbation_type=p_type,
                     perturbation_span=span or p_type.value,
-                    passage_ne=seed["passage_ne"],
+                    passage_ne=p_ne,
                     query_en=seed["query_en"],
                     answer_en=perturbed_answer,
                     retrieval_condition=RetrievalCondition.PARTIAL_SUPPORT,

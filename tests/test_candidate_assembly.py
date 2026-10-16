@@ -71,6 +71,8 @@ def test_candidate_assembly_invariants(tmp_path):
         assert len(it.passage_ne.strip()) > 30
         assert len(it.query_en.strip()) > 10
         assert len(it.answer_en.strip()) > 10
+        assert it.source_url is not None and it.source_url.startswith("http"), f"Item {it.item_id} missing valid http source_url"
+        assert it.source_title is not None and len(it.source_title) > 3, f"Item {it.item_id} missing source_title"
         assert len(it.claims) >= 2, f"Item {it.item_id} has fewer than 2 claims"
         assert any(c.is_critical for c in it.claims), f"Item {it.item_id} has zero critical claims"
 
