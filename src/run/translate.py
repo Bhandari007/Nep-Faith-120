@@ -20,6 +20,9 @@ from typing import List, Optional, Union
 
 import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+import dotenv
+
+dotenv.load_dotenv()
 
 logger = logging.getLogger("IndicTrans2Runner")
 
@@ -60,15 +63,18 @@ class IndicTrans2Translator:
                 os.environ["CURL_CA_BUNDLE"] = ca_bundle
                 os.environ["REQUESTS_CA_BUNDLE"] = ca_bundle
 
+            hf_token = os.getenv("HF_TOKEN")
             self.tokenizer = AutoTokenizer.from_pretrained(
                 self.model_id,
                 trust_remote_code=True,
+                token=hf_token,
             )
             dtype = torch.float16 if self.device == "cuda" else torch.float32
             self.model = AutoModelForSeq2SeqLM.from_pretrained(
                 self.model_id,
                 trust_remote_code=True,
                 torch_dtype=dtype,
+                token=hf_token,
             ).to(self.device)
             self.model.eval()
             logger.info(f"Loaded {self.model_id} successfully.")
@@ -104,7 +110,7 @@ class IndicTrans2Translator:
         self._load_model()
 
         # Batch encode with language prefix
-        tagged_text = f"{text} <2{TGT_LANG}>"
+        tagged_text = f"{SRC_LANG} {TGT_LANG} {text}"
         inputs = self.tokenizer(
             [tagged_text],
             return_tensors="pt",
@@ -169,7 +175,7 @@ class IndicTrans2Translator:
             self._load_model()
             for b_start in range(0, len(uncached_texts), batch_size):
                 batch = uncached_texts[b_start : b_start + batch_size]
-                tagged_batch = [f"{t} <2{TGT_LANG}>" for t in batch]
+                tagged_batch = [f"{SRC_LANG} {TGT_LANG} {t}" for t in batch]
                 inputs = self.tokenizer(
                     tagged_batch,
                     return_tensors="pt",

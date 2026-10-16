@@ -1,7 +1,7 @@
 # Human Dual-Annotation Workbench & Tooling Setup
 
 Type: engineering / tooling
-Status: Active
+Status: Clearance proposed — awaiting researcher
 Cap: 1 day (workbench generation script, dual sheets, and pilot stopwatch harness)
 
 ## Question
@@ -23,7 +23,19 @@ Build and export human dual-annotation workbenches to `data/interim/preannotatio
 
 ## Findings & Evidence (agent)
 
-<!-- Agent records file generation, structure, and ergonomics verification here -->
+- **Workbench Generation & Verification:**
+  - Implemented `export_annotation_workbenches` in `src/prepare/export_workbenches.py`.
+  - Generated dual markdown files:
+    - `data/interim/preannotations/workbench_annotator_1.md` (5,821 lines, 264 KB)
+    - `data/interim/preannotations/workbench_annotator_2.md` (5,821 lines, 264 KB)
+  - Complete coverage: All 120 items and all 340 claims rendered with clear checkboxes:
+    - `[ ] Supported`
+    - `[ ] Contradicted`
+    - `[ ] Not-in-context`
+  - Criticality tagging: All critical claims explicitly demarcated with `**[CRITICAL CLAIM]**` and non-critical claims with `*[NON-CRITICAL CLAIM]*`.
+  - Blinded protocol: Perturbation categories and synthetic perturbation spans are strictly omitted from item text to prevent annotator bias.
+  - Ergonomics: Standardized stopwatch timing fields (`Stopwatch Elapsed Time: [ mm:ss ]`) and item/claim notes fields included.
+  - Invariant tests: `tests/test_workbench_export.py` passing. Zero writes to `data/raw/labels/`.
 
 ## Verdict (researcher)
 
