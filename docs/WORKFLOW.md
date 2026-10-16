@@ -83,6 +83,8 @@ Work is tracked under `.scratch/<effort>/`. Open tickets are worked blockers-fir
 
 **Every ticket carries a cap** — hours, or a concrete output. Exceeding the cap is a hard stop that gets reported, not a note that gets logged. The literature tickets share a 2-day cap across all of them; Sprint 1 carries an 11-day cap.
 
+**Mandatory issue presentation before execution:** The agent must always display the sprint issues/tickets table to the researcher, indicate which ticket is currently active, and then proceed to execution. Silent execution without displaying sprint tickets is prohibited.
+
 **The map has two sections, and they are not interchangeable:**
 
 ```markdown

@@ -65,3 +65,17 @@ To prevent PDF formatting artifacts from contaminating faithfulness evaluation:
 - **Scanned Image PDFs:** Automated routing to Gemini Vision OCR (`gemini-3.6-flash`) with prompt-constrained verbatim transcription preserving tables, numbers, and dates.
 - **Passage Bounding:** Chunks bounded to 150–350 tokens (1–3 paragraphs); fragments < 80 tokens discarded.
 
+### Fine-Grained 10-Domain Topical Stratification
+To reflect realistic civic and technical deployment in Nepal, the 120 evaluation items are stratified across 10 specific topical domains:
+1. **Health & Public Medicine (`health`, 10 items):** MoHP reports, NDHS surveys, clinical guidelines.
+2. **Agriculture & Forestry (`agriculture`, 10 items):** MoALD censuses, indigenous crops, traditional unit conversions (*ropani*, *bigha*).
+3. **Education & Demographics (`education`, 10 items):** MoEST flash reports, SEE pass rates, university enrollments.
+4. **Economics & Remittance (`economy_finance`, 10 items):** NRB macroeconomic statistics, remittance inflows, *lakh*/*crore* numeral stress-tests.
+5. **Disaster & Environment (`disaster_geography`, 10 items):** NDRRMA seismic/landslide bulletins, flood risk data, GLOF monitoring.
+6. **Governance & Legal (`governance_law`, 10 items):** Constitution 2072 articles, local government jurisdiction, statutory gazettes.
+7. **Sports (`sports`, 12 items):** Pre-registered 30% news quota: CAN cricket and ANFA football statistics.
+8. **Culture & Heritage (`culture_heritage`, 15 items):** UNESCO monuments, BS vs AD calendar conversions (वि.सं.), cultural rituals.
+9. **Geography & Biodiversity (`biodiversity_parks`, 15 items):** National parks, endangered wildlife censuses, Himalayan topography.
+10. **Infrastructure & Energy (`infrastructure_tourism`, 18 items):** Hydropower MW capacity, Fast Track progress, tourist arrivals.
+
+

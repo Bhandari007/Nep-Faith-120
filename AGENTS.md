@@ -48,6 +48,8 @@ All work in this repository is strictly governed by:
 - Every ticket carries an explicit cap (time or concrete output). Exceeding a cap is an immediate **HARD STOP** to report to the researcher.
 - Maps maintain strict separation: `## Findings (agent)` and `## Verdicts (researcher)`.
 - Tickets require both `Evidence:` (agent) and `Verdict:` (researcher with initials and date) to close.
+- **Mandatory Issue Presentation Before Execution:** Before executing tasks in any sprint, the agent MUST always show the researcher the sprint issues/tickets (with their identifiers, titles, caps, and current status), highlight the next frontier ticket being tackled, and then proceed to execute. Never execute silently without showing the sprint issue list.
+
 
 ## Paper Drafting Split & Citation Verification
 
