@@ -78,4 +78,44 @@ To reflect realistic civic and technical deployment in Nepal, the 120 evaluation
 9. **Geography & Biodiversity (`biodiversity_parks`, 15 items):** National parks, endangered wildlife censuses, Himalayan topography.
 10. **Infrastructure & Energy (`infrastructure_tourism`, 18 items):** Hydropower MW capacity, Fast Track progress, tourist arrivals.
 
+---
+
+## 6. Authentic Live Corpus Ingestion Protocol (Path 2)
+
+To ensure zero synthetic URL artifacts, eliminate 404 dead links, and provide complete public reproducibility, the evaluation reference bank was constructed through a verified live ingestion protocol:
+
+### Stage 1: Live Discovery Engine
+- **Search Instruments:** Targeted live queries using the Tavily Search API with site-restricted filters (`site:onlinekhabar.com`, `site:hamrokhelkud.com`, `site:gorkhapatraonline.com`, `site:mof.gov.np`, `site:nrb.org.np`, `site:cehrd.gov.np`) alongside direct MediaWiki REST queries (`ne.wikipedia.org`).
+- **Domain Coverage:** Exactly 60 unique authentic passages harvested:
+  - 20 Wikipedia articles (Culture, Biodiversity, Geography) with Devanagari URL encoding.
+  - 20 Government & Official Gazette reports (Health, Agriculture, Education, Economy/Finance).
+  - 20 Contemporary News articles (6 Sports [30% quota], 5 Disaster/Environment, 5 Governance/Law, 4 Infrastructure/Tourism).
+
+### Stage 2: Programmatic HTTP 200 Verification Gate
+- Prior to inclusion in `data/derived/authentic_passages_60.jsonl`, every candidate URL was subjected to an automated HTTP GET request asserting `response.status_code == 200`.
+- **Pass Rate:** 60/60 targets verified (`HTTP 200 OK`, 0 failures).
+- All Wikipedia paths were strictly encoded using `urllib.parse.quote` to eliminate Unicode handling errors across clients.
+
+### Stage 3: Normalization & Provenance Capture
+- Text extracted from article body tags was stripped of HTML boilerplate and navigation menus, then normalized under Unicode NFC (`unicodedata.normalize('NFC')`) to protect Devanagari conjuncts and halant markers.
+- Every entry preserves full provenance metadata: `passage_id`, `domain`, `sub_genre`, `source_title`, `source_url`, `publisher`, `publication_year`, and `word_count`.
+
+---
+
+## 7. Downstream Processing & Workbench Generation
+
+1. **Stratified Candidate Assembly (`assemble_candidates.py`):**
+   - Ingests the 60 authentic passages and allocates 120 candidate evaluation items matching the exact 40/40/40 macro-strata and 10-domain distribution.
+   - Pairs each passage into 1 Natural item (60 items total) and 1 Perturbed counterfactual item (60 items total) cycling across the 7 typed edits ($\ge 8$ items per edit type).
+2. **Atomic Claim Decomposition (`export_claims.py`):**
+   - Extracts 340 decontextualized factual propositions (mean 2.83 claims/item).
+   - Enforces the critical claim invariant: every item contains $\ge 1$ claim marked `is_critical=True`.
+3. **Condition C2 Local Batch Machine Translation (`batch_translate_c2.py`):**
+   - Generates raw MT ($p_{c2}$) for all 120 items using `ai4bharat/indictrans2-indic-en-dist-200M` executed locally on GPU (`batch_size=2`, `num_beams=2`).
+   - Translates the 60 unique passages once and maps back, caching translations under `cache/translations/` keyed on SHA-256 hashes.
+4. **Human Evaluation Workbenches (`export_workbenches.py`, `export_c3_workbench.py`):**
+   - Dual-annotation workbenches (`workbench_annotator_1.md`, `workbench_annotator_2.md`) generated under `data/interim/preannotations/` with clickable source links, blinded perturbations, and stopwatch fields.
+   - Condition C3 post-editing workbench (`post_edit_c3_workbench.md`) formatted side-by-side for the 60 unique passages to isolate $\Delta_{MT} = A(C3) - A(C2)$ via minimal edit distance.
+
+
 
