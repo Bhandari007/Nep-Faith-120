@@ -121,7 +121,7 @@ def export_c3_workbench(
         if p_ne not in unique_passages:
             unique_passages[p_ne] = {
                 "passage_ne": p_ne,
-                "c2_raw_mt": it.get("c2_raw_mt", "").strip(),
+                "c2_raw_mt": (it.get("c2_raw_mt") or "").strip(),
                 "linked_items": [it["item_id"]],
                 "domain": it.get("domain", "unknown"),
                 "sub_genre": it.get("sub_genre", "general"),

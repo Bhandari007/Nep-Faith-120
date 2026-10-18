@@ -322,7 +322,7 @@ def export_c3_sheet(
     for item in items:
         p_ne = item.get("passage_ne", "").strip()
         item_id = item["item_id"]
-        c2_mt = item.get("c2_raw_mt", "").strip()
+        c2_mt = (item.get("c2_raw_mt") or "").strip()
         domain = item.get("domain", "")
         sub_genre = item.get("sub_genre", "")
         source_title = item.get("source_title", "")

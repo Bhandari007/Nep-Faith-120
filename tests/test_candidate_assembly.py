@@ -79,3 +79,42 @@ def test_candidate_assembly_invariants(tmp_path):
         # Hard Rule: No gold labels assigned by machine in candidate pool
         for c in it.claims:
             assert c.gold_label is None, f"Gold label must not be populated in candidate pre-annotations for {c.claim_id}"
+
+
+def test_candidate_natural_passage_alignment(tmp_path):
+    """Verifies that natural items are strictly aligned with their reference passage.
+
+    In particular, the reference passage must not be overwritten by an unrelated topic.
+    For example:
+    - Item 001 (UNESCO zones) must have a passage discussing Kathmandu Valley / monument zones.
+    - Item 002 (Pashupatinath) must have a passage discussing Pashupatinath Temple.
+    - Item 003 (Indra Jatra) must have a passage discussing Indra Jatra.
+    """
+    from src.prepare.assemble_candidates import CandidateAssembler, PASSAGE_SEEDS
+    output_file = tmp_path / "gold_candidates_120.jsonl"
+    assembler = CandidateAssembler(output_path=output_file)
+    items = assembler.assemble()
+
+    it1 = next(it for it in items if it.item_id == "item_001")
+    assert "काठमाडौँ" in it1.passage_ne and ("स्मारक" in it1.passage_ne or "सम्पदा" in it1.passage_ne), (
+        "item_001 passage must describe Kathmandu Valley UNESCO monument zones"
+    )
+
+    it2 = next(it for it in items if it.item_id == "item_002")
+    assert "पशुपतिनाथ" in it2.passage_ne, (
+        "item_002 passage must describe Pashupatinath Temple"
+    )
+
+    it3 = next(it for it in items if it.item_id == "item_003")
+    assert "इन्द्रजात्रा" in it3.passage_ne, (
+        "item_003 passage must describe Indra Jatra"
+    )
+
+    # In general, natural items must preserve their seed passage
+    seed_queries = {s["query_en"]: s["passage_ne"] for s in PASSAGE_SEEDS}
+    for it in items:
+        if it.source_provenance == Provenance.NATURAL:
+            assert it.query_en in seed_queries
+            assert it.passage_ne == seed_queries[it.query_en], (
+                f"Item {it.item_id} natural passage was mismatched/overwritten with an unrelated passage!"
+            )

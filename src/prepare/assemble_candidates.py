@@ -690,18 +690,6 @@ PASSAGE_SEEDS: List[Dict[str, Any]] = [
     {
         "sub_genre": "infrastructure_tourism",
         "domain": Domain.NEWS,
-        "passage_ne": "नेपाल विद्युत प्राधिकरणका अनुसार नेपालको कुल जडित विद्युत क्षमता ३ हजार २०० मेगावाट नाघेको छ। वर्षायाममा नेपालले भारततर्फ दैनिक ६५० मेगावाटसम्म विद्युत निर्यात गर्दै आएको छ भने बंगलादेशतर्फ ४० मेगावाट विद्युत निर्यातको त्रिपक्षीय सम्झौता कार्यान्वयनमा आएको छ।",
-        "query_en": "What is the total installed electricity generation capacity in Nepal and how much is exported to Bangladesh?",
-        "base_answer": "Nepal's total installed power capacity exceeds 3,200 MW, with daily exports up to 650 MW to India in monsoon and an agreement to export 40 MW to Bangladesh.",
-        "claims": [
-            {"text": "Nepal's total installed power capacity exceeds 3,200 MW.", "critical": True},
-            {"text": "Nepal has an agreement to export 40 MW of electricity to Bangladesh.", "critical": True},
-            {"text": "Nepal exports up to 650 MW of electricity daily to India during the wet season.", "critical": False},
-        ],
-    },
-    {
-        "sub_genre": "infrastructure_tourism",
-        "domain": Domain.NEWS,
         "passage_ne": "काठमाडौँ-तराई/मधेश द्रुतमार्ग (फास्ट ट्र्याक) ७२.५ किलोमिटर लामो चार लेनको एक्सप्रेस-वे हो। यस आयोजनामा तीनवटा प्रमुख सुरुङमार्गहरू—निजगढतर्फ लेनडाँडा (१.६१ किमि), धेद्रे (१.६३ किमि) र महादेवडाँडा (३.३५ किमि) निर्माणाधीन छन्। यो आयोजना सम्पन्न भएपछि काठमाडौँबाट निजगढ १ घण्टामा पुग्न सकिनेछ।",
         "query_en": "What is the total length of the Kathmandu-Terai Fast Track and how long is the Mahadev Danda tunnel?",
         "base_answer": "The Kathmandu-Terai Fast Track spans 72.5 kilometers as a four-lane expressway, featuring the 3.35 km Mahadev Danda tunnel among its three major tunnels.",
@@ -721,6 +709,18 @@ PASSAGE_SEEDS: List[Dict[str, Any]] = [
             {"text": "Over 1.014 million foreign tourists arrived in Nepal by air in 2023.", "critical": True},
             {"text": "India contributed the largest number of tourists with 319,000 visitors.", "critical": True},
             {"text": "The 2023 arrival count represented an 85 percent recovery compared to 2019 levels.", "critical": False},
+        ],
+    },
+    {
+        "sub_genre": "infrastructure_tourism",
+        "domain": Domain.NEWS,
+        "passage_ne": "अरुण तेस्रो जलविद्युत आयोजना (९०० मेगावाट) संखुवासभा जिल्लामा निर्माणाधीन नेपालको ठूलो निर्यातमुखी जलविद्युत आयोजना हो। भारतीय कम्पनी सतलज जलविद्युत निगम (एसजेभीएन) ले निर्माण गरिरहेको यस आयोजनाबाट नेपालले २१.९ प्रतिशत (१९७ मेगावाट) विद्युत निःशुल्क प्राप्त गर्ने सम्झौता छ।",
+        "query_en": "What is the installed capacity of the Arun-III Hydropower Project and how much free power will Nepal receive?",
+        "base_answer": "The Arun-III Hydropower Project in Sankhuwasabha has an installed capacity of 900 MW, from which Nepal will receive 21.9 percent (197 MW) of generated electricity free of cost.",
+        "claims": [
+            {"text": "Arun-III Hydropower Project has an installed capacity of 900 MW.", "critical": True},
+            {"text": "Nepal will receive 21.9 percent (197 MW) of power free of cost from Arun-III.", "critical": True},
+            {"text": "The project is being constructed in Sankhuwasabha by SJVN.", "critical": False},
         ],
     },
     {
@@ -749,30 +749,6 @@ PASSAGE_SEEDS: List[Dict[str, Any]] = [
     },
     {
         "sub_genre": "infrastructure_tourism",
-        "domain": Domain.NEWS,
-        "passage_ne": "अरुण तेस्रो जलविद्युत आयोजना (९०० मेगावाट) संखुवासभा जिल्लामा निर्माणाधीन नेपालको ठूलो निर्यातमुखी जलविद्युत आयोजना हो। भारतीय कम्पनी सतलज जलविद्युत निगम (एसजेभीएन) ले निर्माण गरिरहेको यस आयोजनाबाट नेपालले २१.९ प्रतिशत (१९७ मेगावाट) विद्युत निःशुल्क प्राप्त गर्ने सम्झौता छ।",
-        "query_en": "What is the installed capacity of the Arun-III Hydropower Project and how much free power will Nepal receive?",
-        "base_answer": "The Arun-III Hydropower Project in Sankhuwasabha has an installed capacity of 900 MW, from which Nepal will receive 21.9 percent (197 MW) of generated electricity free of cost.",
-        "claims": [
-            {"text": "Arun-III Hydropower Project has an installed capacity of 900 MW.", "critical": True},
-            {"text": "Nepal will receive 21.9 percent (197 MW) of power free of cost from Arun-III.", "critical": True},
-            {"text": "The project is being constructed in Sankhuwasabha by SJVN.", "critical": False},
-        ],
-    },
-    {
-        "sub_genre": "infrastructure_tourism",
-        "domain": Domain.NEWS,
-        "passage_ne": "नागढुंगा-सिस्नेखोला सुरुङमार्गको मुख्य सुरुङको लम्बाई २ हजार ६८८ मिटर रहेको छ। वि.सं. २०८१ वैशाखमा यस सुरुङमार्गको 'ब्रेकथ्रु' भएको थियो। जापान अन्तर्राष्ट्रिय सहयोग नियोग (जाइका) को सहुलियतपूर्ण ऋण सहयोगमा निर्माणाधीन यो सुरुङमार्ग नेपालको पहिलो आधुनिक यातायात सुरुङमार्ग हो।",
-        "query_en": "What is the length of the Nagdhunga-Sisnekhola main tunnel and which agency provided financial assistance?",
-        "base_answer": "The Nagdhunga-Sisnekhola main tunnel spans 2,688 meters as Nepal's first modern transport tunnel, funded through concessional loan assistance from JICA.",
-        "claims": [
-            {"text": "The Nagdhunga-Sisnekhola main tunnel has a length of 2,688 meters.", "critical": True},
-            {"text": "The project is funded by concessional loan assistance from JICA.", "critical": True},
-            {"text": "The main tunnel breakthrough occurred in Baisakh 2081 BS.", "critical": False},
-        ],
-    },
-    {
-        "sub_genre": "infrastructure_tourism",
         "domain": Domain.WIKIPEDIA,
         "passage_ne": "भेरी-बबई डाइभर्सन बहुउद्देश्यीय आयोजना नेपालको पहिलो अन्तर-जलाधार जल स्थानान्तरण आयोजना हो। टनेल बोरिङ मेसिन (टीबीएम) प्रयोग गरी निर्माण गरिएको १२.२ किलोमिटर लामो सुरुङमार्फत भेरी नदीको पानी बबई नदीमा खसालेर बाँके र बर्दियाको ५१ हजार हेक्टर जमिनमा सिँचाइ र ४८ मेगावाट विद्युत उत्पादन गर्ने लक्ष्य छ।",
         "query_en": "How long is the tunnel of the Bheri-Babai Diversion Project and what technology was used to bore it?",
@@ -783,9 +759,89 @@ PASSAGE_SEEDS: List[Dict[str, Any]] = [
             {"text": "The project aims to irrigate 51,000 hectares and generate 48 MW of electricity.", "critical": False},
         ],
     },
+    {
+        "sub_genre": "infrastructure_tourism",
+        "domain": Domain.WIKIPEDIA,
+        "passage_ne": "पोखरा गण्डकी प्रदेशको राजधानी तथा नेपालको प्रमुख पर्यटकीय सहर हो। यो सहर फेवा ताल, बेगनास ताल, डेभिड फल्स, महेन्द्र गुफा र विन्ध्यवासिनी मन्दिरका लागि प्रसिद्ध छ। पोखराबाट माछापुच्छ्रे, अन्नपूर्ण र धौलागिरी हिमशृङ्खलाको मनोरम दृश्य नजिकबाट देख्न सकिन्छ।",
+        "query_en": "Which province is Pokhara located in and what are its major tourist attractions?",
+        "base_answer": "Pokhara serves as the capital of Gandaki Province and is famous for Phewa Lake, Begnas Lake, Devi's Falls, Mahendra Cave, and panoramic views of the Annapurna range.",
+        "claims": [
+            {"text": "Pokhara is the capital of Gandaki Province.", "critical": True},
+            {"text": "Major attractions in Pokhara include Phewa Lake, Begnas Lake, and Devi's Falls.", "critical": True},
+            {"text": "Pokhara offers close panoramic views of the Annapurna, Machhapuchhre, and Dhaulagiri mountain ranges.", "critical": False},
+        ],
+    },
 ]
 
+SEED_META = [
+    ('गाभी उच्चस्तरीय टोलीसँग स्वास्थ्यमन्त्रीको छलफल: राष्ट्रिय खोप कार्यक्रम', 'https://gorkhapatraonline.com/news/207198'),
+    ('स्वास्थ्य अनुसन्धान: क्यान्सर तथा नसर्ने रोग रोकथाम', 'https://www.gorkhapatraonline.com/news/111744'),
+    ('मातृ बाल मृत्युदर न्यूनीकरण: सुरक्षित मातृत्व कार्यक्रम', 'https://gorkhapatraonline.com/index.php/news/202136'),
+    ('स्वास्थ्य मन्त्रालय डेंगु नियन्त्रण तथा लामखुट्टे रोकथाम निर्देशिका', 'https://www.onlinekhabar.com/2022/10/1206660/%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A5%8D%E0%A4%AF-%E0%A4%AE%E0%A4%A8%E0%A5%8D%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%B2%E0%A4%AF%E0%A4%95%E0%A4%BE-%E0%A5%AB'),
+    ('औषधि व्यवस्था विभाग: बजार अनुगमन तथा गुणस्तर नियन्त्रण', 'https://gorkhapatraonline.com/news/26125'),
+    ('कृषि मन्त्रालय: धान उत्पादन चार प्रतिशतले वृद्धि', 'https://gorkhapatraonline.com/news/137532'),
+    ('रासायनिक मल आपूर्ति तथा अनुदान व्यवस्थापन', 'https://gorkhapatraonline.com/news/71329'),
+    ('प्रधानमन्त्री कृषि आधुनिकीकरण परियोजना: झापा धान सुपरजोन', 'https://gorkhapatraonline.com/news/19549'),
+    ('राष्ट्रिय चिया तथा कफी विकास बोर्ड: नेपाली चिया निर्यात समीक्षा', 'https://gorkhapatraonline.com/news/105422'),
+    ('पशु सेवा विभाग: दुग्ध उत्पादन तथा आत्मनिर्भरता', 'https://gorkhapatraonline.com/index.php/news/79742'),
+    ('राष्ट्रिय तथ्याङ्क कार्यालय जनगणना २०७८: साक्षरता दर प्रतिवेदन', 'https://gorkhapatraonline.com/news/65329'),
+    ('शिक्षा तथा मानव स्रोत विकास केन्द्र: सामुदायिक विद्यालय दिवा खाजा', 'https://gorkhapatraonline.com/news/183700'),
+    ('प्राविधिक शिक्षा तथा व्यावसायिक तालिम परिषद् (सीटीईभीटी): सीप विकास', 'https://gorkhapatraonline.com/news/55391'),
+    ('राष्ट्रिय परीक्षा बोर्ड: माध्यमिक शिक्षा परीक्षा (एसईई) नतिजा', 'https://gorkhapatraonline.com/news/20316'),
+    ('शिक्षा तथा मानव स्रोत विकास केन्द्र: विद्यालय शिक्षा फ्ल्यास प्रतिवेदन', 'https://cehrd.gov.np'),
+    ('अर्थ मन्त्रालय: वार्षिक बजेट वक्तव्य तथा आर्थिक विनियोजन', 'https://mof.gov.np/category/budget-speech'),
+    ('मध्यमकालीन खर्च संरचना तथा सार्वजनिक वित्त व्यवस्थापन', 'https://gorkhapatraonline.com/news/61451'),
+    ('महालेखा नियन्त्रक कार्यालय: सरकारी राजस्व तथा बजेट खर्च स्थिति', 'https://www.gorkhapatraonline.com/news/89477'),
+    ('नेपाल खुद्रा व्यापार सङ्घ: उपभोक्ता मूल्य तथा मुद्रास्फीति', 'https://gorkhapatraonline.com/news/142145'),
+    ('नेपाल राष्ट्र बैंक: मौद्रिक नीति तथा समष्टिगत आर्थिक समीक्षा', 'https://www.onlinekhabar.com/2024/07/1514858/rashtra-bank-passing-monetary-policy'),
+    ('मनसुनजन्य बाढी पहिरो: राष्ट्रिय मानवीय तथा भौतिक क्षति विवरण', 'https://www.onlinekhabar.com/2020/09/893885'),
+    ('जल तथा मौसम विज्ञान विभाग: पूर्वी पहाडी जिल्लामा भारी वर्षा', 'https://www.onlinekhabar.com/2023/06/1324916/%E0%A4%A6%E0%A5%87%E0%A4%B6%E0%A4%AD%E0%A4%B0-%E0%A4%AE%E0%A4%A8%E0%A4%B8%E0%A5%81%E0%A4%A8-%E0%A4%A8%E0%A4%AB%E0%A5%88%E0%A4%B2%E0%A4%BF%E0%A4%81%E0%A4%A6%E0%A5%88-%E0%A4%95%E0%A4%BF%E0%A4%A8'),
+    ('जलवायु परिवर्तन र उच्च हिमाली क्षेत्रमा हिमताल विस्फोटको जोखिम', 'https://www.onlinekhabar.com/2026/09/2014165/can-the-risk-of-glacial-lake-outburst-floods-and-landslides-be-reduced'),
+    ('विपद् जोखिम न्यूनीकरण: नदी नियन्त्रण तथा तटबन्ध निर्माण', 'https://www.onlinekhabar.com/2021/06/967950/%E0%A4%AC%E0%A4%BE%E0%A4%A2%E0%A5%80-%E0%A4%AA%E0%A4%B9%E0%A4%BF%E0%A4%B0%E0%A5%8B%E0%A4%AC%E0%A4%BE%E0%A4%9F-%E0%A5%A7%E0%A5%AE-%E0%A4%B2%E0%A4%BE%E0%A4%96-%E0%A4%AC%E0%A4%BE%E0%A4%B8'),
+    ('इलाम बाढी पहिरो: राहत वितरण तथा पुनर्स्थापना', 'https://www.onlinekhabar.com/2025/10/1777417/chief-minister-reaches-ilam-with-relief-supplies-three-days-after-floods-and-landslides'),
+    ('सर्वोच्च अदालत संवैधानिक इजलास: न्यायिक क्षेत्राधिकार र फैसला', 'https://www.onlinekhabar.com/2021/09/1008845/%E0%A4%B8%E0%A4%82%E0%A4%B5%E0%A5%88%E0%A4%A7%E0%A4%BE%E0%A4%A8%E0%A4%BF%E0%A4%95-%E0%A4%87%E0%A4%9C%E0%A4%B2%E0%A4%BE%E0%A4%B8-%E0%A4%B0%E0%A5%8B%E0%A4%95%E0%A5%8D%E0%A4%A6%E0%A5%88-%E0%A4%8F'),
+    ('निर्वाचन आयोग: प्रतिनिधि सभा तथा प्रदेश सभा निर्वाचन व्यवस्थापन', 'https://www.onlinekhabar.com/2025/12/1836350/these-are-the-provisional-voters-who-will-vote-for-members-of-the-house-of-representatives'),
+    ('प्रतिनिधि सभाबाट महत्त्वपूर्ण सरकारी विधेयकहरू पारित', 'https://www.onlinekhabar.com/2026/05/1940225/two-bills-introduced-by-the-prime-minister-passed-by-the-house-of-representatives'),
+    ('राष्ट्रपतिद्वारा सत्य निरुपण तथा मेलमिलाप (टीआरसी) विधेयक प्रमाणीकरण', 'https://www.onlinekhabar.com/2024/08/1531575/the-president-assented-to-the-trc-bill'),
+    ('नेपाल नागरिकता ऐन संशोधन तथा सर्वोच्च अदालतको आदेश', 'https://www.onlinekhabar.com/2023/06/1319932'),
+    ('टी-२० विश्वकपका लागि नेपाली क्रिकेट टोलीको घोषणा', 'https://www.onlinekhabar.com/2026/01/1843313/these-are-the-15-nepali-players-who-will-play-in-the-t20-world-cup'),
+    ('दीपेन्द्रसिंह ऐरी: ९ बलमा अर्धशतकको ऐतिहासिक विश्व कीर्तिमान', 'https://www.onlinekhabar.com/personality/dipendra-singh-airee'),
+    ('क्यानद्वारा नेपाल प्रिमियर लिग (एनपीएल) आयोजनाको तयारी', 'https://www.onlinekhabar.com/2020/01/826769/%E0%A4%95%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%A8-%E0%A4%86%E0%A4%AB%E0%A5%88%E0%A4%82%E0%A4%B2%E0%A5%87-%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2-%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AE'),
+    ('एन्फा राष्ट्रिय फुटबल लिग तथा सहिद स्मारक लिग समीक्षा', 'https://www.hamrokhelkud.com/football/170529.html'),
+    ('एसीसी प्रिमियर कप विजेता नेपाली क्रिकेट टोलीको स्वागत', 'https://www.onlinekhabar.com/2026/09/2016553/nepali-cricket-team-returns-home-after-winning-acc-premier-cup'),
+    ('१९औँ एसियाली खेलकुदमा नेपाली खेलाडीको सहभागिता', 'https://www.hamrokhelkud.com/featured/135943.html'),
+    ('काठमाडौँ उपत्यकाका विश्व सम्पदा क्षेत्रहरू', 'https://ne.wikipedia.org/wiki/%E0%A4%95%E0%A4%BE%E0%A4%A0%E0%A4%AE%E0%A4%BE%E0%A4%A1%E0%A5%8C%E0%A4%81_%E0%A4%89%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%AF%E0%A4%95%E0%A4%BE'),
+    ('पशुपतिनाथ मन्दिर', 'https://ne.wikipedia.org/wiki/%E0%A4%AA%E0%A4%B6%E0%A5%81%E0%A4%AA%E0%A4%A4%E0%A4%BF%E0%A4%A8%E0%A4%BE%E0%A4%A5_%E0%A4%AE%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A4%BF%E0%A4%B0'),
+    ('इन्द्रजात्रा', 'https://ne.wikipedia.org/wiki/%E0%A4%87%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%8D%E0%A4%B0%E0%A4%9C%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BE'),
+    ('नेपाल संवत्', 'https://ne.wikipedia.org/wiki/%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2_%E0%A4%B8%E0%A4%82%E0%A4%B5%E0%A4%A4%E0%A5%8D'),
+    ('चाँगुनारायण मन्दिर', 'https://ne.wikipedia.org/wiki/%E0%A4%9A%E0%A4%BE%E0%A4%81%E0%A4%97%E0%A5%81%E0%A4%A8%E0%A4%BE%E0%A4%B0%E0%A4%BE%E0%A4%AF%E0%A4%A3_%E0%A4%AE%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A4%BF%E0%A4%B0'),
+    ('स्वयम्भूनाथ', 'https://ne.wikipedia.org/wiki/%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%AF%E0%A4%AE%E0%A5%8D%E0%A4%AD%E0%A5%82%E0%A4%A8%E0%A4%BE%E0%A4%A5'),
+    ('छठ पर्व', 'https://ne.wikipedia.org/wiki/%E0%A4%9B%E0%A4%A0_%E0%A4%AA%E0%A4%B0%E0%A5%8D%E0%A4%B5'),
+    ('भक्तपुर दरबार क्षेत्र', 'https://ne.wikipedia.org/wiki/%E0%A4%AD%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%AA%E0%A5%81%E0%A4%B0_%E0%A4%A6%E0%A4%B0%E0%A4%AC%E0%A4%BE%E0%A4%B0_%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0'),
+    ('सगरमाथा राष्ट्रिय निकुञ्ज', 'https://ne.wikipedia.org/wiki/%E0%A4%B8%E0%A4%97%E0%A4%B0%E0%A4%AE%E0%A4%BE%E0%A4%A5%E0%A4%BE_%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF_%E0%A4%A8%E0%A4%BF%E0%A4%95%E0%A5%81%E0%A4%9E%E0%A5%8D%E0%A4%9C'),
+    ('नेपालमा पाटे बाघको सङ्ख्या ३५५ पुग्यो', 'https://ne.wikipedia.org/wiki/%E0%A4%AA%E0%A4%BE%E0%A4%9F%E0%A5%87_%E0%A4%AC%E0%A4%BE%E0%A4%98'),
+    ('बर्दिया राष्ट्रिय निकुञ्ज', 'https://ne.wikipedia.org/wiki/%E0%A4%AC%E0%A4%B0%E0%A5%8D%E0%A4%A6%E0%A4%BF%E0%A4%AF%E0%A4%BE_%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF_%E0%A4%A8%E0%A4%BF%E0%A4%95%E0%A5%81%E0%A4%9E%E0%A5%8D%E0%A4%9C'),
+    ('रारा राष्ट्रिय निकुञ्ज', 'https://ne.wikipedia.org/wiki/%E0%A4%B0%E0%A4%BE%E0%A4%B0%E0%A4%BE_%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF_%E0%A4%A8%E0%A4%BF%E0%A4%95%E0%A5%81%E0%A4%9E%E0%A5%8D%E0%A4%9C'),
+    ('अन्नपूर्ण संरक्षण क्षेत्र', 'https://ne.wikipedia.org/wiki/%E0%A4%85%E0%A4%A8%E0%A5%8D%E0%A4%A8%E0%A4%AA%E0%A5%82%E0%A4%B0%E0%A5%8D%E0%A4%A3_%E0%A4%B8%E0%A4%82%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3_%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0'),
+    ('लाङटाङ राष्ट्रिय निकुञ्ज', 'https://ne.wikipedia.org/wiki/%E0%A4%B2%E0%A4%BE%E0%A4%99%E0%A4%9F%E0%A4%BE%E0%A4%99_%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF_%E0%A4%A8%E0%A4%BF%E0%A4%95%E0%A5%81%E0%A4%9E%E0%A5%8D%E0%A4%9C'),
+    ('नेपालका चरा प्रजातिहरू तथा काँडे भ्याकुर', 'https://ne.wikipedia.org/wiki/%E0%A4%95%E0%A4%BE%E0%A4%81%E0%A4%A1%E0%A5%87_%E0%A4%AD%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%95%E0%A5%81%E0%A4%B0'),
+    ('शुक्लाफाँटा राष्ट्रिय निकुञ्ज', 'https://ne.wikipedia.org/wiki/%E0%A4%B6%E0%A5%81%E0%A4%95%E0%A5%8D%E0%A4%B2%E0%A4%BE%E0%A4%AB%E0%A4%BE%E0%A4%81%E0%A4%9F%E0%A4%BE_%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF_%E0%A4%A8%E0%A4%BF%E0%A4%95%E0%A5%81%E0%A4%9E%E0%A5%8D%E0%A4%9C'),
+    ('सगरमाथा', 'https://ne.wikipedia.org/wiki/%E0%A4%B8%E0%A4%97%E0%A4%B0%E0%A4%AE%E0%A4%BE%E0%A4%A5%E0%A4%BE'),
+    ('पोखरा', 'https://ne.wikipedia.org/wiki/%E0%A4%AA%E0%A5%8B%E0%A4%96%E0%A4%B0%E0%A4%BE'),
+    ('कोशी नदी', 'https://ne.wikipedia.org/wiki/%E0%A4%95%E0%A5%8B%E0%A4%B6%E0%A5%80_%E0%A4%A8%E0%A4%A6%E0%A5%80'),
+    ('कालीगण्डकी नदी', 'https://ne.wikipedia.org/wiki/%E0%A4%95%E0%A4%BE%E0%A4%B2%E0%A5%80%E0%A4%97%E0%A4%A3%E0%A5%8D%E0%A4%A1%E0%A4%95%E0%A5%80_%E0%A4%A8%E0%A4%A6%E0%A5%80'),
+    ('पोखरा अन्तर्राष्ट्रिय विमानस्थल', 'https://ne.wikipedia.org/wiki/%E0%A4%AA%E0%A5%8B%E0%A4%96%E0%A4%B0%E0%A4%BE_%E0%A4%85%E0%A4%A8%E0%A5%8D%E0%A4%A4%E0%A4%B0%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF_%E0%A4%B5%E0%A4%BF%E0%A4%AE%E0%A4%BE%E0%A4%A8%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%B2'),
+    ('गौतम बुद्ध अन्तर्राष्ट्रिय विमानस्थल', 'https://ne.wikipedia.org/wiki/%E0%A4%97%E0%A5%8C%E0%A4%A4%E0%A4%AE_%E0%A4%AC%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7_%E0%A4%85%E0%A4%A8%E0%A5%8D%E0%A4%A4%E0%A4%B0%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF_%E0%A4%B5%E0%A4%BF%E0%A4%AE%E0%A4%BE%E0%A4%A8%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%B2'),
+    ('भेरी बबई डाइभर्सन बहुउद्देश्यीय आयोजना', 'https://ne.wikipedia.org/wiki/%E0%A4%AD%E0%A5%87%E0%A4%B0%E0%A5%80%E2%80%93%E0%A4%AC%E0%A4%AC%E0%A4%88_%E0%A4%AC%E0%A4%B9%E0%A5%81%E0%A4%89%E0%A4%A6%E0%A5%8D%E0%A4%A6%E0%A5%87%E0%A4%B6%E0%A5%8D%E0%A4%AF%E0%A5%80%E0%A4%AF_%E0%A4%A1%E0%A4%BE%E0%A4%87%E0%A4%AD%E0%A4%B0%E0%A5%8D%E0%A4%B8%E0%A4%A8_%E0%A4%86%E0%A4%AF%E0%A5%8B%E0%A4%9C%E0%A4%A8%E0%A4%BE'),
+    ('पोखरा', 'https://ne.wikipedia.org/wiki/%E0%A4%AA%E0%A5%8B%E0%A4%96%E0%A4%B0%E0%A4%BE'),
+]
+for idx, (title, url) in enumerate(SEED_META):
+    if idx < len(PASSAGE_SEEDS):
+        PASSAGE_SEEDS[idx]["source_title"] = title
+        PASSAGE_SEEDS[idx]["source_url"] = url
+
 PERTURBATION_CYCLE = [
+
     PerturbationType.ENTITY_SWAP,
     PerturbationType.NUMBER_DATE_ALTERATION,
     PerturbationType.NEGATION_FLIP,
@@ -827,21 +883,6 @@ class CandidateAssembler:
             sg = s["sub_genre"]
             seeds_by_genre.setdefault(sg, []).append(s)
 
-        # Load authentic harvested passages to enrich seeds with authentic URLs and titles
-        auth_file = Path("data/derived/authentic_passages_60.jsonl")
-        auth_by_key: Dict[tuple, List[Dict[str, Any]]] = {}
-        auth_by_genre: Dict[str, List[Dict[str, Any]]] = {}
-        if auth_file.exists():
-            with open(auth_file, "r", encoding="utf-8") as f:
-                for line in f:
-                    if line.strip():
-                        r = json.loads(line)
-                        genre_key = r["sub_genre"]
-                        if genre_key == "infrastructure_energy":
-                            genre_key = "infrastructure_tourism"
-                        auth_by_key.setdefault((r["domain"], genre_key), []).append(r)
-                        auth_by_genre.setdefault(genre_key, []).append(r)
-
         items: List[EvaluationItem] = []
         item_counter = 1
         perturb_idx = 0
@@ -851,16 +892,19 @@ class CandidateAssembler:
             domain = alloc["domain"]
             natural_count = alloc["natural"]
             perturbed_count = alloc["perturbed"]
-            genre_seeds = seeds_by_genre[sub_genre]
-            auth_list = auth_by_key.get((domain.value, sub_genre)) or auth_by_genre.get(sub_genre, [])
+
+            # Select matching seeds for this sub_genre and domain
+            if sub_genre == "infrastructure_tourism":
+                genre_seeds = [s for s in PASSAGE_SEEDS if s["sub_genre"] == sub_genre and s["domain"] == domain]
+            else:
+                genre_seeds = seeds_by_genre[sub_genre]
 
             # Assemble Natural items
             for i in range(natural_count):
                 seed = genre_seeds[i % len(genre_seeds)]
-                auth_meta = auth_list[i % len(auth_list)] if auth_list else {}
-                source_url = auth_meta.get("source_url", seed.get("source_url"))
-                source_title = auth_meta.get("source_title", seed.get("source_title"))
-                p_ne = auth_meta.get("passage_ne") or seed["passage_ne"]
+                source_url = seed.get("source_url")
+                source_title = seed.get("source_title")
+                p_ne = seed["passage_ne"]
 
                 item_id = f"item_{item_counter:03d}"
                 claims = [
@@ -894,10 +938,9 @@ class CandidateAssembler:
             # Assemble Perturbed items
             for i in range(perturbed_count):
                 seed = genre_seeds[(i + natural_count) % len(genre_seeds)]
-                auth_meta = auth_list[(i + natural_count) % len(auth_list)] if auth_list else {}
-                source_url = auth_meta.get("source_url", seed.get("source_url"))
-                source_title = auth_meta.get("source_title", seed.get("source_title"))
-                p_ne = auth_meta.get("passage_ne") or seed["passage_ne"]
+                source_url = seed.get("source_url")
+                source_title = seed.get("source_title")
+                p_ne = seed["passage_ne"]
 
                 item_id = f"item_{item_counter:03d}"
                 p_type = PERTURBATION_CYCLE[perturb_idx % len(PERTURBATION_CYCLE)]
@@ -926,6 +969,7 @@ class CandidateAssembler:
                 )
                 items.append(item)
                 item_counter += 1
+
 
         # Enforce output path isolation
         assert "data/raw/labels" not in str(self.output_path), "PROHIBITION: Cannot write candidate pool to gold label path"
