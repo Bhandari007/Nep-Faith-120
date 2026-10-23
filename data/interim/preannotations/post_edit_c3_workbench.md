@@ -34,15 +34,15 @@ To ensure that $C3$ differs from $C2$ **only** by the absence of translation err
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Seven memorial areas in the Kathmandu Valley were listed on the UNESCO World Heritage List in 2001. These areas include Kathmandu Durbar Square, Patan Durbar Square, Bhaktapur Durbar Square, Swayambhunath, Boudhanath, Pashupatinath Temple, and Changunarayan Temple. These heritage sites represent the Malala period art and Newari architecture of the valley.
+Seven memorial areas in the Kathmandu Valley were listed on the UNESCO World Heritage List in 1971 A.D . These areas include Kathmandu Durbar Square, Patan Durbar Square, Bhaktapur Durbar Square, Swayambhunath, Boudhanath, Pashupatinath Temple, and Changunarayan Temple. These heritage sites represent the Malla period art and Newari architecture of the valley.
 ```
 
 ### 4. Post-Editing Metadata
-**Stopwatch Elapsed Time:** `[ mm:ss ]`
+**Stopwatch Elapsed Time:** `[ 0m:50s ]`
 
 **Error Types Corrected in this Passage (Select all that apply):**
-- [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [x] Entity / Proper Noun mistranslation
+- [x] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -66,15 +66,15 @@ Seven memorial areas in the Kathmandu Valley were listed on the UNESCO World Her
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Pashupatinath Temple is a sacred pilgrimage site for Hindus located on the banks of the Bagmati River. The temple is built in pagoda style and its roof is made of two layers of gold-plated copper. Also protected in the Great Earthquake of the 20th century, non-Hindus have been barred from entering the main temple in this temple area since the 20th century.
+The Pashupatinath Temple is a sacred pilgrimage site for Hindus located on the banks of the Bagmati River. The temple is built in pagoda style and its roof is made of two layers of gold-plated copper. Also protected in the Great Earthquake of the 1990 B.S, non-Hindus have been barred from entering the main temple in this temple area since the 1979 A.D .
 ```
 
 ### 4. Post-Editing Metadata
 **Stopwatch Elapsed Time:** `[ mm:ss ]`
 
 **Error Types Corrected in this Passage (Select all that apply):**
-- [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [x] Entity / Proper Noun mistranslation
+- [x] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -111,9 +111,9 @@ Indrajatra is the largest historical jatra celebrated by the Newar community of 
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
-- [ ] Clean / No edit needed (Raw MT is faithful and accurate)
+- [X] Clean / No edit needed (Raw MT is faithful and accurate)
 
-**Editor Notes / Justification:** `[                                                 ]`
+**Editor Notes / Justification:** `[     Although the word beating could be replaced by erecting.                                            ]`
 
 ---
 
@@ -130,7 +130,7 @@ Indrajatra is the largest historical jatra celebrated by the Newar community of 
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Nepal Samvat was started by national icon Shankhdhar Sakhwa in 1965. He ran this Samvat by relieving the debt of the poor people of Kathmandu. The Government of Nepal recognized Nepal Samvat as a national Samvat in 1965.
+Nepal Samvat was started by national icon Shankhdhar Sakhwa in 879 AD. He ran this Samvat by relieving the debt of the poor people of Kathmandu. The Government of Nepal recognized Nepal Samvat as a national Samvat in 2035 B.S.
 ```
 
 ### 4. Post-Editing Metadata
@@ -138,7 +138,7 @@ Nepal Samvat was started by national icon Shankhdhar Sakhwa in 1965. He ran this
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -162,7 +162,7 @@ Nepal Samvat was started by national icon Shankhdhar Sakhwa in 1965. He ran this
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Changunarayan Temple is considered to be the oldest Hindu temple in the Kathmandu Valley. An inscription of the Licchavi King Mandev I of AD 1501 ( ) has been found in this temple complex, which is the oldest attested record in the history of Nepal. The temple is located in Changunarayan Municipality of Bhaktapur district.
+The Changunarayan Temple is considered to be the oldest Hindu temple in the Kathmandu Valley. An inscription of the Licchavi King Mandev I of 564 A.D ( 521 B.S) has been found in this temple complex, which is the oldest attested record in the history of Nepal. The temple is located in Changunarayan Municipality of Bhaktapur district.
 ```
 
 ### 4. Post-Editing Metadata
@@ -170,7 +170,7 @@ The Changunarayan Temple is considered to be the oldest Hindu temple in the Kath
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -207,7 +207,7 @@ Swayambhunath Stupa is located on a hilltop in the western part of Kathmandu Val
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
-- [ ] Clean / No edit needed (Raw MT is faithful and accurate)
+- [X] Clean / No edit needed (Raw MT is faithful and accurate)
 
 **Editor Notes / Justification:** `[                                                 ]`
 
@@ -226,14 +226,14 @@ Swayambhunath Stupa is located on a hilltop in the western part of Kathmandu Val
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Chhath Puja, celebrated in Nepal, is a major festival that worships the sun god and the sixth mother. The four-day festival celebrates the rising and setting sun on the banks of a holy river or pond. This festival, especially celebrated in the Terai-Madhesh, has now become popular in the hilly regions including the Kathmandu Valley.
+Chhath Puja, celebrated in Nepal, is a major festival that worships the sun god and the chhathi mother. The four-day festival celebrates the rising and setting sun on the banks of a holy river or pond. This festival, especially celebrated in the Terai-Madhesh, has now become popular in the hilly regions including the Kathmandu Valley.
 ```
 
 ### 4. Post-Editing Metadata
 **Stopwatch Elapsed Time:** `[ mm:ss ]`
 
 **Error Types Corrected in this Passage (Select all that apply):**
-- [ ] Entity / Proper Noun mistranslation
+- [X] Entity / Proper Noun mistranslation
 - [ ] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
@@ -258,7 +258,7 @@ Chhath Puja, celebrated in Nepal, is a major festival that worships the sun god 
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Bhaktapur Durbar Square is known for'Jhyale Durbar'and'Nyatpole Temple '. The Nyatpole Temple commissioned by King Bhupatindra Malla is the highest pagoda temple in Nepal with five storeys and is about 303 meters high.
+Bhaktapur Durbar Square is known for'Jhyale Durbar'and'Nyatpole Temple '. The Nyatpole Temple commissioned by King Bhupatindra Malla is the highest pagoda temple in Nepal with five storeys and is about 30 meters high.
 ```
 
 ### 4. Post-Editing Metadata
@@ -266,7 +266,7 @@ Bhaktapur Durbar Square is known for'Jhyale Durbar'and'Nyatpole Temple '. The Ny
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -290,7 +290,7 @@ Bhaktapur Durbar Square is known for'Jhyale Durbar'and'Nyatpole Temple '. The Ny
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Sagarmatha National Park was established in 1991 and was listed on the UNESCO World Natural Heritage List in 2001. The park covers major mountains such as Lhotse, Nuptse, Cho Oyu, and Amadblam, including the world's highest peak Sagarmatha (   .   ), which is spread over 1,000 square kilometres. Snow leopards and musk deer are found here.
+Sagarmatha National Park was established in 1996 A.D and was listed on the UNESCO World Natural Heritage List in 1979 A.D . The park covers major mountains such as Lhotse, Nuptse, Cho Oyu, and Amadblam, including the world's highest peak Sagarmatha (8848.86 m), which is spread over 1,148 square kilometres. Snow leopards and musk deer are found here.
 ```
 
 ### 4. Post-Editing Metadata
@@ -298,7 +298,7 @@ Sagarmatha National Park was established in 1991 and was listed on the UNESCO Wo
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -322,7 +322,7 @@ Sagarmatha National Park was established in 1991 and was listed on the UNESCO Wo
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the National Tiger Census of 2015, the total tiger population in Nepal has increased to 455. Nepal became the first country in the world to double its tiger population by fulfilling the commitment of doubling its tiger population ( from 212 to 232 ) made by Nepal at the St. Petersburg Conference in 2019. The highest number of tigers are in Chitwan National Park ( 212 ).
+According to the National Tiger Census of 2022 A.D, the total tiger population in Nepal has increased to 355. Nepal became the first country in the world to double its tiger population by fulfilling the commitment of doubling its tiger population ( from 121 to 242 ) made by Nepal at the St. Petersburg Conference in 2010 A.D. The highest number of tigers are in Chitwan National Park (128).
 ```
 
 ### 4. Post-Editing Metadata
@@ -330,7 +330,7 @@ According to the National Tiger Census of 2015, the total tiger population in Ne
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -354,7 +354,7 @@ According to the National Tiger Census of 2015, the total tiger population in Ne
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Bardiya National Park is the largest national park located in the Terai region of Nepal and covers an area of 14 square kilometres. The park extends along the eastern bank of the Karnali River and is home to the one-horned rhinoceros and the Asiatic elephant. Bardia is home to twenty-six species of tigers.
+Bardiya National Park is the largest national park located in the Terai region of Nepal and covers an area of 968 square kilometres. The park extends along the eastern bank of the Karnali River and is home to the one-horned rhinoceros, stripes tiger and the Asiatic elephant. Bardia is home to one hundred-twenty-five species of tigers.
 ```
 
 ### 4. Post-Editing Metadata
@@ -362,8 +362,8 @@ Bardiya National Park is the largest national park located in the Terai region o
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Number / Date / Metric distortion
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -386,7 +386,7 @@ Bardiya National Park is the largest national park located in the Terai region o
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Rara Lake is the largest and deepest lake in Nepal. It is located in Mugu district of Karnali Province at an altitude of 2, 500 meters above sea level. It is about 5, 51 kilometers long, 2, 22 kilometers wide, and has a maximum depth of 4, 00 meters. Rara Lake falls within Rara National Park.
+Rara Lake is the largest and deepest lake in Nepal. It is located in Mugu district of Karnali Province at an altitude of 2, 900 meters above sea level. It is about 5.1 kilometers long, 2.7 kilometers wide, and has a maximum depth of 167 meters. Rara Lake falls within Rara National Park.
 ```
 
 ### 4. Post-Editing Metadata
@@ -394,7 +394,7 @@ Rara Lake is the largest and deepest lake in Nepal. It is located in Mugu distri
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -418,7 +418,7 @@ Rara Lake is the largest and deepest lake in Nepal. It is located in Mugu distri
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Annapurna Conservation Area is the largest conservation area in Nepal with an area of 6000 square kilometers. It is spread over Kaski, Lamjung, Myagdi, Manang and Mustang districts of Gandaki Province. The area has been managed by the National Nature Conservation Fund ( NTNC ) with the participation of the local community.
+The Annapurna Conservation Area is the largest conservation area in Nepal with an area of 7629 square kilometers. It is spread over Kaski, Lamjung, Myagdi, Manang and Mustang districts of Gandaki Province. The area has been managed by the National Nature Conservation Fund ( NTNC ) with the participation of the local community.
 ```
 
 ### 4. Post-Editing Metadata
@@ -426,7 +426,7 @@ The Annapurna Conservation Area is the largest conservation area in Nepal with a
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -450,16 +450,16 @@ The Annapurna Conservation Area is the largest conservation area in Nepal with a
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Langtang National Park is the first Himalayan National Park in Nepal, established in the year 2001. The park covers Rasuwa, Nuwakot and Sindhupalchok districts. Within the park lies the sacred Gosainkund Lake, where a large fair is held on the day of Janapurnima.
+Langtang National Park is the first Himalayan National Park in Nepal, established in the year 1976 A.D. The park covers Rasuwa, Nuwakot and Sindhupalchok districts covering 1,710 square kilometer. Within the park lies the sacred Gosainkund Lake, where a large fair is held on the day of Janaipurnima.
 ```
 
 ### 4. Post-Editing Metadata
 **Stopwatch Elapsed Time:** `[ mm:ss ]`
 
 **Error Types Corrected in this Passage (Select all that apply):**
-- [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Entity / Proper Noun mistranslation
+- [X] Number / Date / Metric distortion
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -482,7 +482,7 @@ Langtang National Park is the first Himalayan National Park in Nepal, establishe
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Sixty-six species of birds have been recorded in Nepal so far, accounting for about 1 % of the total bird species in the world. Koshi Tappu Wildlife Reserve is the major bird watching area in Nepal, where more than sixty-six species of birds are found. Kande Vakur is the only raithane bird found in Nepal.
+Eight hundred Eighty-six species of birds have been recorded in Nepal so far, accounting for about 9 % of the total bird species in the world. Koshi Tappu Wildlife Reserve is the major bird watching area in Nepal, where more than five-hundred-twenty-siz species of birds are found. Kande Vakur is the only raithane bird found in Nepal.
 ```
 
 ### 4. Post-Editing Metadata
@@ -490,7 +490,7 @@ Sixty-six species of birds have been recorded in Nepal so far, accounting for ab
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -514,7 +514,7 @@ Sixty-six species of birds have been recorded in Nepal so far, accounting for ab
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Shuklaphanta National Park is located in the Kanchanpur district of the Far-Western Provinces. The park has an area of 30,555 square kilometres. It is home to the world's largest herd of swamp deer, numbering over 2,000.
+Shuklaphanta National Park is located in the Kanchanpur district of the Far-Western Provinces. The park has an area of 305 square kilometres. It is home to the world's largest herd of swamp deer, numbering over 2,000.
 ```
 
 ### 4. Post-Editing Metadata
@@ -522,7 +522,7 @@ Shuklaphanta National Park is located in the Kanchanpur district of the Far-West
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -546,7 +546,7 @@ Shuklaphanta National Park is located in the Kanchanpur district of the Far-West
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Pokhara International Airport is the second new international airport in Nepal and was inaugurated on 1 January 2003. Built with a concessional loan assistance of about 2 billion rupees from the Exim Bank of China, the airport is of 4D category and has a runway length of 2,500 meters.
+Pokhara International Airport is the second new international airport in Nepal and was inaugurated on 1 January 2023. Built with a concessional loan assistance of about 22 billion rupees from the Exim Bank of China, the airport is of 4D category and has a runway length of 2,500 meters.
 ```
 
 ### 4. Post-Editing Metadata
@@ -554,7 +554,7 @@ Pokhara International Airport is the second new international airport in Nepal a
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -578,7 +578,7 @@ Pokhara International Airport is the second new international airport in Nepal a
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Gautam Buddha International Airport is located in Bhairahawa, Rupandehi. It is the second international airport in Nepal to be inaugurated on 16 May ( Buddha Purnima ). The runway of the airport is 3,000 meters long and has the capacity to land widebody aircraft.
+Gautam Buddha International Airport is located in Bhairahawa, Rupandehi. It is the second international airport of Nepal that was inaugurated on 16 May 2022 A.D ( Buddha Purnima ). The runway of the airport is 3,000 meters long and has the capacity to land widebody aircraft.
 ```
 
 ### 4. Post-Editing Metadata
@@ -587,9 +587,9 @@ Gautam Buddha International Airport is located in Bhairahawa, Rupandehi. It is t
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
 - [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
-- [ ] Tense / Aspect collapse
+- [X] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
 - [ ] Clean / No edit needed (Raw MT is faithful and accurate)
 
@@ -610,7 +610,7 @@ Gautam Buddha International Airport is located in Bhairahawa, Rupandehi. It is t
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Bheri-Babai Diversion Multipurpose Project is Nepal's first inter-stream water transfer project. The 8.2 km long tunnel constructed using Tunnel Boring Machine ( TBM ) aims to divert the water of the Bheri River into the Babai River to irrigate thousands of hectares of land in Banke and Bardiya and generate 8 MW of electricity.
+The Bheri-Babai Diversion Multipurpose Project is Nepal's first inter-stream water transfer project. The 12.2 km long tunnel constructed using Tunnel Boring Machine ( TBM ) aims to divert the water of the Bheri River into the Babai River to irrigate fifty-one-thousand hectares of land in Banke and Bardiya and generate 48 MW of electricity.
 ```
 
 ### 4. Post-Editing Metadata
@@ -618,8 +618,8 @@ The Bheri-Babai Diversion Multipurpose Project is Nepal's first inter-stream wat
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Number / Date / Metric distortion
+- [] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -642,7 +642,7 @@ The Bheri-Babai Diversion Multipurpose Project is Nepal's first inter-stream wat
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Pokhara is the capital of Gandaki Province and a major tourist city in Nepal. The city is famous for Phewa Lake, Beganas Lake, David Falls, Mahendra Caves, and Vindhyavasini Temple. From Pokhara, one can have a panoramic view of the fishing and Annapurna and Dhaulagiri snow ranges.
+Pokhara is the capital of Gandaki Province and a major tourist city in Nepal. The city is famous for Phewa Lake, Beganas Lake, David Falls, Mahendra Caves, and Vindhyavasini Temple. From Pokhara, one can have a panoramic view of the fishing and Annapurna, Machhapuchhre and Dhaulagiri snow ranges.
 ```
 
 ### 4. Post-Editing Metadata
@@ -651,7 +651,7 @@ Pokhara is the capital of Gandaki Province and a major tourist city in Nepal. Th
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
 - [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -674,7 +674,7 @@ Pokhara is the capital of Gandaki Province and a major tourist city in Nepal. Th
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the Nepal Health Research Council, the incidence of non-communicable diseases is increasing rapidly in Nepal. About forty percent of the total deaths are due to non-communicable diseases ( heart disease, cancer, diabetes, and respiratory diseases ). Similarly, the number of patients with hypertension has increased to more than thirty-three percent of the total adult population, according to the latest survey by the Ministry of Health.
+According to the Nepal Health Research Council, the incidence of non-communicable diseases is increasing rapidly in Nepal. About seventy one percent of the total deaths are due to non-communicable diseases ( heart disease, cancer, diabetes, and respiratory diseases ). Similarly, the number of patients with hypertension has increased to more than thirty percent of the total adult population, according to the latest survey by the Ministry of Health.
 ```
 
 ### 4. Post-Editing Metadata
@@ -682,7 +682,7 @@ According to the Nepal Health Research Council, the incidence of non-communicabl
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -706,7 +706,7 @@ According to the Nepal Health Research Council, the incidence of non-communicabl
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the Immunization Branch of the Department of Health Services, eight regular types of vaccines have been made available free of charge to reduce child mortality in Nepal. The program has achieved significant success in the prevention of measles-rubella and polio. The national coverage of fully vaccinated children has reached five percent as of 2013.
+According to the Immunization Branch of the Department of Health Services, twelve regular types of vaccines have been made available free of charge to reduce child mortality in Nepal. The program has achieved significant success in the prevention of measles-rubella and polio. The national coverage of fully vaccinated children has reached eighty-eight percent as of 2023 A.D.
 ```
 
 ### 4. Post-Editing Metadata
@@ -714,7 +714,7 @@ According to the Immunization Branch of the Department of Health Services, eight
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -738,7 +738,7 @@ According to the Immunization Branch of the Department of Health Services, eight
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the National AIDS and Sexually Transmitted Diseases Control Center, an estimated 303,000 people in Nepal have been diagnosed with HIV by the end of the year. About 50 % of those infected are receiving antiretroviral ( ARV ) treatment. The new infection rate has fallen by 600 % compared to the previous decade.
+According to the National AIDS and Sexually Transmitted Diseases Control Center, an estimated 30,000 people in Nepal have been diagnosed with HIV by the end of the year 2022 A.D. About 78 % of those infected are receiving antiretroviral ( ARV ) treatment. The new infection rate has fallen by 60 % compared to the previous decade.
 ```
 
 ### 4. Post-Editing Metadata
@@ -746,8 +746,8 @@ According to the National AIDS and Sexually Transmitted Diseases Control Center,
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Number / Date / Metric distortion
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -770,7 +770,7 @@ According to the National AIDS and Sexually Transmitted Diseases Control Center,
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the Nepal Demographic and Health Survey ( NDHS ), the fertility rate among children under the age of five has dropped to 5 %. The rate was 6 % in 2015. Similarly, the number of underweight children is 16 % and the rate of obesity is 8 %.
+According to the Nepal Demographic and Health Survey ( NDHS 2022), the fertility rate among children under the age of five has dropped to 25 %. The rate was 57 % in 2001 A.D. Similarly, the number of underweight children is 19 % and the rate of obesity is 8 %.
 ```
 
 ### 4. Post-Editing Metadata
@@ -778,7 +778,7 @@ According to the Nepal Demographic and Health Survey ( NDHS ), the fertility rat
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -802,7 +802,7 @@ According to the Nepal Demographic and Health Survey ( NDHS ), the fertility rat
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Fifteen people have died and more than 20,000 people have been affected due to dengue infection in the Kathmandu Valley in the last year. The Epidemiology and Disease Control Division ( EDCD ) has informed that the'Search and Destroy'campaign to destroy mosquito larvae has been carried out in all the districts.
+Fifteen people have died and more than 20,000 people have been affected due to dengue infection in the Kathmandu Valley in the last year. The Epidemiology and Disease Control Division ( EDCD ) has informed that the'Search and Destroy'campaign to destroy mosquito larvae has been carried out in all 77 districts.
 ```
 
 ### 4. Post-Editing Metadata
@@ -810,7 +810,7 @@ Fifteen people have died and more than 20,000 people have been affected due to d
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -834,7 +834,7 @@ Fifteen people have died and more than 20,000 people have been affected due to d
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the Ministry of Agriculture and Livestock Development, in the financial year 20â € " 21, Nepal has produced a total of 13.6 million metric tons of rice, which is 4.33 percent more than the previous year. The total area under rice cultivation was 13.5 million hectares. Due to the timely availability of advanced varieties of seeds and chemical fertilizers, the productivity has reached 3.9 million metric tons per hectare.
+According to the Ministry of Agriculture and Livestock Development, in the financial year 2080/81 , Nepal has produced a total of 57 million metric tons of rice, which is 4.3 percent more than the previous year. The total area under rice cultivation was 14.38 million hectares. Due to the timely availability of advanced varieties of seeds and chemical fertilizers, the productivity has reached 3.9 million metric tons per hectare.
 ```
 
 ### 4. Post-Editing Metadata
@@ -842,7 +842,7 @@ According to the Ministry of Agriculture and Livestock Development, in the finan
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -866,7 +866,7 @@ According to the Ministry of Agriculture and Livestock Development, in the finan
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the National Census of Agriculture, the number of farming families in Nepal has reached four million and thirty-three thousand. Out of the total cultivable land, only four and a half percent of the land has access to irrigation. Out of this, the land that has access to irrigation for twelve months is only one percent of the total irrigated land.
+According to the National Census of Agriculture, the number of farming families in Nepal has reached fourty-one million and thirty thousand. Out of the total cultivable land, only fifty-four and a half percent of the land has access to irrigation. Out of this, the land that has access to irrigation for twelve months is only thirty-nine percent of the total irrigated land.
 ```
 
 ### 4. Post-Editing Metadata
@@ -874,7 +874,7 @@ According to the National Census of Agriculture, the number of farming families 
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -911,7 +911,7 @@ Cardamom and ginger exports from Nepal to India have increased significantly. Ac
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
-- [ ] Clean / No edit needed (Raw MT is faithful and accurate)
+- [X] Clean / No edit needed (Raw MT is faithful and accurate)
 
 **Editor Notes / Justification:** `[                                                 ]`
 
@@ -930,7 +930,7 @@ Cardamom and ginger exports from Nepal to India have increased significantly. Ac
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The number of community forest consumer groups in Nepal has reached 14,026. These groups are conserving and managing about 3.4 million hectares of national forests. Community forest management has directly benefited more than 5 million households.
+The number of community forest consumer groups in Nepal has reached 22,266. These groups are conserving and managing about 24 million hectares of national forests. Community forest management has directly benefited more than 33 million households.
 ```
 
 ### 4. Post-Editing Metadata
@@ -938,7 +938,7 @@ The number of community forest consumer groups in Nepal has reached 14,026. Thes
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -962,7 +962,7 @@ The number of community forest consumer groups in Nepal has reached 14,026. Thes
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Maize is the second major food crop in Nepal. The total production of maize in Nepal was 30.3 million metric tons in the financial year 2019-20. Maize cultivation in the hill districts accounts for more than 20 % of the total maize production area.
+Maize is the second major food crop in Nepal. The total production of maize in Nepal was 30 million metric tons in the financial year 2079-80. Maize cultivation in the hill districts accounts for more than 70 % of the total maize production area.
 ```
 
 ### 4. Post-Editing Metadata
@@ -970,7 +970,7 @@ Maize is the second major food crop in Nepal. The total production of maize in N
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -994,7 +994,7 @@ Maize is the second major food crop in Nepal. The total production of maize in N
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the national census, the overall literacy rate of Nepal has reached 83.3 %. The male literacy rate is 66.6 % and the female literacy rate is 74.4 %. Bagmati Province has the highest literacy rate provincially ( 72.2 % ) and Madhesh Province has the lowest ( 65.35 % ).
+According to the national census, the overall literacy rate of Nepal has reached 76.3 %. The male literacy rate is 83.6 % and the female literacy rate is 69.4 %. Bagmati Province has the highest literacy rate provincially ( 82.1 % ) and Madhesh Province has the lowest ( 63.5 % ).
 ```
 
 ### 4. Post-Editing Metadata
@@ -1002,7 +1002,7 @@ According to the national census, the overall literacy rate of Nepal has reached
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1026,7 +1026,7 @@ According to the national census, the overall literacy rate of Nepal has reached
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the results of the Secondary Education Examination ( SEE ) for the year 2020 released by the National Board of Examinations, out of 400,000 students enrolled on the regular side, only 8.8 % have passed. According to the new letter grading guidelines, students who do not score at least 6 % on the theoretical side are placed in the non-graded ( NG ) category.
+According to the results of the Secondary Education Examination ( SEE ) for the year 2020 released by the National Board of Examinations, out of 464,785 students enrolled on the regular side, only 47.86 % have passed. According to the new letter grading guidelines, students who do not score at least 35 % on the theoretical side are placed in the non-graded ( NG ) category.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1034,7 +1034,7 @@ According to the results of the Secondary Education Examination ( SEE ) for the 
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1058,7 +1058,7 @@ According to the results of the Secondary Education Examination ( SEE ) for the 
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the data of the Education and Human Resource Development Center, the self-enrolment rate at the basic level ( classes 1-8 ) has reached 95.2 %. But at the secondary level ( classes 1-8 ), the self-enrolment rate is only 44.33 %. By the time the dropout rate reaches class 8, it is about 15 %.
+According to the data of the Education and Human Resource Development Center, the self-enrolment rate at the basic level ( classes 1-8 ) has reached 95.2 %. But at the secondary level ( classes 9-12 ), the self-enrolment rate is only 54.3 %. By the time the dropout rate reaches class 8, it is about 15 %.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1066,7 +1066,7 @@ According to the data of the Education and Human Resource Development Center, th
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1090,15 +1090,15 @@ According to the data of the Education and Human Resource Development Center, th
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Tribhuvan University is the oldest and largest university in Nepal and was established in 1999. Currently, there are 12 organic campuses and more than 1000 affiliated campuses operating under Triveni. About 44 % of the total students studying higher education in Nepal are studying in Triveni.
+Tribhuvan University is the oldest and largest university in Nepal and was established in 2016 B.S. Currently, there are 62 organic campuses and more than 1000 affiliated campuses operating under Triveni. About 75 % of the total students studying higher education in Nepal are studying in Trivi.
 ```
 
 ### 4. Post-Editing Metadata
 **Stopwatch Elapsed Time:** `[ mm:ss ]`
 
 **Error Types Corrected in this Passage (Select all that apply):**
-- [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Entity / Proper Noun mistranslation
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1122,7 +1122,7 @@ Tribhuvan University is the oldest and largest university in Nepal and was estab
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Government of Nepal, through the Council for Technical and Vocational Education and Training ( CTEVT ), has taken a policy of expanding technical education to all 43 local levels across the country. So far, more than 40 schools of technical streams have been established at local levels.
+The Government of Nepal, through the Council for Technical and Vocational Education and Training ( CTEVT ), has taken a policy of expanding technical education to all 753 local levels across the country. So far, more than 650 schools of technical streams have been established at local levels.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1130,7 +1130,7 @@ The Government of Nepal, through the Council for Technical and Vocational Educat
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1154,7 +1154,7 @@ The Government of Nepal, through the Council for Technical and Vocational Educat
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the Nepal Rastra Bank, the annual point-to-point consumer inflation rate for the first quarter of the current financial year is 4.40 %. The corresponding month of the previous year, such inflation was 7.40 %. The inflation rate for the food and beverage group is 6.33 % and for the non-food group is 3.45 %.
+According to the Nepal Rastra Bank, the annual point-to-point consumer inflation rate for the first quarter of the current financial year is 4.40 %. The corresponding month of the previous year, such inflation was 7.50 %. The inflation rate for the food and beverage group is 6.38 % and for the non-food group is 3.45 %.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1162,7 +1162,7 @@ According to the Nepal Rastra Bank, the annual point-to-point consumer inflation
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1186,7 +1186,7 @@ According to the Nepal Rastra Bank, the annual point-to-point consumer inflation
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Nepal's total foreign trade deficit in FY2019 / 2018 has reached one trillion rupees. The total goods exports are limited to one trillion rupees as per the customs department's data. Petroleum products and vehicles account for the largest share of Nepal's trade deficit.
+Nepal's total foreign trade deficit in FY 2080 / 2081 has reached 1 trillion 453 billion. The total goods exports are limited to 139 billion rupees as per the customs department's data, while total goods imports stood at 1 trillion 592 billion rupees. Petroleum products and vehicles account for the largest share of Nepal's trade deficit.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1194,8 +1194,8 @@ Nepal's total foreign trade deficit in FY2019 / 2018 has reached one trillion ru
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Number / Date / Metric distortion
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -1218,7 +1218,7 @@ Nepal's total foreign trade deficit in FY2019 / 2018 has reached one trillion ru
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Nepal's total foreign exchange reserves have increased to 20 trillion rupees. In US dollars, the reserves have reached $ 15 billion, according to the Nepal Rastra Bank. The reserves have the potential to handle about thirteen months'worth of goods and services imports.
+Nepal's total foreign exchange reserves have increased to 20 trillion 41 billion rupees. In US dollars, the reserves have reached $ 15 billion 270 million, according to the Nepal Rastra Bank. The reserves have the potential to handle about thirteen months'worth of goods and services imports.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1226,8 +1226,8 @@ Nepal's total foreign exchange reserves have increased to 20 trillion rupees. In
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Number / Date / Metric distortion
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -1250,7 +1250,7 @@ Nepal's total foreign exchange reserves have increased to 20 trillion rupees. In
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the guidelines of the Nepal Rastra Bank, the minimum paid-up capital of commercial banks should be 8 billion rupees. Currently, there are 20 commercial banks, 20 development banks, and 20 finance companies operating in Nepal. The total deposits of banks and financial institutions exceed one trillion rupees in a year.
+According to the guidelines of the Nepal Rastra Bank, the minimum paid-up capital of commercial banks should be 8 billion rupees. Currently, there are 20 commercial banks, 17 development banks, and 17 finance companies operating in Nepal. The total deposits of banks and financial institutions exceed 62 trillion rupees in a year.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1258,7 +1258,7 @@ According to the guidelines of the Nepal Rastra Bank, the minimum paid-up capita
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1282,7 +1282,7 @@ According to the guidelines of the Nepal Rastra Bank, the minimum paid-up capita
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Government of Nepal has presented a budget for the financial year 2018 / 202 with a budget of â'1 7 trillion â'3 billion. The Ministry of Finance has stated that â'1 4 trillion ( 611.33 billion ) has been allocated towards current expenditure and â'1 3 trillion ( 13.4 billion ) towards capital expenditure.
+The Government of Nepal has presented a budget for the financial year 2081 / 82 with a budget of 18 trillion 30 billion. The Ministry of Finance has stated that 11 trillion 40 billion ( 61.31 % ) has been allocated towards current expenditure and 3 trillion 52 billion ( 18.94 % ) towards capital expenditure.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1290,7 +1290,7 @@ The Government of Nepal has presented a budget for the financial year 2018 / 202
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1314,7 +1314,7 @@ The Government of Nepal has presented a budget for the financial year 2018 / 202
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Nepal national cricket team played a historic match against South Africa in the ICC Men's T20 World Cup 2018. Nepal were defeated by just 1 run in pursuit of a target of 16 runs set by South Africa. Nepal's fast bowler Kushal Bhurtel took 4 wickets and Dipendrasinh Ayri took 3 wickets.
+The Nepal national cricket team played a historic match against South Africa in the ICC Men's T20 World Cup 2024. Nepal were defeated by just 1 run in pursuit of a target of 116 runs set by South Africa. Nepal's fast bowler Kushal Bhurtel took 4 wickets and Dipendrasinh Ayri took 3 wickets.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1322,7 +1322,7 @@ The Nepal national cricket team played a historic match against South Africa in 
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1346,7 +1346,7 @@ The Nepal national cricket team played a historic match against South Africa in 
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Nepali all-rounder Dipendrasinh Ayri holds the world record for hitting six sixes in an over in the ACC Premier Cup match against Qatar. He hit six consecutive sixes in Kamran Khan's over. Earlier, he had scored a half-century in the same ball against Mongolia in the 16th Asian Games.
+Nepali all-rounder Dipendrasinh Ayri holds the world record for hitting six sixes in an over in the ACC Premier Cup match against Qatar. He hit six consecutive sixes in Kamran Khan's over. Earlier, he had scored a half-century in nine ball against Mongolia in the 19th Asian Games.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1354,7 +1354,7 @@ Nepali all-rounder Dipendrasinh Ayri holds the world record for hitting six sixe
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1391,7 +1391,7 @@ The Cricket Association of Nepal ( CAN ) has announced that the first edition of
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
-- [ ] Clean / No edit needed (Raw MT is faithful and accurate)
+- [X] Clean / No edit needed (Raw MT is faithful and accurate)
 
 **Editor Notes / Justification:** `[                                                 ]`
 
@@ -1410,7 +1410,7 @@ The Cricket Association of Nepal ( CAN ) has announced that the first edition of
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-In the semi-finals of the SAFF Women's Championship, Nepal defeated India in a penalty shootout 4-2 to secure a place in the final. The match ended in a 1-1 draw. Nepal goalkeeper Angela Tumbapo Subba made an excellent save.
+In the semi-finals of the SAFF Women's Championship 2024, Nepal defeated India in a penalty shootout 4-2 to secure a place in the final. The match ended in a 1-1 draw. Nepal goalkeeper Angela Tumbapo Subba made an excellent save.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1419,7 +1419,7 @@ In the semi-finals of the SAFF Women's Championship, Nepal defeated India in a p
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
 - [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -1442,15 +1442,15 @@ In the semi-finals of the SAFF Women's Championship, Nepal defeated India in a p
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Nepal defeated Scotland by 5 wickets in the match held at the Triveni Cricket Ground in Kirtipur. Nepal completed the target of 213 runs given by Scotland by losing 5 wickets in.1 overs. Captain Rohit Poudel played a captain's innings of 55 runs for Nepal.
+Nepal defeated Scotland by 5 wickets in the match held at the Trivi Cricket Ground in Kirtipur. Nepal completed the target of 213 runs given by Scotland by losing 5 wickets in 44.1 overs. Captain Rohit Poudel played a captain's innings of 95 runs for Nepal.
 ```
 
 ### 4. Post-Editing Metadata
 **Stopwatch Elapsed Time:** `[ mm:ss ]`
 
 **Error Types Corrected in this Passage (Select all that apply):**
-- [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Entity / Proper Noun mistranslation
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1474,7 +1474,7 @@ Nepal defeated Scotland by 5 wickets in the match held at the Triveni Cricket Gr
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Nepal's taekwondo player Palesha Govardhan has won a historic bronze medal at the Paris Paralympic Games. This is the first official medal won by Nepal in the history of the Paralympics. She defeated a Serbian player 15-8 in the women's 3kg weight category under the K-4 category.
+Nepal's taekwondo player Palesha Govardhan has won a historic bronze medal at the Paris Paralympic Games. This is the first official medal won by Nepal in the history of the Paralympics. She defeated a Serbian player 15-8 in the women's 57kg weight category under the K-44 category.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1482,7 +1482,7 @@ Nepal's taekwondo player Palesha Govardhan has won a historic bronze medal at th
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1506,7 +1506,7 @@ Nepal's taekwondo player Palesha Govardhan has won a historic bronze medal at th
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Sixty-four people have been killed and more than 50,000 injured in a 6.4 magnitude earthquake that struck the Ramidanda epicentre of Jajarkot on the night of 20 November. About 500,000 houses have been completely or partially damaged in Jajarkot and Rukum West.
+One-hundred-fifty-four people have been killed and more than 350 injured in a 6.4 magnitude earthquake that struck the Ramidanda epicentre of Jajarkot on the night of Kartki 17, 2080. About 60,000 houses have been completely or partially damaged in Jajarkot and Rukum West.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1514,7 +1514,7 @@ Sixty-four people have been killed and more than 50,000 injured in a 6.4 magnitu
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1538,7 +1538,7 @@ Sixty-four people have been killed and more than 50,000 injured in a 6.4 magnitu
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Department of Water and Meteorology has confirmed that more than ten people have lost their lives due to floods and landslides across the country this year due to monsoon-related disasters. Floods, especially in the Bagmati and Vishnumati rivers of the Kathmandu Valley, have crossed the highest level in the last 50 years.
+The Department of Water and Meteorology has confirmed that more than two-hundred-twenty people have lost their lives due to floods and landslides across the country this year due to monsoon-related disasters. Floods, especially in the Bagmati and Vishnumati rivers of the Kathmandu Valley, have crossed the highest level in the last 50 years.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1546,7 +1546,7 @@ The Department of Water and Meteorology has confirmed that more than ten people 
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1570,7 +1570,7 @@ The Department of Water and Meteorology has confirmed that more than ten people 
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to a report by the International Centre for Integrated Mountain Development ( ICIMOD ), glaciers in the Hindu Kush Himalayan region are melting at a four-tenths of a percent faster rate than in the past. Sixteen glaciers in Nepal are at high risk of eruptions ( GLOF ), with the Chho Rolpa and Imja glaciers being the main ones.
+According to a report by the International Centre for Integrated Mountain Development ( ICIMOD ), glaciers in the Hindu Kush Himalayan region are melting at a sixty-five percent faster rate than in the past. Twenty-one glaciers in Nepal are at high risk of eruptions ( GLOF ), with the Chho Rolpa and Imja glaciers being the main ones.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1602,7 +1602,7 @@ According to a report by the International Centre for Integrated Mountain Develo
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-On the 8th of September, 8000 people were killed in an earthquake with a magnitude of 8000, centered in Barpak, Gorkha. The National Reconstruction Authority had completed the reconstruction of more than 800,000 private houses.
+On 12 Baisakh, 2072 B.S, 8,979 people were killed in an earthquake with a magnitude of 7.8, centered in Barpak, Gorkha. The National Reconstruction Authority had completed the reconstruction of more than 800,000 private houses.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1610,7 +1610,7 @@ On the 8th of September, 8000 people were killed in an earthquake with a magnitu
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1634,7 +1634,7 @@ On the 8th of September, 8000 people were killed in an earthquake with a magnitu
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Melamchi River was severely damaged in the headworks of the Melamchi Drinking Water Project by a severe flash flood on 1 September 2019. A study by geologists has shown that the massive landslide in the Vemathang area caused the river to overflow and overflow settlements and bridges.
+The Melamchi River was severely damaged in the headworks of the Melamchi Drinking Water Project by a severe flash flood on 1 Asar 2078. A study by geologists has shown that the massive landslide in the Vemathang area caused the river to overflow and overflow settlements and bridges.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1642,7 +1642,7 @@ The Melamchi River was severely damaged in the headworks of the Melamchi Drinkin
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1666,7 +1666,7 @@ The Melamchi River was severely damaged in the headworks of the Melamchi Drinkin
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the Constitution of Nepal, Nepal is an independent, indivisible, sovereign, secular, inclusive, democratic, socialist, federal, democratic republican state. The state's administrative structure is divided into three tiers : federal, provincial, and local. The constitution consists of six parts, thirty-three articles, and a schedule.
+According to the Constitution of Nepal 2072, Nepal is an independent, indivisible, sovereign, secular, inclusive, democratic, socialist, federal, democratic republican state. The state's administrative structure is divided into three tiers : federal, provincial, and local. The constitution consists of 36 parts, three-hundred-eight articles, and 9 schedule.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1674,8 +1674,8 @@ According to the Constitution of Nepal, Nepal is an independent, indivisible, so
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Number / Date / Metric distortion
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -1698,7 +1698,7 @@ According to the Constitution of Nepal, Nepal is an independent, indivisible, so
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The House of Representatives has a total of 55 members, of which 100 are elected by direct election ( the first to be elected ) and 40 by proportional election. The term of office of the House of Representatives is five years.
+The House of Representatives has a total of 275 members, of which 135 are elected by direct election ( the first to be elected ) and 110 by proportional election. The term of office of the House of Representatives is five years.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1706,7 +1706,7 @@ The House of Representatives has a total of 55 members, of which 100 are elected
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1730,7 +1730,7 @@ The House of Representatives has a total of 55 members, of which 100 are elected
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-Nepal has seven provinces and thirty-three local levels. There are six metropolitan cities, eleven sub-metropolises, sixty-six municipalities and thirty-six villages under the local level. A total of six thousand thirty-three ward offices are functioning at the local level.
+Nepal has seven provinces and seven-hundred-fifty-three local levels. There are six metropolitan cities, eleven sub-metropolises, two-hundred-seventy-six municipalities and four-hundred-sixty villages under the local level. A total of six thousand seven-hundred-forty-three ward offices are functioning at the local level.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1738,7 +1738,7 @@ Nepal has seven provinces and thirty-three local levels. There are six metropoli
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1775,7 +1775,7 @@ The Supreme Court is the highest body of the judiciary in Nepal. According to th
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
-- [ ] Clean / No edit needed (Raw MT is faithful and accurate)
+- [X] Clean / No edit needed (Raw MT is faithful and accurate)
 
 **Editor Notes / Justification:** `[                                                 ]`
 
@@ -1807,7 +1807,7 @@ The Commission for the Investigation of Abuse of Authority ( CIAA ) is the const
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
-- [ ] Clean / No edit needed (Raw MT is faithful and accurate)
+- [X] Clean / No edit needed (Raw MT is faithful and accurate)
 
 **Editor Notes / Justification:** `[                                                 ]`
 
@@ -1826,7 +1826,7 @@ The Commission for the Investigation of Abuse of Authority ( CIAA ) is the const
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Upper Tamakoshi Hydropower Project ( 46 MW ) is the largest hydroelectric project built in Nepal with its own resources and resources. Located in Lamabagar, Dolakha District, the project started commercial production in 2018. Six megawatts of turbines are installed in the underground power plant of the project.
+The Upper Tamakoshi Hydropower Project ( 456 MW ) is the largest hydroelectric project built in Nepal with its own resources and resources. Located in Lamabagar, Dolakha District, the project started commercial production in 2078 B.S. Six turbines with 76 megawatt are installed in the underground power plant of the project.
 ```
 
 ### 4. Post-Editing Metadata
@@ -1834,8 +1834,8 @@ The Upper Tamakoshi Hydropower Project ( 46 MW ) is the largest hydroelectric pr
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Number / Date / Metric distortion
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -1858,15 +1858,15 @@ The Upper Tamakoshi Hydropower Project ( 46 MW ) is the largest hydroelectric pr
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Kathmandu-Tarai / Madhesh Expressway ( Fast Track ) is a four-lane expressway with a length of.55 km. Three major tunnel routes are under construction in the project, namely Lendanda (.651 km ), Dhedre (.633 km ) and Mahadevdanda (.333.55 km ) towards Jhunjhunjhunjhunjhunjhunjhunjhunj. Once completed, the project will be able to reach Nijgadh from Kathmandu in 1 hour.
+The Kathmandu-Tarai / Madhesh Expressway ( Fast Track ) is a four-lane expressway with a length of 72.5 km. Three major tunnel routes are under construction in the project, namely Lendanda (1.61 km ), Dhedre (1.63  km ) and Mahadevdanda (3.35 km ) towards Nijgadh. Once completed, the project will be able to reach Nijgadh from Kathmandu in 1 hour.
 ```
 
 ### 4. Post-Editing Metadata
 **Stopwatch Elapsed Time:** `[ mm:ss ]`
 
 **Error Types Corrected in this Passage (Select all that apply):**
-- [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Entity / Proper Noun mistranslation
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
@@ -1890,7 +1890,7 @@ The Kathmandu-Tarai / Madhesh Expressway ( Fast Track ) is a four-lane expresswa
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-According to the Nepal Tourism Board, the number of foreign tourists entering Nepal by air in 2003 reached 1 million 1 million 2 million. This figure is a revival of about 5 percent compared to the previous year. The largest number of tourists came from India ( 3 million 4 thousand ), followed by the United States ( 1 million ).
+According to the Nepal Tourism Board, the number of foreign tourists entering Nepal by air in 2023 reached 1 million 14 thousand eight-hunred-eighty-two. This figure is a revival of about 85 percent compared to the previous year 2019 A.D. The largest number of tourists came from India ( 3 million 19 thousand ), followed by the United States ( 1 million ).
 ```
 
 ### 4. Post-Editing Metadata
@@ -1898,8 +1898,8 @@ According to the Nepal Tourism Board, the number of foreign tourists entering Ne
 
 **Error Types Corrected in this Passage (Select all that apply):**
 - [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
-- [ ] Omission / Dropped clauses
+- [X] Number / Date / Metric distortion
+- [X] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse
 - [ ] Evidential / Epistemic stance distortion
@@ -1922,15 +1922,15 @@ According to the Nepal Tourism Board, the number of foreign tourists entering Ne
 ### 3. Human Post-Edited Translation (Condition C3 Slot)
 > *Edit the text below to fix translation errors while preserving phrasing:*
 ```text
-The Arun III Hydropower Project ( 100 MW ) is Nepal's largest export-oriented hydroelectric project under construction in Sankhuwasabha district. Nepal has an agreement to receive 21.1 % ( 13.8 MW ) of electricity free of charge from the project, which is being constructed by the Indian company Sutlej Hydroelectric Power Corporation ( SJVN ).
+The Arun III Hydropower Project ( 900 MW ) is Nepal's largest export-oriented hydroelectric project under construction in Sankhuwasabha district. Nepal has an agreement to receive 21.9 % ( 197 MW ) of electricity free of charge from the project, which is being constructed by the Indian company Sutlej Hydroelectric Power Corporation ( SJVN ).
 ```
 
 ### 4. Post-Editing Metadata
 **Stopwatch Elapsed Time:** `[ mm:ss ]`
 
 **Error Types Corrected in this Passage (Select all that apply):**
-- [ ] Entity / Proper Noun mistranslation
-- [ ] Number / Date / Metric distortion
+- [X] Entity / Proper Noun mistranslation
+- [X] Number / Date / Metric distortion
 - [ ] Omission / Dropped clauses
 - [ ] Polarity / Negation flip
 - [ ] Tense / Aspect collapse

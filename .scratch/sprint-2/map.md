@@ -31,10 +31,11 @@ Exit criteria:
 - 2026-10-16 · [T05 · C3 Post-Editing Workbench](issues/05-c3-post-editing-workbench.md): Built `src/prepare/export_c3_workbench.py` and exported `data/interim/preannotations/post_edit_c3_workbench.md`. Deduplicated to 60 unique authentic passages with side-by-side MT and editable slot initialized to C2 for minimal edit distance. Tests passing. Status: Clearance proposed.
 - 2026-10-17 · [T01/T04/T05 · Alignment & Stratification Fix](issues/01-stratified-sampling-120.md): Diagnosed and fixed passage-query alignment bug in `src/prepare/assemble_candidates.py` where crawled passages previously overwrote curated seed passages out of order. Implemented TDD test `test_candidate_natural_passage_alignment`. Rebalanced infrastructure domain to exactly 4 News and 4 Wikipedia seeds (60 unique authentic passages across 120 items). Re-generated candidate pool, C2 translations, and all dual-annotator and C3 workbenches (`.md`, `.xlsx`, `.csv`). 39/39 tests passing. Status: Clearance proposed.
 - 2026-10-18 · [T06 · Dual Human Annotation Intake & URL Repair](issues/06-dual-annotation-execution.md): Ingested lead researcher completed annotations (`workbench_annotator_1_completed.xlsx`, 120/120 items, 340/340 claims verified, all verdicts and stopwatch durations intact). Resolved 404 URL discrepancies by mapping live authentic URLs from `data/derived/authentic_passages_60.jsonl` into `SEED_META`. Re-exported candidate pools, claims, and dual-annotation workbenches. Verified 100% of unique URLs (59/59) returning HTTP 200 OK. Zero writes to gold labels; strict compliance with No-Peeking prohibition (no agreement metrics computed). All 39 tests passing. Status: Annotator 1 intake complete; awaiting Annotator 2.
+- 2026-10-23 · [T05 · C3 Post-Editing Completion Audit](issues/05-c3-post-editing-workbench.md): Audited completed `post_edit_c3_workbench.md` from researcher. 60/60 unique passages reviewed (54 post-edited minimal-pairs, 6 clean MT). Error types logged (49 numbers/dates, 11 omissions, 8 entities, 1 tense). Ready for researcher sign-off and candidate item ingestion. Status: Clearance proposed — awaiting researcher verdict.
 
 ## Verdicts (researcher)
 
-<!-- Researcher records verdicts with initials and date here -->
+- 2026-10-23 · [T05 · C3 Post-Editing Workbench](issues/05-c3-post-editing-workbench.md): Completed and verified. 60 unique passages reviewed, minimal-pair edits applied. Status: Cleared. — MB
 
 ## Active Frontier Tickets
 

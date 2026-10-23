@@ -20,6 +20,7 @@ def test_harvested_authentic_passages_invariants(tmp_path):
             "source_type": "wikipedia",
             "title": "पशुपतिनाथ मन्दिर",
             "url": "https://ne.wikipedia.org/wiki/पशुपतिनाथ_मन्दिर",
+            "text": "पशुपतिनाथको मन्दिर काठमाडौँ जिल्लामा रहेको ऐतिहासिक, धार्मिक एवं पर्यटकीय दृष्टिले महत्त्वपूर्ण स्थल हो। यो मन्दिर बागमती नदीको किनारमा रहेको छ।",
         },
         {
             "domain": "wikipedia",
@@ -27,6 +28,7 @@ def test_harvested_authentic_passages_invariants(tmp_path):
             "source_type": "wikipedia",
             "title": "सगरमाथा राष्ट्रिय निकुञ्ज",
             "url": "https://ne.wikipedia.org/wiki/सगरमाथा_राष्ट्रिय_निकुञ्ज",
+            "text": "सगरमाथा राष्ट्रिय निकुञ्ज सन् १९७६ मा स्थापना भएको हो। यस निकुञ्जमा विश्वको सर्वोच्च शिखर सगरमाथा सहित ल्होत्से र नुप्त्से जस्ता प्रमुख हिमालहरू पर्दछन्।",
         },
     ]
 

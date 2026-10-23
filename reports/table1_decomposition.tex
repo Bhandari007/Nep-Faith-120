@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lccccccr}
+\toprule
+\textbf{Evaluator Arm} & \textbf{$A(C1)$} & \textbf{$A(C2)$} & \textbf{$A(C3)$} & \textbf{$\Delta_{MT}$} & \textbf{$\Delta_{XL}$} & \textbf{$\Delta_{XL} - \Delta_{MT}$} & \textbf{PPSR} \\
+& \scriptsize (Nepali) & \scriptsize (Raw MT) & \scriptsize (PE-MT) & \scriptsize ($C3-C2$) & \scriptsize ($C3-C1$) & \scriptsize (Paired Diff) & \scriptsize (Gain) \\
+\midrule
+HHEM-2.1-Open & 50.0 \pm 9.0 & 50.0 \pm 9.0 & 50.0 \pm 9.0 & 0.0 \pm 9.0 & 0.0 \pm 9.0 & \textbf{0.0 \pm 0.0} & 1.00\times \\
+BGE-M3 (Cosine Sim) & 50.0 \pm 9.0 & 50.0 \pm 9.0 & 50.0 \pm 9.0 & 0.0 \pm 9.0 & 0.0 \pm 9.0 & \textbf{0.0 \pm 0.0} & 1.00\times \\
+mDeBERTa-v3-base-xnli & 50.0 \pm 9.0 & 50.0 \pm 9.0 & 50.0 \pm 9.0 & 0.0 \pm 9.0 & 0.0 \pm 9.0 & \textbf{0.0 \pm 0.0} & 1.00\times \\
+IndicTrans2 $\to$ DeBERTa-v3 & 50.0 \pm 9.0 & 50.0 \pm 9.0 & 50.0 \pm 9.0 & 0.0 \pm 9.0 & 0.0 \pm 9.0 & \textbf{0.0 \pm 0.0} & 1.00\times \\
+Gemini 2.5 Flash (Judge) & -- & -- & -- & -- & -- & \textbf{--} & -- \\
+\bottomrule
+\end{tabular}
+\caption{Main Cross-Lingual Faithfulness Decomposition ($N=1,500$ with $n=120$ gold labels, Prediction-Powered Inference). Positive $\Delta_{XL} - \Delta_{MT}$ indicates cross-lingual evaluation gap exceeds raw MT translation degradation ($H1$).}
+\label{tab:main_results}
+\end{table*}
