@@ -1,7 +1,7 @@
 # 5-Arm Automated Proxy Evaluation Batch Run
 
 Type: model evaluation / scoring
-Status: Pending Tickets 03 & 04
+Status: Cleared - [MB, October 23, 2026]
 Cap: 1 day
 
 ## Question

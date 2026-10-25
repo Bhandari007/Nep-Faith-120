@@ -31,13 +31,18 @@ Exit criteria:
 
 ## Verdicts (researcher)
 
-<!-- Researcher records verdicts with initials and date here -->
+- 2026-10-23 · [T01 · Unlabelled Authentic Corpus Harvest](issues/01-unlabelled-corpus-harvest.md): Cleared — MB
+- 2026-10-23 · [T02 · Unlabelled 1,200 Item Assembly & 7-Type Perturbations](issues/02-unlabelled-assembly-and-perturbations.md): Cleared — MB
+- 2026-10-23 · [T03 · Atomic Claim Decomposition](issues/03-unlabelled-claim-decomposition.md): Cleared — MB
+- 2026-10-23 · [T04 · IndicTrans2 C2 Batch Translation](issues/04-unlabelled-c2-batch-translation.md): Cleared — MB
+- 2026-10-23 · [T05 · 5-Arm Automated Proxy Evaluation Batch Run](issues/05-unlabelled-proxy-scoring-run.md): Cleared — MB
+- 2026-10-23 · [T06 · Gate 3 Invariant Verification & Prediction Matrix Lock](issues/06-gate-3-verification.md): Cleared — MB
 
 ## Active Frontier Tickets
 
-- [x] [01 · Unlabelled Authentic Corpus Harvest (600 Passages)](issues/01-unlabelled-corpus-harvest.md) (Engineering complete; clearance proposed)
-- [x] [02 · Unlabelled 1,200 Item Assembly & 7-Type Perturbations](issues/02-unlabelled-assembly-and-perturbations.md) (Engineering complete; clearance proposed)
-- [x] [03 · Atomic Claim Decomposition & Criticality Tagging](issues/03-unlabelled-claim-decomposition.md) (Engineering complete; clearance proposed)
-- [x] [04 · IndicTrans2 C2 Batch Translation Runner](issues/04-unlabelled-c2-batch-translation.md) (Engineering complete; clearance proposed)
-- [x] [05 · 5-Arm Automated Proxy Evaluation Batch Run](issues/05-unlabelled-proxy-scoring-run.md) (Engineering complete; clearance proposed)
-- [x] [06 · Gate 3 Invariant Verification & Prediction Matrix Lock](issues/06-gate-3-verification.md) (Engineering complete; clearance proposed)
+- [x] [01 · Unlabelled Authentic Corpus Harvest (600 Passages)](issues/01-unlabelled-corpus-harvest.md) (Cleared — MB)
+- [x] [02 · Unlabelled 1,200 Item Assembly & 7-Type Perturbations](issues/02-unlabelled-assembly-and-perturbations.md) (Cleared — MB)
+- [x] [03 · Atomic Claim Decomposition & Criticality Tagging](issues/03-unlabelled-claim-decomposition.md) (Cleared — MB)
+- [x] [04 · IndicTrans2 C2 Batch Translation Runner](issues/04-unlabelled-c2-batch-translation.md) (Cleared — MB)
+- [x] [05 · 5-Arm Automated Proxy Evaluation Batch Run](issues/05-unlabelled-proxy-scoring-run.md) (Cleared — MB)
+- [x] [06 · Gate 3 Invariant Verification & Prediction Matrix Lock](issues/06-gate-3-verification.md) (Cleared — MB)

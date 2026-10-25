@@ -1,7 +1,7 @@
 # Atomic Claim Decomposition & Criticality Tagging (Unlabelled 1,200)
 
 Type: data engineering / claim extraction
-Status: Pending Ticket 02
+Status: Cleared - [MB, October 23, 2026]
 Cap: 0.5 day
 
 ## Question

@@ -1,7 +1,7 @@
 # Unlabelled 1,200 Item Assembly & 7-Type Perturbations
 
 Type: data engineering / synthetic perturbation
-Status: Pending Ticket 01
+Status: Cleared - [MB, October 23, 2026]
 Cap: 1 day
 
 ## Question

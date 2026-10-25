@@ -1,7 +1,7 @@
 # IndicTrans2 C2 Batch Translation Runner (Unlabelled 1,200)
 
 Type: model inference / machine translation
-Status: Pending Ticket 02
+Status: Cleared - [MB, October 23, 2026]
 Cap: 0.5 day
 
 ## Question

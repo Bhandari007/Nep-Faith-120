@@ -1,7 +1,7 @@
 # Unlabelled Authentic Corpus Harvest (600 Passages)
 
 Type: data harvesting / crawling
-Status: Active
+Status: Cleared - [MB, October 23, 2026]
 Cap: 1 day (authentic passage crawling across Wikipedia, Gov Reports, News)
 
 ## Question
