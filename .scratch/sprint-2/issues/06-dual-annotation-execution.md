@@ -23,6 +23,18 @@ Execute the dual-annotator human evaluation on the 120 items (~350–400 claims)
   - Prohibition Compliance: Zero writes to `data/raw/labels/`. Strict compliance with Absolute Prohibition 3 (No Peeking) — no agreement metrics ($\kappa, \alpha$) or score distributions computed. All 39 unit and integration tests passing.
   - Next state: Awaiting Annotator 2 completed workbench intake and lead researcher decision on Condition C3 post-edits.
 
+- **2026-10-29 (Annotator 2 Intake & Adjudication Queue Export)**:
+  - Ingested completed annotation workbench from Annotator 2: [`data/interim/preannotations/workbench_annotator_2_completed.xlsx`](file:///home/leapfrog/Personal/ResearchProjects/NepFaith-120/data/interim/preannotations/workbench_annotator_2_completed.xlsx).
+  - Validation check: 120/120 items present, 340/340 claims verified in matching order with Annotator 1, 340/340 verdicts populated and strictly conform to rubric enum (`Supported`, `Contradicted`, `Not-in-context`). Zero missing verdicts.
+  - Built ingestion & validation module `src/prepare/intake_annotations.py` and comprehensive test suite `tests/test_annotation_intake.py` (54/54 tests passing project-wide).
+  - Generated adjudication diff workbenches for lead researcher review:
+    - [`data/interim/preannotations/adjudication_workbench.xlsx`](file:///home/leapfrog/Personal/ResearchProjects/NepFaith-120/data/interim/preannotations/adjudication_workbench.xlsx) (with dropdown validation)
+    - [`data/interim/preannotations/adjudication_workbench.md`](file:///home/leapfrog/Personal/ResearchProjects/NepFaith-120/data/interim/preannotations/adjudication_workbench.md)
+  - Isolated exactly 19 discordant claims requiring researcher tie-breaking (321 claims concordant).
+  - Prohibition compliance: Zero writes to `data/raw/labels/`. Strict compliance with Absolute Prohibition 3 (No Peeking) — no $\kappa$, $\alpha$, or score distributions computed.
+  - Status: Clearance proposed — awaiting researcher verdict.
+
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, October 29, 2026
