@@ -40,14 +40,16 @@ Exit criteria:
 
 - 2026-10-23 · [T05 · C3 Post-Editing Workbench](issues/05-c3-post-editing-workbench.md): Completed and verified. 60 unique passages reviewed, minimal-pair edits applied. Status: Cleared. — MB
 - 2026-10-29 · [T06 · Dual Human Annotation Intake & Adjudication Queue Export](issues/06-dual-annotation-execution.md): Cleared — MB
+- 2026-10-29 · [T07 · Adjudication Parsing & Candidate Gold Compilation](issues/07-adjudication-and-gold-intake.md): Cleared — MB
+- 2026-10-29 · [T08 · Gate 2 Verification & Data Lock](issues/08-gate-2-verification-and-lock.md): Cleared — MB
 
 ## Active Frontier Tickets
 
-- [x] [01 · Stratified Sampling & 120 Candidate Corpus Assembly](issues/01-stratified-sampling-120.md) (Engineering complete; clearance proposed)
-- [x] [02 · Atomic Claim Decomposition & Criticality Tagging](issues/02-atomic-claim-decomposition.md) (Engineering complete; clearance proposed)
-- [x] [03 · IndicTrans2 C2 Batch Translation Runner](issues/03-indictrans2-c2-batch-generation.md) (Engineering complete; clearance proposed)
-- [x] [04 · Human Dual-Annotation Workbench & Tooling Setup](issues/04-annotation-workbench-setup.md) (Engineering complete; clearance proposed)
+- [x] [01 · Stratified Sampling & 120 Candidate Corpus Assembly](issues/01-stratified-sampling-120.md) (Cleared — MB)
+- [x] [02 · Atomic Claim Decomposition & Criticality Tagging](issues/02-atomic-claim-decomposition.md) (Cleared — MB)
+- [x] [03 · IndicTrans2 C2 Batch Translation Runner](issues/03-indictrans2-c2-batch-generation.md) (Cleared — MB)
+- [x] [04 · Human Dual-Annotation Workbench & Tooling Setup](issues/04-annotation-workbench-setup.md) (Cleared — MB)
 - [x] [05 · Condition C3 Human Post-Editing Workbench Setup](issues/05-c3-post-editing-workbench.md) (Cleared — MB)
 - [x] [06 · Dual Human Annotation & Stopwatch Timing Intake](issues/06-dual-annotation-execution.md) (Cleared — MB)
-- [ ] [07 · Adjudication Protocol & Gold Label Data Intake](issues/07-adjudication-and-gold-intake.md) (Gold dataset committed to `data/raw/labels/`; clearance proposed — awaiting researcher verdict)
-- [ ] [08 · Gate 2 Verification & Data Lock](issues/08-gate-2-verification-and-lock.md) (ACTIVE FRONTIER: 58/58 tests passing; awaiting researcher verdict & tag `gate-2-cleared`)
+- [x] [07 · Adjudication Protocol & Gold Label Data Intake](issues/07-adjudication-and-gold-intake.md) (Cleared — MB)
+- [x] [08 · Gate 2 Verification & Data Lock](issues/08-gate-2-verification-and-lock.md) (Cleared — MB)
