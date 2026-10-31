@@ -42,13 +42,22 @@ from src.report.tables import (
 logger = logging.getLogger("AnalysisPipeline")
 
 
+class PipelineResult(dict):
+    """Dictionary containing arm_results with attribute access to sensitivity_matrix."""
+
+    def __init__(self, arm_results: Dict[str, Any], sensitivity_matrix: Dict[str, Any]):
+        super().__init__(arm_results)
+        self.arm_results = arm_results
+        self.sensitivity_matrix = sensitivity_matrix
+
+
 def run_pipeline_dry_run(
     cand_predictions_path: Path = Path("data/interim/predictions/predictions_candidates_120.jsonl"),
     unlab_predictions_path: Path = Path("data/interim/predictions/predictions_unlabelled_1200.jsonl"),
     table1_output_path: Path = Path("reports/table1_decomposition.tex"),
     table2_output_path: Path = Path("reports/table2_sensitivity.tex"),
     gold_labels_path: Optional[Path] = None,
-) -> Dict[str, Dict[str, Any]]:
+) -> PipelineResult:
     """Runs the complete analysis pipeline and generates LaTeX publication tables."""
     # Hard Rule check: Physical label isolation
     if "data/raw/labels" in str(table1_output_path) or "data/raw/labels" in str(table2_output_path):
@@ -143,7 +152,7 @@ def run_pipeline_dry_run(
     # Generate Table 1
     generate_table1_latex(arm_results, output_path=table1_output_path)
 
-    # Generate Table 2: 7-Type Sensitivity Matrix
+    # Generate Table 2: 7-Type Sensitivity Matrix (empirical detection rates)
     categories = [
         "entity_swap",
         "number_date_alteration",
@@ -154,15 +163,137 @@ def run_pipeline_dry_run(
         "invented_causality",
     ]
     sensitivity_matrix: Dict[str, Dict[str, float]] = {}
+    all_eval_items = unlab_items + cand_items
+
     for cat in categories:
         sensitivity_matrix[cat] = {}
+        cat_items = [it for it in all_eval_items if it.get("perturbation_type") == cat]
         for arm_id in available_arms:
-            sensitivity_matrix[cat][arm_id] = 0.85
+            if cat_items:
+                # Detection rate under Condition C2: fraction where derived_faithfulness == 0
+                unfaith_count = sum(
+                    1 for it in cat_items
+                    if it.get("predictions", {}).get(arm_id, {}).get("C2", {}).get("derived_faithfulness", 1) == 0
+                )
+                sensitivity_matrix[cat][arm_id] = round(unfaith_count / len(cat_items), 4)
+            else:
+                sensitivity_matrix[cat][arm_id] = 0.0
 
     generate_table2_latex(sensitivity_matrix, output_path=table2_output_path)
 
     logger.info(f"Generated Table 1 at {table1_output_path} and Table 2 at {table2_output_path}")
-    return arm_results
+    return PipelineResult(arm_results, sensitivity_matrix)
+
+
+def compute_domain_breakdown(
+    cand_predictions_path: Path = Path("data/interim/predictions/predictions_candidates_120.jsonl"),
+    unlab_predictions_path: Path = Path("data/interim/predictions/predictions_unlabelled_1200.jsonl"),
+    gold_labels_path: Optional[Path] = None,
+) -> Dict[str, Dict[str, Any]]:
+    """Computes stratum-specific sample sizes, classical gold means, and standard errors by domain."""
+    cand_items: List[Dict[str, Any]] = []
+    with open(cand_predictions_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                cand_items.append(json.loads(line))
+
+    unlab_items: List[Dict[str, Any]] = []
+    with open(unlab_predictions_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                unlab_items.append(json.loads(line))
+
+    gold_y: Dict[str, float] = {}
+    if gold_labels_path and Path(gold_labels_path).exists():
+        with open(gold_labels_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    rec = json.loads(line)
+                    gold_y[rec["item_id"]] = float(rec.get("derived_item_label", 1.0))
+    else:
+        for idx, it in enumerate(cand_items):
+            gold_y[it["item_id"]] = 1.0 if idx % 2 == 0 else 0.0
+
+    domains = ["wikipedia", "government_report", "news"]
+    breakdown: Dict[str, Dict[str, Any]] = {}
+
+    for d in domains:
+        cand_d = [it for it in cand_items if it.get("domain") == d]
+        unlab_d = [it for it in unlab_items if it.get("domain") == d]
+        y_d = [gold_y.get(it["item_id"], 1.0) for it in cand_d]
+        cluster_ids_d = [it["item_id"] for it in cand_d]
+
+        classical_est = classical_cluster_mean(y_d, cluster_ids_d)
+        breakdown[d] = {
+            "domain": d,
+            "n_labeled": len(cand_d),
+            "n_unlabeled": len(unlab_d),
+            "mean": classical_est.estimate,
+            "se": classical_est.se,
+            "ci_lower": classical_est.ci_lower,
+            "ci_upper": classical_est.ci_upper,
+        }
+
+    return breakdown
+
+
+def run_pipeline_with_stamping(
+    cand_predictions_path: Path = Path("data/interim/predictions/predictions_candidates_120.jsonl"),
+    unlab_predictions_path: Path = Path("data/interim/predictions/predictions_unlabelled_1200.jsonl"),
+    table1_output_path: Path = Path("reports/table1_decomposition.tex"),
+    table2_output_path: Path = Path("reports/table2_sensitivity.tex"),
+    gold_labels_path: Optional[Path] = None,
+    outputs_dir: Path = Path("outputs"),
+) -> Path:
+    """Executes the analysis pipeline and stamps outputs with commit hash, timestamp, and metadata."""
+    import datetime
+    import subprocess
+
+    outputs_dir = Path(outputs_dir)
+    outputs_dir.mkdir(parents=True, exist_ok=True)
+
+    try:
+        commit_hash = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], text=True
+        ).strip()
+    except Exception:
+        commit_hash = "unknown"
+
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d_%H%M%S")
+
+    pipeline_res = run_pipeline_dry_run(
+        cand_predictions_path=cand_predictions_path,
+        unlab_predictions_path=unlab_predictions_path,
+        table1_output_path=table1_output_path,
+        table2_output_path=table2_output_path,
+        gold_labels_path=gold_labels_path,
+    )
+
+    domain_breakdown = compute_domain_breakdown(
+        cand_predictions_path=cand_predictions_path,
+        unlab_predictions_path=unlab_predictions_path,
+        gold_labels_path=gold_labels_path,
+    )
+
+    stamp_record = {
+        "timestamp": timestamp,
+        "git_commit_hash": commit_hash,
+        "gold_labels_path": str(gold_labels_path) if gold_labels_path else None,
+        "candidates_path": str(cand_predictions_path),
+        "unlabelled_path": str(unlab_predictions_path),
+        "arm_results": pipeline_res.arm_results,
+        "sensitivity_matrix": pipeline_res.sensitivity_matrix,
+        "domain_breakdown": domain_breakdown,
+    }
+
+    stamp_file = outputs_dir / f"run_summary_{timestamp}.json"
+    with open(stamp_file, "w", encoding="utf-8") as f:
+        json.dump(stamp_record, f, ensure_ascii=False, indent=2)
+
+    logger.info(f"Analysis results stamped to {stamp_file}")
+    return stamp_file
+
+
 
 
 if __name__ == "__main__":
