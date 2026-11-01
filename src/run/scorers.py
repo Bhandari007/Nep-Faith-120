@@ -94,6 +94,7 @@ class Arm5LLMJudge(BaseScorer):
         self.provider = provider.lower()
         if self.provider == "gemini":
             self.model_id = model_id or "gemini-3.6-flash"
+
         elif self.provider in ("openai", "openai_compatible"):
             self.model_id = model_id or "gpt-4o"
         else:
@@ -157,7 +158,7 @@ class Arm5LLMJudge(BaseScorer):
         else:
             res = self._evaluate_openai_compatible(passage=passage, claim=claim)
 
-        label_str = res.get("verdict", "Not-in-context")
+        label_str = res.get("verdict") or res.get("label") or "Not-in-context"
         try:
             label = ClaimLabel(label_str)
         except ValueError:
@@ -168,10 +169,11 @@ class Arm5LLMJudge(BaseScorer):
             "score": score,
             "predicted_label": label.value,
             "confidence": res.get("confidence", 1.0),
-            "rationale": res.get("rationale", ""),
+            "rationale": res.get("rationale") or res.get("explanation", ""),
             "provider": self.provider,
             "model_id": self.model_id,
         }
+
 
 
 # Backwards compatibility alias

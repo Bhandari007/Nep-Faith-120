@@ -113,3 +113,86 @@ def test_evaluate_dataset_end_to_end(tmp_path):
             assert c in r["predictions"]["arm2_bgem3"]
             assert "derived_faithfulness" in r["predictions"]["arm2_bgem3"][c]
             assert "claims" in r["predictions"]["arm2_bgem3"][c]
+
+
+def test_evaluate_dataset_merges_new_arm_preserving_existing(tmp_path):
+    """Verifies that running evaluate_dataset merges new arm predictions preserving existing arms."""
+    from src.run.scorers import Arm1HHEMScorer, Arm2BgeM3Similarity
+
+    sample_items = [
+        {
+            "item_id": "item_001",
+            "domain": "wikipedia",
+            "passage_ne": "नेपाल एक हिमाल भएको देश हो।",
+            "c2_raw_mt": "Nepal is a country with mountains.",
+            "c3_post_edited_mt": "Nepal is a country with mountains.",
+            "claims": [
+                {"claim_id": "item_001_c1", "claim_text": "Nepal has mountains.", "is_critical": True}
+            ]
+        }
+    ]
+
+    input_file = tmp_path / "sample_items.jsonl"
+    with open(input_file, "w", encoding="utf-8") as f:
+        for it in sample_items:
+            f.write(json.dumps(it) + "\n")
+
+    output_file = tmp_path / "predictions_merge.jsonl"
+
+    # 1. Run first arm
+    evaluate_dataset(input_file, output_file, {"arm2_bgem3": Arm2BgeM3Similarity(cache_dir=tmp_path / "cache")})
+    
+    # 2. Run second arm to same output file
+    evaluate_dataset(input_file, output_file, {"arm1_hhem": Arm1HHEMScorer(cache_dir=tmp_path / "cache")})
+
+    with open(output_file, "r", encoding="utf-8") as f:
+        records = [json.loads(line) for line in f]
+
+    assert len(records) == 1
+    # Both arms must be present in the merged output!
+    assert "arm2_bgem3" in records[0]["predictions"]
+    assert "arm1_hhem" in records[0]["predictions"]
+
+
+def test_evaluate_dataset_atomic_checkpoint_preserves_all_items(tmp_path):
+    """Verifies that checkpointing preserves existing items without truncation."""
+    from src.run.scorers import Arm2BgeM3Similarity
+
+    sample_items = [
+        {
+            "item_id": f"item_{i:03d}",
+            "domain": "wikipedia",
+            "passage_ne": f"नेपाल {i}।",
+            "c2_raw_mt": f"Nepal {i}.",
+            "c3_post_edited_mt": f"Nepal {i}.",
+            "claims": [
+                {"claim_id": f"item_{i:03d}_c1", "claim_text": f"Nepal {i}.", "is_critical": True}
+            ]
+        }
+        for i in range(1, 12)
+    ]
+
+    input_file = tmp_path / "all_items.jsonl"
+    with open(input_file, "w", encoding="utf-8") as f:
+        for it in sample_items:
+            f.write(json.dumps(it) + "\n")
+
+    output_file = tmp_path / "predictions_atomic.jsonl"
+
+    # Pre-populate output file with dummy records for all 11 items
+    with open(output_file, "w", encoding="utf-8") as f:
+        for it in sample_items:
+            f.write(json.dumps({"item_id": it["item_id"], "predictions": {"dummy_arm": {}}}) + "\n")
+
+    # Evaluate using evaluate_dataset
+    evaluate_dataset(input_file, output_file, {"arm2_bgem3": Arm2BgeM3Similarity(cache_dir=tmp_path / "cache")})
+
+    with open(output_file, "r", encoding="utf-8") as f:
+        records = [json.loads(line) for line in f]
+
+    assert len(records) == 11
+    for r in records:
+        assert "dummy_arm" in r["predictions"]
+        assert "arm2_bgem3" in r["predictions"]
+
+

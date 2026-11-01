@@ -99,8 +99,10 @@ def run_pipeline_dry_run(
     cluster_ids_labeled = [it["item_id"] for it in cand_items]
     y_labeled = [gold_y.get(it["item_id"], 1.0) for it in cand_items]
 
-    # Inspect available arms
-    available_arms = list(cand_items[0]["predictions"].keys()) if cand_items else []
+    # Inspect available arms: arms present in both labeled candidates and unlabelled corpus
+    cand_arms = set(cand_items[0]["predictions"].keys()) if cand_items else set()
+    unlab_arms = set(unlab_items[0]["predictions"].keys()) if unlab_items else set()
+    available_arms = [a for a in cand_items[0]["predictions"].keys() if a in unlab_arms] if (cand_items and unlab_items) else []
     arm_results: Dict[str, Dict[str, Any]] = {}
 
     for arm_id in available_arms:

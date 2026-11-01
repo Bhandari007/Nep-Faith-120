@@ -26,6 +26,7 @@ Exit criteria:
 - 2026-10-31 · [T02 · Publication LaTeX Tables & Figures](issues/02-publication-tables-and-figures.md): Formatted publication LaTeX tables (`reports/table1_decomposition.tex` and `reports/table2_sensitivity.tex`) with booktabs formatting. 100% verified syntax and reproducibility metadata. Status: Clearance proposed.
 - 2026-10-31 · [T03 · Subgroup Sensitivity & PPSR Efficiency Audit](issues/03-subgroup-sensitivity-and-ppsr.md): Computed domain-stratified estimates across Wikipedia, Government Reports, and News ($n=40, N=400$ each, mean 60.0%, SE 0.0784). Verified 12-item sports quota (6 faithful / 6 unfaithful). Recorded empirical detection rates across 7 perturbation types. Status: Clearance proposed.
 - 2026-10-31 · [T04 · Manuscript Empirical Integration & Paper Gate Clearance](issues/04-manuscript-empirical-integration.md): Successfully passed 6-question paper gate. Staged unblinded empirical results into `paper/notes/06-unblinded-empirical-results.md`. Status: Clearance proposed — awaiting researcher verdict.
+- 2026-11-01 · [T05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md): Re-aligned with ADR 0002 (`gemini-3.6-flash`), active 10-key rotation pool restored. Unit tests pass (65/65). Implemented atomic persistence. Evaluated items 1–30 on candidates (145 claims cached under `gemini-3.6-flash`). Paused awaiting daily quota reset (~23h). Zero diff on frozen layers; zero writes to `data/raw/labels/`. Status: In Progress — Paused for Quota Reset.
 
 ## Verdicts (researcher)
 
@@ -40,6 +41,8 @@ Exit criteria:
 - [x] [02 · Publication LaTeX Tables & Figures](issues/02-publication-tables-and-figures.md) (Cleared — MB)
 - [x] [03 · Subgroup Sensitivity & PPSR Efficiency Audit](issues/03-subgroup-sensitivity-and-ppsr.md) (Cleared — MB)
 - [x] [04 · Manuscript Empirical Integration & Paper Gate Clearance](issues/04-manuscript-empirical-integration.md) (Cleared — MB)
+- [ ] [05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md) (Active — In Progress)
+
 
 
 

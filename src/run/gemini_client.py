@@ -39,7 +39,8 @@ class GeminiRotator:
         temperature: float = 0.0,
         cache_dir: str = "cache/llm_raw",
         timeout_seconds: int = 30,
-        max_retries_per_call: int = 5,
+        max_retries_per_call: int = 30,
+        pace_delay: float = 1.0,
     ):
         self.model_id = model_id
         self.temperature = temperature
@@ -47,7 +48,9 @@ class GeminiRotator:
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.timeout_seconds = timeout_seconds
         self.max_retries = max_retries_per_call
+        self.pace_delay = pace_delay
         self.current_key_idx = 0
+
         self.ca_bundle = os.getenv(
             "REQUESTS_CA_BUNDLE",
             "/etc/ssl/certs/ca-certificates.crt"
@@ -70,8 +73,11 @@ class GeminiRotator:
 
         if not self.keys:
             logger.warning("No Gemini API keys detected! Set GEMINI_API_KEYS in .env")
+        else:
+            logger.info(f"Loaded {len(self.keys)} Gemini API keys for rotation")
 
         self.base_url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model_id}:generateContent"
+
 
     def get_active_key(self) -> str:
         """Returns current key in round-robin sequence."""
@@ -108,8 +114,9 @@ class GeminiRotator:
         
         generation_config: Dict[str, Any] = {
             "temperature": self.temperature,
-            "maxOutputTokens": 1024,
+            "maxOutputTokens": 2048,
         }
+
         if json_mode:
             generation_config["responseMimeType"] = "application/json"
 
@@ -165,8 +172,9 @@ class GeminiRotator:
                     logger.warning(f"HTTP 429 on key #{self.current_key_idx + 1} ({mask_key(key)})")
                     self.advance_key(reason="Rate Limit (HTTP 429)")
                     time.sleep(backoff_delay)
-                    backoff_delay = min(backoff_delay * 1.5, 10.0)
+                    backoff_delay = min(backoff_delay * 1.5, 20.0)
                     continue
+
 
                 # HTTP 503 / 500: Server transient error
                 if response.status_code in (500, 502, 503, 504):
@@ -175,6 +183,14 @@ class GeminiRotator:
                     time.sleep(1.0)
                     continue
 
+                # HTTP 404: Model not available for this key/project
+                if response.status_code == 404:
+                    logger.warning(f"Key #{self.current_key_idx + 1} ({mask_key(key)}) returned 404 for model {self.model_id}. Pruning key.")
+                    if len(self.keys) > 1:
+                        self.keys.pop(self.current_key_idx)
+                        self.current_key_idx = self.current_key_idx % len(self.keys)
+                        continue
+
                 if response.status_code != 200:
                     error_msg = f"API error {response.status_code} on key #{self.current_key_idx + 1}: {response.text}"
                     logger.error(error_msg)
@@ -182,6 +198,7 @@ class GeminiRotator:
                     self.advance_key(reason=f"Error {response.status_code}")
                     time.sleep(0.5)
                     continue
+
 
                 # Successful 200 response
                 res_json = response.json()
@@ -214,7 +231,10 @@ class GeminiRotator:
 
                 # Advance key for round-robin balancing on the next call
                 self.advance_key(reason="Round-robin dispatch")
+                if self.pace_delay > 0:
+                    time.sleep(self.pace_delay)
                 return result
+
 
             except requests.RequestException as req_err:
                 logger.warning(f"Network error on key #{self.current_key_idx + 1}: {req_err}")
@@ -301,6 +321,7 @@ class GeminiRotator:
         claim: str,
         query: Optional[str] = None,
         context_condition: str = "C1",
+        use_cache: bool = True,
     ) -> Dict[str, Any]:
         """Evaluates a single claim against a context passage with Rubric v1 instructions."""
         system_prompt = (
@@ -330,18 +351,32 @@ class GeminiRotator:
             prompt=user_prompt,
             system_instruction=system_prompt,
             json_mode=True,
-            use_cache=True,
+            use_cache=use_cache,
         )
 
+
         parsed = response.get("parsed_json") or {}
+        label = parsed.get("label") or parsed.get("verdict")
+        if not label:
+            import re
+            m = re.search(r'"(?:label|verdict)"\s*:\s*"([^"]+)"', response.get("content", ""))
+            label = m.group(1) if m else "Not-in-context"
+
+        label_normalized = str(label).strip()
+        for valid in ["Supported", "Contradicted", "Not-in-context"]:
+            if label_normalized.lower() == valid.lower():
+                label_normalized = valid
+                break
+
         return {
             "claim": claim,
-            "label": parsed.get("label", "Not-in-context"),
-            "explanation": parsed.get("explanation", ""),
+            "label": label_normalized,
+            "explanation": parsed.get("explanation") or parsed.get("rationale", ""),
             "confidence": parsed.get("confidence", 0.0),
             "cached": response.get("cached", False),
             "key_used": response.get("key_used", ""),
         }
+
 
 
 if __name__ == "__main__":

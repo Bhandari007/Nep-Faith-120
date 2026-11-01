@@ -125,38 +125,79 @@ def evaluate_dataset(
             if line.strip():
                 items.append(json.loads(line))
 
+    existing_by_id: Dict[str, Dict[str, Any]] = {}
+    if output_path.exists():
+        try:
+            with open(output_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.strip():
+                        rec = json.loads(line)
+                        if "item_id" in rec:
+                            existing_by_id[rec["item_id"]] = rec
+        except Exception as e:
+            logger.warning(f"Could not load existing predictions from {output_path}: {e}")
+
+    all_records_by_id: Dict[str, Dict[str, Any]] = dict(existing_by_id)
     evaluated_records: List[Dict[str, Any]] = []
-    for item in items:
+
+    for idx, item in enumerate(items, 1):
         item_id = item.get("item_id")
+        existing_rec = all_records_by_id.get(item_id, {})
+        predictions_map = dict(existing_rec.get("predictions", {}))
+
         item_record: Dict[str, Any] = {
             "item_id": item_id,
-            "domain": item.get("domain"),
-            "sub_genre": item.get("sub_genre"),
-            "perturbation_type": item.get("perturbation_type"),
-            "source_provenance": item.get("source_provenance"),
-            "predictions": {},
+            "domain": item.get("domain", existing_rec.get("domain")),
+            "sub_genre": item.get("sub_genre", existing_rec.get("sub_genre")),
+            "perturbation_type": item.get("perturbation_type", existing_rec.get("perturbation_type")),
+            "source_provenance": item.get("source_provenance", existing_rec.get("source_provenance")),
+            "predictions": predictions_map,
         }
 
         for arm_name, scorer in scorers.items():
-            item_record["predictions"][arm_name] = {}
+            if arm_name not in item_record["predictions"]:
+                item_record["predictions"][arm_name] = {}
             for cond in conditions:
+                existing_cond = item_record["predictions"][arm_name].get(cond)
+                if (
+                    use_cache
+                    and existing_cond
+                    and "derived_faithfulness" in existing_cond
+                    and existing_cond.get("claims")
+                ):
+                    continue
                 res = evaluate_item_condition(item, cond, scorer, use_cache=use_cache)
                 item_record["predictions"][arm_name][cond] = {
                     "derived_faithfulness": res["derived_faithfulness"],
                     "claims": res["claim_evaluations"],
                 }
 
+        all_records_by_id[item_id] = item_record
         evaluated_records.append(item_record)
 
-    with open(output_path, "w", encoding="utf-8") as f:
-        for rec in evaluated_records:
-            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+        if idx % 5 == 0 or idx == len(items):
+            logger.info(f"Progress: Evaluated {idx}/{len(items)} items.")
+            # Atomic checkpoint to disk preserving all items
+            tmp_out = output_path.with_suffix(".tmp")
+            with open(tmp_out, "w", encoding="utf-8") as f:
+                for it in items:
+                    it_id = it.get("item_id")
+                    rec = all_records_by_id.get(it_id)
+                    if rec:
+                        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+            tmp_out.replace(output_path)
+
 
     return len(evaluated_records)
 
 
 if __name__ == "__main__":
     import argparse
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+    )
 
     parser = argparse.ArgumentParser(description="NepFaith-120 Evaluation Suite Runner")
     parser.add_argument(
@@ -177,9 +218,22 @@ if __name__ == "__main__":
         default=["arm2_bgem3"],
         help="Evaluator arms to run (e.g. arm1_hhem arm2_bgem3 arm3_mdeberta arm4_pipeline_nli arm5_gemini)",
     )
+    parser.add_argument(
+        "--model-id",
+        type=str,
+        default="gemini-3.6-flash",
+        help="Model ID for Arm 5 LLM Judge",
+    )
+    parser.add_argument(
+        "--conditions",
+        nargs="+",
+        default=["C1", "C2", "C3"],
+        help="Conditions to evaluate (C1, C2, C3)",
+    )
     args = parser.parse_args()
 
-    full_suite = get_evaluator_suite()
+    full_suite = get_evaluator_suite(llm_judge_config={"provider": "gemini", "model_id": args.model_id})
     selected_scorers = {k: full_suite[k] for k in args.arms if k in full_suite}
-    count = evaluate_dataset(args.input, args.output, selected_scorers)
+    count = evaluate_dataset(args.input, args.output, selected_scorers, conditions=args.conditions)
     print(f"Evaluated {count} items. Saved to {args.output}")
+
