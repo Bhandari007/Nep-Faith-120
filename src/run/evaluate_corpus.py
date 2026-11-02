@@ -175,17 +175,18 @@ def evaluate_dataset(
         all_records_by_id[item_id] = item_record
         evaluated_records.append(item_record)
 
+        # Atomic checkpoint to disk after each item preserving all records
+        tmp_out = output_path.with_suffix(".tmp")
+        with open(tmp_out, "w", encoding="utf-8") as f:
+            for it in items:
+                it_id = it.get("item_id")
+                rec = all_records_by_id.get(it_id)
+                if rec:
+                    f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+        tmp_out.replace(output_path)
+
         if idx % 5 == 0 or idx == len(items):
             logger.info(f"Progress: Evaluated {idx}/{len(items)} items.")
-            # Atomic checkpoint to disk preserving all items
-            tmp_out = output_path.with_suffix(".tmp")
-            with open(tmp_out, "w", encoding="utf-8") as f:
-                for it in items:
-                    it_id = it.get("item_id")
-                    rec = all_records_by_id.get(it_id)
-                    if rec:
-                        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
-            tmp_out.replace(output_path)
 
 
     return len(evaluated_records)

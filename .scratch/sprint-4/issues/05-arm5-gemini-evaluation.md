@@ -29,6 +29,13 @@ Can we execute Arm 5 (Frontier LLM Judge) using `gemini-3.6-flash` (governed by 
   - All 10 free-tier keys reached Google's daily quota limit (`generate_content_free_tier_requests`, 20 req/day/project) with HTTP 429 (`RESOURCE_EXHAUSTED`).
   - Next reset window: ~23 hours (tomorrow).
   - State safely saved and verified. Execution will resume seamlessly from item 31.
+- 2026-11-02: **Daily Run Resumed — Items 31 to 56 Completed**:
+  - Atomic checkpointing upgraded in `src/run/evaluate_corpus.py` to persist to disk immediately after each completed item.
+  - Successfully evaluated items 31 through 56 across conditions $C1, C2, C3$.
+  - 328 raw LLM claims cached under `cache/llm_raw/` (up from 145).
+  - Predictions recorded in `data/interim/predictions/predictions_candidates_120.jsonl` (56/120 candidate items now have `arm5_gemini`).
+  - All 10 keys reached daily free-tier request limit after 24 minutes of active execution.
+  - State safely saved. Next execution will resume seamlessly from item 57.
 - **Prohibitions**: Absolute Prohibition 1 (The Freeze) strictly upheld (0 diff on `sprint-1-frozen` for `src/analyze/` and `src/report/`). Absolute Prohibition 2 upheld (zero writes to `data/raw/labels/`).
 
 ## Verdict (researcher)
