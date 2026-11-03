@@ -36,6 +36,15 @@ Can we execute Arm 5 (Frontier LLM Judge) using `gemini-3.6-flash` (governed by 
   - Predictions recorded in `data/interim/predictions/predictions_candidates_120.jsonl` (56/120 candidate items now have `arm5_gemini`).
   - All 10 keys reached daily free-tier request limit after 24 minutes of active execution.
   - State safely saved. Next execution will resume seamlessly from item 57.
+- 2026-11-03: **Daily Run Resumed — Items 57 to 81 Completed with Live Progress & Request Tracking**:
+  - Implemented TDD-backed live request tracking in `GeminiRotator` (`total_requests_made`, `total_cache_hits`, `requests_by_key`) and ASCII progress bar in `evaluate_corpus.py` (67/67 tests passing).
+  - Successfully evaluated items 57 through 81 across conditions $C1, C2, C3$.
+  - Total API requests executed this session: 125 successful calls dispatched across the 10 rotating keys.
+  - Cached claims in `cache/llm_raw/` increased from 328 to 455 (+127 new claims evaluated).
+  - Benchmark completion: 81 / 120 items complete (67.5% complete; 39 items remaining).
+  - All 10 keys reached daily free-tier limit after 21 minutes of rotation.
+  - Progress safely flushed and checkpointed to `data/interim/predictions/predictions_candidates_120.jsonl`.
+  - Next execution will resume seamlessly from item 82.
 - **Prohibitions**: Absolute Prohibition 1 (The Freeze) strictly upheld (0 diff on `sprint-1-frozen` for `src/analyze/` and `src/report/`). Absolute Prohibition 2 upheld (zero writes to `data/raw/labels/`).
 
 ## Verdict (researcher)

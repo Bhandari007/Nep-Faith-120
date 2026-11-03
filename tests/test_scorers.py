@@ -145,3 +145,41 @@ def test_arm5_gemini_judge_evaluation(tmp_path):
         assert res["confidence"] == 0.95
 
 
+def test_gemini_rotator_request_tracking(tmp_path):
+    """Verifies that GeminiRotator accurately tracks request count, cache hits, and key usage."""
+    from src.run.gemini_client import GeminiRotator
+    import unittest.mock as mock
+
+    rotator = GeminiRotator(
+        api_keys=["key_alpha", "key_beta"],
+        cache_dir=str(tmp_path / "llm_cache"),
+        pace_delay=0.0,
+    )
+    assert rotator.total_requests_made == 0
+    assert rotator.total_cache_hits == 0
+
+    mock_resp = mock.Mock()
+    mock_resp.status_code = 200
+    mock_resp.json.return_value = {
+        "candidates": [{"content": {"parts": [{"text": '{"result": "ok"}'}]}}]
+    }
+
+    with mock.patch("requests.post", return_value=mock_resp):
+        res1 = rotator.generate_content("test prompt 1", use_cache=True)
+        assert res1["cached"] is False
+        assert rotator.total_requests_made == 1
+        assert rotator.total_cache_hits == 0
+
+        # Second call to same prompt should hit cache
+        res2 = rotator.generate_content("test prompt 1", use_cache=True)
+        assert res2["cached"] is True
+        assert rotator.total_requests_made == 1
+        assert rotator.total_cache_hits == 1
+
+        stats = rotator.get_stats()
+        assert stats["total_requests_made"] == 1
+        assert stats["total_cache_hits"] == 1
+        assert len(stats["requests_by_key"]) == 1
+
+
+

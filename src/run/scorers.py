@@ -174,6 +174,13 @@ class Arm5LLMJudge(BaseScorer):
             "model_id": self.model_id,
         }
 
+    def get_stats(self) -> Dict[str, Any]:
+        """Returns underlying API request and cache statistics."""
+        if self.provider == "gemini" and self.rotator and hasattr(self.rotator, "get_stats"):
+            return self.rotator.get_stats()
+        return {"total_requests_made": 0, "total_cache_hits": 0, "requests_by_key": {}}
+
+
 
 
 # Backwards compatibility alias

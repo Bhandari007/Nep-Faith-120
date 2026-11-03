@@ -27,6 +27,22 @@ from src.run.scorers import BaseScorer, get_evaluator_suite
 logger = logging.getLogger("EvaluateCorpus")
 
 
+def render_progress_bar(current: int, total: int, width: int = 20) -> str:
+    """Renders a text progress bar: [=========>           ]  50/100 ( 50.0%)"""
+    if total <= 0:
+        fraction = 1.0
+    else:
+        fraction = min(1.0, max(0.0, current / total))
+    filled = int(fraction * width)
+    if filled >= width:
+        bar = "=" * width
+    else:
+        arrow = ">" if filled < width else ""
+        remaining = width - filled - len(arrow)
+        bar = "=" * filled + arrow + " " * remaining
+    return f"[{bar}] {current:3d}/{total} ({fraction * 100:5.1f}%)"
+
+
 def compute_item_faithfulness_from_claims(claim_evaluations: List[Dict[str, Any]]) -> int:
     """Computes derived item-level binary faithfulness from constituent claim predictions.
 
@@ -154,6 +170,7 @@ def evaluate_dataset(
             "predictions": predictions_map,
         }
 
+        item_evaluated_in_run = False
         for arm_name, scorer in scorers.items():
             if arm_name not in item_record["predictions"]:
                 item_record["predictions"][arm_name] = {}
@@ -171,6 +188,7 @@ def evaluate_dataset(
                     "derived_faithfulness": res["derived_faithfulness"],
                     "claims": res["claim_evaluations"],
                 }
+                item_evaluated_in_run = True
 
         all_records_by_id[item_id] = item_record
         evaluated_records.append(item_record)
@@ -185,9 +203,27 @@ def evaluate_dataset(
                     f.write(json.dumps(rec, ensure_ascii=False) + "\n")
         tmp_out.replace(output_path)
 
-        if idx % 5 == 0 or idx == len(items):
-            logger.info(f"Progress: Evaluated {idx}/{len(items)} items.")
+        # Build status string with request stats
+        stats_parts = []
+        for s_name, s in scorers.items():
+            if hasattr(s, "get_stats"):
+                st = s.get_stats()
+                stats_parts.append(f"{s_name}: {st.get('total_requests_made', 0)} API reqs (hits: {st.get('total_cache_hits', 0)})")
 
+        stats_suffix = f" | {', '.join(stats_parts)}" if stats_parts else ""
+        bar = render_progress_bar(idx, len(items), width=20)
+
+        # Log immediately if newly evaluated in this run, or periodically for skipped/cached items
+        if item_evaluated_in_run or idx % 10 == 0 or idx == len(items):
+            logger.info(f"{bar} item {item_id}{stats_suffix}")
+
+    logger.info("=" * 65)
+    logger.info(f"Evaluation completed: {len(evaluated_records)}/{len(items)} items processed.")
+    for s_name, s in scorers.items():
+        if hasattr(s, "get_stats"):
+            st = s.get_stats()
+            logger.info(f"Scorer [{s_name}] total API requests: {st.get('total_requests_made', 0)} | cache hits: {st.get('total_cache_hits', 0)}")
+    logger.info("=" * 65)
 
     return len(evaluated_records)
 

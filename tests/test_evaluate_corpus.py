@@ -196,3 +196,19 @@ def test_evaluate_dataset_atomic_checkpoint_preserves_all_items(tmp_path):
         assert "arm2_bgem3" in r["predictions"]
 
 
+def test_render_progress_bar():
+    """Verifies that render_progress_bar outputs well-formed visual progress bars."""
+    from src.run.evaluate_corpus import render_progress_bar
+
+    bar0 = render_progress_bar(0, 100, width=20)
+    assert "[>                   ]   0/100 (  0.0%)" in bar0
+
+    bar50 = render_progress_bar(50, 100, width=20)
+    assert "50/100 ( 50.0%)" in bar50
+    assert "=" in bar50
+
+    bar100 = render_progress_bar(100, 100, width=20)
+    assert "[====================] 100/100 (100.0%)" in bar100
+
+
+

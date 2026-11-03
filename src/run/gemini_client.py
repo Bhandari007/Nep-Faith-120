@@ -51,6 +51,10 @@ class GeminiRotator:
         self.pace_delay = pace_delay
         self.current_key_idx = 0
 
+        self.total_requests_made = 0
+        self.total_cache_hits = 0
+        self.requests_by_key: Dict[str, int] = {}
+
         self.ca_bundle = os.getenv(
             "REQUESTS_CA_BUNDLE",
             "/etc/ssl/certs/ca-certificates.crt"
@@ -137,6 +141,7 @@ class GeminiRotator:
             try:
                 with open(cache_file, "r", encoding="utf-8") as f:
                     cached_data = json.load(f)
+                self.total_cache_hits += 1
                 return {
                     "content": cached_data["content"],
                     "parsed_json": cached_data.get("parsed_json"),
@@ -178,7 +183,7 @@ class GeminiRotator:
 
                 # HTTP 503 / 500: Server transient error
                 if response.status_code in (500, 502, 503, 504):
-                    logger.warning(f"HTTP {response.status_code} transient error on key #{self.current_key_idx + 1}")
+                    logger.warning(f"HTTP {response.status_code} transient error on key #{self.current_key_idx + 1}: {response.text[:200]}")
                     self.advance_key(reason=f"Server error {response.status_code}")
                     time.sleep(1.0)
                     continue
@@ -201,6 +206,9 @@ class GeminiRotator:
 
 
                 # Successful 200 response
+                self.total_requests_made += 1
+                self.requests_by_key[key] = self.requests_by_key.get(key, 0) + 1
+
                 res_json = response.json()
                 text_content = ""
                 try:
@@ -243,6 +251,14 @@ class GeminiRotator:
                 backoff_delay = min(backoff_delay * 1.5, 10.0)
 
         raise RuntimeError(f"Exceeded max retries ({self.max_retries}) across all API keys.")
+
+    def get_stats(self) -> Dict[str, Any]:
+        """Returns request counts and cache hit statistics."""
+        return {
+            "total_requests_made": self.total_requests_made,
+            "total_cache_hits": self.total_cache_hits,
+            "requests_by_key": dict(self.requests_by_key),
+        }
 
     def verify_all_keys(self) -> List[Dict[str, Any]]:
         """Tests exactly one lightweight API call per key to verify quota and validity."""
