@@ -45,6 +45,15 @@ Can we execute Arm 5 (Frontier LLM Judge) using `gemini-3.6-flash` (governed by 
   - All 10 keys reached daily free-tier limit after 21 minutes of rotation.
   - Progress safely flushed and checkpointed to `data/interim/predictions/predictions_candidates_120.jsonl`.
   - Next execution will resume seamlessly from item 82.
+- 2026-11-04: **Daily Run Resumed — Items 82 to 112 Completed (93.3% Total Completion)**:
+  - Resumed execution from item 82 across conditions $C1, C2, C3$.
+  - Successfully evaluated 31 items (items 82 through 112).
+  - Total API requests dispatched this session: 156 successful calls across the 10-key rotation pool.
+  - Cached claims in `cache/llm_raw/` increased from 455 to 611 (+156 new claims evaluated).
+  - Benchmark completion: **112 / 120 items complete (93.3%)**.
+  - Only **8 items remain** (items 113–120; 24 claims; ~72 calls).
+  - State safely checkpointed to `data/interim/predictions/predictions_candidates_120.jsonl`.
+  - Tomorrow's run (Nov 5) will easily finish the candidate benchmark in a single session.
 - **Prohibitions**: Absolute Prohibition 1 (The Freeze) strictly upheld (0 diff on `sprint-1-frozen` for `src/analyze/` and `src/report/`). Absolute Prohibition 2 upheld (zero writes to `data/raw/labels/`).
 
 ## Verdict (researcher)
