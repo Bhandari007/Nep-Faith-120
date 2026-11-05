@@ -2,7 +2,7 @@
 
 Type: paper drafting / synthesis
 Cap: 2 hours
-Status: Clearance proposed — awaiting researcher
+Status: Cleared — MB
 
 ## Question
 
@@ -30,3 +30,4 @@ Can we harmonize all paper dossier sections (`03-methodology.md`, `04-statistica
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, October 3`, 2026
