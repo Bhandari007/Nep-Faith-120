@@ -2,7 +2,7 @@
 
 Type: bibliographic integrity / verification
 Cap: 2 hours
-Status: Clearance proposed — awaiting researcher
+Status: Cleared — MB
 
 ## Question
 
@@ -31,3 +31,4 @@ Do 100% of the BibTeX entries in `paper/references.bib` carry human verification
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, November 5, 2026
