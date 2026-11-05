@@ -1,0 +1,118 @@
+{
+  "timestamp": "20261105_055653",
+  "git_commit_hash": "60d1432e3fc247fbd9951cd3a0de8705ba859eca",
+  "gold_labels_path": "data/raw/labels/gold_labels_120.jsonl",
+  "candidates_path": "data/interim/predictions/predictions_candidates_120.jsonl",
+  "unlabelled_path": "data/interim/predictions/predictions_unlabelled_1200.jsonl",
+  "arm_results": {
+    "arm2_bgem3": {
+      "c1_str": "60.0 \\pm 8.8",
+      "c2_str": "60.2 \\pm 8.7",
+      "c3_str": "60.0 \\pm 8.8",
+      "delta_mt_str": "0.0 \\pm 8.8",
+      "delta_xl_str": "0.0 \\pm 8.8",
+      "diff_str": "0.0 \\pm 0.0",
+      "ppsr": 1.0
+    },
+    "arm1_hhem": {
+      "c1_str": "60.0 \\pm 8.8",
+      "c2_str": "60.0 \\pm 8.8",
+      "c3_str": "60.0 \\pm 8.8",
+      "delta_mt_str": "0.0 \\pm 8.8",
+      "delta_xl_str": "0.0 \\pm 8.8",
+      "diff_str": "0.0 \\pm 0.0",
+      "ppsr": 1.0
+    },
+    "arm3_mdeberta": {
+      "c1_str": "60.0 \\pm 8.8",
+      "c2_str": "60.0 \\pm 8.8",
+      "c3_str": "60.0 \\pm 8.8",
+      "delta_mt_str": "0.0 \\pm 8.8",
+      "delta_xl_str": "0.0 \\pm 8.8",
+      "diff_str": "0.0 \\pm 0.0",
+      "ppsr": 1.0
+    },
+    "arm4_pipeline_nli": {
+      "c1_str": "60.0 \\pm 8.8",
+      "c2_str": "60.0 \\pm 8.8",
+      "c3_str": "60.0 \\pm 8.8",
+      "delta_mt_str": "0.0 \\pm 8.8",
+      "delta_xl_str": "0.0 \\pm 8.8",
+      "diff_str": "0.0 \\pm 0.0",
+      "ppsr": 1.0
+    }
+  },
+  "sensitivity_matrix": {
+    "entity_swap": {
+      "arm2_bgem3": 0.9053,
+      "arm1_hhem": 0.0,
+      "arm3_mdeberta": 0.0,
+      "arm4_pipeline_nli": 0.0
+    },
+    "number_date_alteration": {
+      "arm2_bgem3": 0.8737,
+      "arm1_hhem": 0.0,
+      "arm3_mdeberta": 0.0,
+      "arm4_pipeline_nli": 0.0
+    },
+    "negation_flip": {
+      "arm2_bgem3": 0.9053,
+      "arm1_hhem": 0.0,
+      "arm3_mdeberta": 0.0,
+      "arm4_pipeline_nli": 0.0
+    },
+    "misattribution": {
+      "arm2_bgem3": 0.9474,
+      "arm1_hhem": 0.0,
+      "arm3_mdeberta": 0.0,
+      "arm4_pipeline_nli": 0.0
+    },
+    "register_shift": {
+      "arm2_bgem3": 0.9681,
+      "arm1_hhem": 0.0,
+      "arm3_mdeberta": 0.0,
+      "arm4_pipeline_nli": 0.0
+    },
+    "unsupported_addition": {
+      "arm2_bgem3": 1.0,
+      "arm1_hhem": 0.0,
+      "arm3_mdeberta": 0.0,
+      "arm4_pipeline_nli": 0.0
+    },
+    "invented_causality": {
+      "arm2_bgem3": 0.9785,
+      "arm1_hhem": 0.0,
+      "arm3_mdeberta": 0.0,
+      "arm4_pipeline_nli": 0.0
+    }
+  },
+  "domain_breakdown": {
+    "wikipedia": {
+      "domain": "wikipedia",
+      "n_labeled": 40,
+      "n_unlabeled": 400,
+      "mean": 0.6,
+      "se": 0.07844645405527362,
+      "ci_lower": 0.4462480879098259,
+      "ci_upper": 0.7537519120901741
+    },
+    "government_report": {
+      "domain": "government_report",
+      "n_labeled": 40,
+      "n_unlabeled": 400,
+      "mean": 0.6,
+      "se": 0.07844645405527362,
+      "ci_lower": 0.4462480879098259,
+      "ci_upper": 0.7537519120901741
+    },
+    "news": {
+      "domain": "news",
+      "n_labeled": 40,
+      "n_unlabeled": 400,
+      "mean": 0.6,
+      "se": 0.07844645405527362,
+      "ci_lower": 0.4462480879098259,
+      "ci_upper": 0.7537519120901741
+    }
+  }
+}

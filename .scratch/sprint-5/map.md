@@ -29,6 +29,7 @@ Exit criteria:
 - 2026-11-05 · [T01 · Dossier Section Harmonization & Raw Material Verification](issues/01-dossier-harmonization.md): Harmonized methodology dossier (`03-methodology.md`), statistical framework (`04-statistical-framework.md`), and raw notes (`01-intro`, `02-related-work`, `05-limitations`, `06-unblinded-empirical-results`) with 5-arm candidate benchmark numbers, ADR 0002 model specs (`gemini-3.6-flash`), and empirical MT error qualitative taxonomy. Freeze check clean (0 diff); 67/67 tests passing. Status: Clearance proposed.
 - 2026-11-05 · [T02 · Unified Publication LaTeX Document Assembly](issues/02-latex-manuscript-assembly.md): Assembled `paper/manuscript.tex` with embedded publication tables `reports/table1_decomposition.tex` and `reports/table2_sensitivity.tex`. Verified syntax, bibliography mappings, and balanced environments via `tests/test_manuscript.py` (72/72 tests passing). Status: Clearance proposed.
 - 2026-11-05 · [T03 · BibTeX Human Citation Verification Audit](issues/03-bibtex-citation-audit.md): Audited all 5 citations in `paper/references.bib`. Verified 100% human verification tags (`verified_by = {MB, 2026-10-15}`). Authored `tests/test_citations.py` (76/76 tests passing). Zero hallucinated citations. Status: Clearance proposed.
+- 2026-11-05 · [T04 · Final 6-Question Paper Gate Clearance](issues/04-final-paper-gate-clearance.md): Verified 100% compliance across all 6 questions of the Paper Gate (single-command regeneration, code predating labels by tags, recovery coverage 95%, 100% row conservation, pinned seed 42/models, and code review). Stamped run summary saved to `outputs/run_summary_20261105_055653.json`. 76/76 tests pass; freeze check clean (0 diff). Status: Clearance proposed.
 
 ## Verdicts (researcher)
 
@@ -41,4 +42,4 @@ Exit criteria:
 - [x] [01 · Dossier Section Harmonization & Raw Material Verification](issues/01-dossier-harmonization.md) (Cleared — MB)
 - [x] [02 · Unified Publication LaTeX Document Assembly](issues/02-latex-manuscript-assembly.md) (Cleared — MB)
 - [x] [03 · BibTeX Human Citation Verification Audit](issues/03-bibtex-citation-audit.md) (Cleared — MB)
-- [ ] [04 · Final 6-Question Paper Gate Clearance](issues/04-final-paper-gate-clearance.md) (Active — Frontier)
+- [ ] [04 · Final 6-Question Paper Gate Clearance](issues/04-final-paper-gate-clearance.md) (Clearance proposed — awaiting researcher)
