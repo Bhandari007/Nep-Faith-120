@@ -2,7 +2,7 @@
 
 Type: scientific governance / gate clearance
 Cap: 1 hour
-Status: Clearance proposed — awaiting researcher
+Status: Cleared — MB
 
 ## Question
 
@@ -38,3 +38,4 @@ Does the manuscript and codebase pass all six questions of the Paper Gate (`docs
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, November 5, 2026
