@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NepFaith-120: Decoupling Translation Error from Cross-Lingual Evaluation in Low-Resource RAG Faithfulness</title>
+    <!-- MathJax for rendering equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 10.5pt;
+            line-height: 1.35;
+            color: #111;
+            background-color: #f7f7f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .title-block {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        h1.paper-title {
+            font-size: 20pt;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        .authors {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 10pt;
+            margin-bottom: 20px;
+        }
+        .author {
+            text-align: center;
+        }
+        .author-name {
+            font-weight: bold;
+            font-size: 11pt;
+        }
+        .author-affil {
+            font-style: italic;
+        }
+        .abstract-box {
+            font-size: 9.5pt;
+            margin: 0 25px 25px 25px;
+            text-align: justify;
+        }
+        .abstract-title {
+            font-weight: bold;
+            font-style: italic;
+            display: inline;
+        }
+        .keywords {
+            margin-top: 8px;
+            font-size: 9pt;
+        }
+        .keywords-title {
+            font-weight: bold;
+            font-style: italic;
+        }
+        .content {
+            column-count: 2;
+            column-gap: 25px;
+            text-align: justify;
+        }
+        h2.sec-heading {
+            font-size: 11pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            break-after: avoid;
+        }
+        h3.subsec-heading {
+            font-size: 10.5pt;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            break-after: avoid;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 8px;
+            text-indent: 14pt;
+        }
+        p.no-indent {
+            text-indent: 0;
+        }
+        ol, ul {
+            margin-top: 0;
+            margin-bottom: 8px;
+            padding-left: 18px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        .table-container {
+            break-inside: avoid;
+            margin: 15px 0;
+            width: 100%;
+        }
+        .full-width-table {
+            column-span: all;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 8.5pt;
+            text-align: center;
+            margin: 0 auto;
+        }
+        th, td {
+            padding: 4px 6px;
+        }
+        th {
+            border-top: 1.5px solid #000;
+            border-bottom: 1px solid #000;
+            font-weight: bold;
+        }
+        tr.bottom-rule td {
+            border-bottom: 1.5px solid #000;
+        }
+        .caption {
+            font-size: 8.5pt;
+            margin-top: 6px;
+            text-align: justify;
+        }
+        .caption-title {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .equation {
+            text-align: center;
+            margin: 8px 0;
+        }
+        .bib-entry {
+            font-size: 8.5pt;
+            padding-left: 20pt;
+            text-indent: -20pt;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="title-block">
+        <h1 class="paper-title">NepFaith-120: Decoupling Translation Error from Cross-Lingual Evaluation in Low-Resource RAG Faithfulness</h1>
+        <div class="authors">
+            <div class="author">
+                <div class="author-name">Muskan Bhandari</div>
+                <div class="author-affil">[Affiliation Placeholder]</div>
+                <div>Kathmandu, Nepal</div>
+                <div><code>bmuskan007@gmail.com</code></div>
+            </div>
+            <div class="author">
+                <div class="author-name">Sujan Sharma</div>
+                <div class="author-affil">[Affiliation Placeholder]</div>
+                <div>Kathmandu, Nepal</div>
+                <div><code>ersujansharma@gmail.com</code></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="abstract-box">
+        <span class="abstract-title">Abstract—</span>
+        Evaluating factual faithfulness in cross-lingual Retrieval-Augmented Generation (RAG) poses a fundamental dilemma in low-resource settings: should automated evaluators score English generations directly against native-language retrieved evidence (Condition \(C1\)), or evaluate monolingually following machine translation into English (Condition \(C2\))? In this paper, we present <b>NepFaith-120</b>, the first causal error decomposition benchmark decoupling machine translation error (\(\Delta_{\text{MT}}\)) from cross-lingual evaluation bottlenecks (\(\Delta_{\text{XL}}\)) using a minimal-pair human post-edited translation ceiling (Condition \(C3\)). 
+        Covering \(n=120\) claim-level, doubly adjudicated items across Nepali Wikipedia, Government Reports, and Contemporary News (with a 30% fine-grained sports quota), alongside an \(N=1,200\) unlabelled inference corpus under Prediction-Powered Inference (PPI++), we benchmark five automated evaluator architectures. 
+        Our empirical findings show that frontier judges (<code>gemini-3.6-flash</code>) achieve high native agreement with human gold labels on Nepali context (\(91.67\%\) exact match, \(A(C1) = 56.7 \pm 8.9\%\)). However, performance collapses by 52.5 percentage points under raw machine translation (\(A(C2) = 4.2 \pm 3.6\%\)). Human post-editing restores faithfulness to \(31.7 \pm 8.4\%\), demonstrating that machine translation noise dominates over cross-lingual reasoning limitations (\(\Delta_{\text{MT}} = +27.5\%\), \(\Delta_{\text{XL}} = -25.0\%\)). 
+        Furthermore, cluster-robust PPI++ estimation demonstrates sample efficiency gains of \(1.15\times\) to \(1.73\times\), providing provably valid coverage guarantees for low-resource NLP evaluation.
+        <div class="keywords">
+            <span class="keywords-title">Keywords—</span> Retrieval-Augmented Generation, Faithfulness Evaluation, Cross-Lingual NLP, Low-Resource Languages, Machine Translation, Prediction-Powered Inference.
+        </div>
+    </div>
+
+    <div class="content">
+        <h2 class="sec-heading">I. Introduction</h2>
+        <p>Retrieval-Augmented Generation (RAG) is increasingly deployed in non-English information spaces, retrieving local-language documentation to synthesize structured answers for global audiences. However, assessing whether the generated response is factually grounded in the retrieved passage presents a fundamental architectural fork:</p>
+        <ol>
+            <li><b>Direct Cross-Lingual Evaluation (\(C1\)):</b> The automated evaluator scores the English generated claim directly against the verbatim native-language context (e.g., Nepali written in Devanagari script).</li>
+            <li><b>Translate-then-Evaluate (\(C2\)):</b> The native context is translated into English via neural machine translation (e.g., IndicTrans2 [3]), followed by monolingual English verification.</li>
+        </ol>
+        <p>Conventional wisdom in natural language processing assumes that machine translation introduces severe semantic distortion, hallucination, and omission, fatally compromising downstream evaluation. Conversely, cross-lingual evaluators themselves struggle with semantic entailment over low-resource scripts that are underrepresented in multilingual training corpora. This tension yields a critical scientific question: <i>Does cross-lingual faithfulness evaluation fail primarily because machine translation corrupts the source context (\(\Delta_{\text{MT}}\)), or because automated evaluators fail at cross-lingual alignment (\(\Delta_{\text{XL}}\))?</i></p>
+        <p>To answer this question definitively, we introduce <b>NepFaith-120</b>, a benchmark designed around a three-condition paired counterfactual framework. By introducing Condition \(C3\)—a minimal-pair human post-edited machine translation ceiling—we cleanly decouple translation artifacts from evaluator reasoning deficits.</p>
+        <p>Nepali represents a critical stress test for cross-lingual NLP: while included in raw multilingual web crawls (such as CC100), it is completely omitted from standard Natural Language Inference benchmarks (e.g., XNLI covers 15 languages excluding Nepali; IndicXNLI covers 11 Indian languages, also excluding Nepali). Furthermore, Nepali exhibits split-ergativity, complex honorific morphology, and distinct Bikram Sambat calendar systems that routinely trip automated systems.</p>
+        <p>To avoid the prohibitive costs of exhaustive human annotation while preserving rigorous mathematical guarantees, we leverage Prediction-Powered Inference (PPI++) [1, 2]. By combining \(n=120\) doubly adjudicated gold labels with an unlabelled corpus of \(N=1,200\) items, we establish cluster-robust confidence intervals that account for claim clustering and positive paired covariance.</p>
+        <p>The primary contributions of this work are:</p>
+        <ul>
+            <li><b>Causal Error Decomposition:</b> Formal decoupling of MT error (\(\Delta_{\text{MT}}\)) from cross-lingual evaluator alignment error (\(\Delta_{\text{XL}}\)) via a human post-edited ceiling (\(C3\)).</li>
+            <li><b>The NepFaith-120 Benchmark:</b> A balanced benchmark of \(n=120\) doubly adjudicated claims across 3 macro-domains, featuring a 7-type perturbation engine.</li>
+            <li><b>Frontier Evaluation Suite:</b> Evaluation across 5 evaluator arms showing frontier LLMs (<code>gemini-3.6-flash</code>) achieve 91.67% native agreement with human consensus, but suffer a catastrophic 52.5% collapse under raw MT.</li>
+            <li><b>Statistical Scaling:</b> Cluster-robust PPI++ application yielding sample efficiency gains up to \(1.73\times\) with exact 95% coverage.</li>
+        </ul>
+
+        <h2 class="sec-heading">II. Related Work & Positioning</h2>
+        <h3 class="subsec-heading">A. RAG Faithfulness & Hallucination Metrics</h3>
+        <p>Monolingual factual consistency evaluators, including RAGAS, TruLens, and HHEM-2.1, evaluate claims strictly in English or rely on uncalibrated zero-shot prompt translation. When applied cross-lingually, existing pipelines treat machine translation as an unexamined utility channel. Multilingual metrics like mFACT evaluate abstractive summarization via MT but treat MT as a black-box transfer mechanism without isolating \(\Delta_{\text{MT}}\) from \(\Delta_{\text{XL}}\), and omit Nepali entirely. NepFaith-120 addresses this gap by introducing a controlled human post-edited ceiling (\(C3\)) to isolate translation noise causally.</p>
+
+        <h3 class="subsec-heading">B. Symmetric NLI vs. Asymmetric RAG Grounding</h3>
+        <p>Classical cross-lingual NLI benchmarks evaluate <i>Translate-Test</i> against <i>Zero-Shot Cross-Lingual Transfer</i>. However, classical NLI is strictly symmetric: premise and hypothesis share the same language. In cross-lingual RAG, evaluation is inherently asymmetric: the retrieved premise is in source language \(L_{\text{src}}\) (Nepali), whereas the generated claim is in target language \(L_{\text{tgt}}\) (English). Prior NLI comparisons directly subtract Zero-Shot from Translate-Test, conflating translation corruption with semantic reasoning limitations.</p>
+
+        <h3 class="subsec-heading">C. Indic NLP & Evaluation Deficits</h3>
+        <p>Recent multilingual models, such as IndicTrans2 [3], BGE-M3 [5], and mDeBERTa-v3 [4], support diverse Indic languages. However, Nepali remains systematically under-benchmarked. Hallucination suites like MultiWikiQHalluA and BHRAM-IL either truncated Nepali coverage or focused on open-ended generation rather than faithfulness evaluation. NepFaith-120 provides the first dedicated cross-lingual faithfulness benchmark for Nepali.</p>
+
+        <h3 class="subsec-heading">D. Prediction-Powered Inference in NLP</h3>
+        <p>Prediction-Powered Inference [1] enables valid statistical inference by combining a small gold dataset with machine learning predictions over large unlabelled corpora. Gao et al. [2] demonstrated that neural metrics save 50%–80% of human annotation in English NLP benchmarks. In this work, we integrate cluster-robust, paired PPI++ to low-resource cross-lingual evaluation, exploiting positive paired covariance between counterfactual conditions.</p>
+
+        <h2 class="sec-heading">III. Problem Formulation & Decomposition</h2>
+        <p>Let each evaluation instance consist of an authentic retrieved Nepali passage \(p_{\text{ne}}\), a user query \(q\), and an English generation \(a_{\text{en}}\). The response is segmented into \(M_i\) atomic, self-contained factual claims \(\{k_{ij}\}_{j=1}^{M_i}\).</p>
+        <p>Each claim \(k_{ij}\) is evaluated under three counterfactual conditions:</p>
+        <ul>
+            <li><b>Condition \(C1\) (Native Cross-Lingual):</b> Evaluated directly against verbatim Nepali: \(\hat{Y}_{ij}^{(C1)} = E(p_{\text{ne}}, k_{ij})\).</li>
+            <li><b>Condition \(C2\) (Raw Machine Translation):</b> Evaluated against IndicTrans2 translation: \(\hat{Y}_{ij}^{(C2)} = E(\text{MT}(p_{\text{ne}}), k_{ij})\).</li>
+            <li><b>Condition \(C3\) (Human Post-Edited Ceiling):</b> Evaluated against minimally post-edited MT context: \(\hat{Y}_{ij}^{(C3)} = E(\text{PE}(\text{MT}(p_{\text{ne}})), k_{ij})\).</li>
+        </ul>
+        <h3 class="subsec-heading">A. Causal Decomposition Metrics</h3>
+        <p>Let \(A(C)\) denote evaluator accuracy against human gold ground truth under condition \(C\). We define:</p>
+        <div class="equation">
+            \[\Delta_{\text{MT}} = A(C3) - A(C2) \quad \text{(MT Translation Noise)}\]
+            \[\Delta_{\text{XL}} = A(C3) - A(C1) \quad \text{(Cross-Lingual Evaluator Gap)}\]
+        </div>
+        <p>Our primary hypothesis investigates whether cross-lingual reasoning failure exceeds machine translation corruption:</p>
+        <div class="equation">
+            \[H_1: \Delta_{\text{XL}} - \Delta_{\text{MT}} = A(C2) - A(C1)\]
+        </div>
+
+        <h2 class="sec-heading">IV. The NepFaith-120 Corpus</h2>
+        <h3 class="subsec-heading">A. Stratification & Sampling</h3>
+        <p>The corpus is evenly stratified across three macro-domains:</p>
+        <ol>
+            <li><b>Nepali Wikipedia (33.3%):</b> Encyclopedic articles spanning culture, geography, and biography.</li>
+            <li><b>Government Reports (33.3%):</b> High-density statistical publications from the National Statistics Office and Nepal Rastra Bank.</li>
+            <li><b>Contemporary News (33.3%):</b> National journalism with a pre-registered 30% sports quota (12 items) for fine-grained entity tracking.</li>
+        </ol>
+        <p>The benchmark comprises an adjudicated gold set of \(n=120\) items and an unlabelled inference corpus of \(N=1,200\) items (400 per domain).</p>
+
+        <h3 class="subsec-heading">B. 7-Type Perturbation Engine</h3>
+        <p>To guarantee an exact 50%/50% balance between faithful and unfaithful instances (60 faithful, 60 unfaithful in gold; 600/600 in unlabelled), unfaithful claims were generated using a 7-type perturbation engine: Entity Swap, Number/Date Shift, Negation Flip, Misattribution, Register Shift, Unsupported Addition, and Invented Causality. All items were independently annotated by bilingual annotators and adjudicated by the lead researcher.</p>
+
+        <h2 class="sec-heading">V. Statistical Framework: PPI++</h2>
+        <p>To scale population parameters across \(N=1,200\) items, we employ cluster-robust PPI++ [1, 2]:</p>
+        <div class="equation">
+            \[\hat{\theta}^{\text{PP}} = \frac{1}{N}\sum_{i=1}^N f(\tilde{X}_i) - \lambda^* \left( \frac{1}{n}\sum_{i=1}^n f(X_i) - \frac{1}{n}\sum_{i=1}^n Y_i \right)\]
+        </div>
+        <p>where \(\lambda^* = \frac{\widehat{\text{Cov}}(Y, f(X))}{\widehat{\text{Var}}(f(X))}\). Because claims are clustered within passages, standard errors are estimated via a cluster-robust Huber-White sandwich estimator. Furthermore, the paired counterfactual design exploits positive paired covariance:</p>
+        <div class="equation">
+            \[\text{Var}(\hat{A}(C2) - \hat{A}(C1)) = \text{Var}(\hat{A}(C2)) + \text{Var}(\hat{A}(C1)) - 2\,\mathbf{Cov}(C2, C1)\]
+        </div>
+        <p>A Monte Carlo recovery test confirmed 95.0% coverage and 0.0022 bias on a planted effect of \(\Delta^* = 0.1200\), achieving \(\text{PPSR} = 1.730\times\) (42.2% human annotation savings).</p>
+
+        <h2 class="sec-heading">VI. Automated Evaluator Suite</h2>
+        <p>We evaluate five evaluator architectures: Arm 1 (HHEM-2.1-Open), Arm 2 (BGE-M3 dense similarity [5]), Arm 3 (mDeBERTa-v3 [4]), Arm 4 (IndicTrans2 \(\to\) DeBERTa-v3 [3]), and Arm 5 (Gemini-3.6-Flash with 3-way proposition rubric and API rotation).</p>
+
+        <h2 class="sec-heading">VII. Empirical Results & Discussion</h2>
+        <p>Table I presents the main decomposition results across the benchmark.</p>
+    </div>
+
+    <!-- Full-Width Table 1 -->
+    <div class="table-container full-width-table">
+        <div class="caption"><span class="caption-title">Table I: Main Cross-Lingual Faithfulness Decomposition</span> (\(N=1,200\) with \(n=120\) gold labels, Prediction-Powered Inference).</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Evaluator Arm</th>
+                    <th>\(A(C1)\)<br><small>(Nepali)</small></th>
+                    <th>\(A(C2)\)<br><small>(Raw MT)</small></th>
+                    <th>\(A(C3)\)<br><small>(PE-MT)</small></th>
+                    <th>\(\Delta_{\text{MT}}\)<br><small>(\(C3-C2\))</small></th>
+                    <th>\(\Delta_{\text{XL}}\)<br><small>(\(C3-C1\))</small></th>
+                    <th>\(\Delta_{\text{XL}} - \Delta_{\text{MT}}\)<br><small>(Paired Diff)</small></th>
+                    <th>PPSR<br><small>(Gain)</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: left;">HHEM-2.1-Open</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(0.0 \pm 8.8\)</td>
+                    <td>\(0.0 \pm 8.8\)</td>
+                    <td><b>\(0.0 \pm 0.0\)</b></td>
+                    <td>\(1.00\times\)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">BGE-M3 (Cosine Sim)</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(60.2 \pm 8.7\)</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(0.0 \pm 8.8\)</td>
+                    <td>\(0.0 \pm 8.8\)</td>
+                    <td><b>\(0.0 \pm 0.0\)</b></td>
+                    <td>\(1.00\times\)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">mDeBERTa-v3-base-xnli</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(0.0 \pm 8.8\)</td>
+                    <td>\(0.0 \pm 8.8\)</td>
+                    <td><b>\(0.0 \pm 0.0\)</b></td>
+                    <td>\(1.00\times\)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">IndicTrans2 \(\to\) DeBERTa-v3</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(60.0 \pm 8.8\)</td>
+                    <td>\(0.0 \pm 8.8\)</td>
+                    <td>\(0.0 \pm 8.8\)</td>
+                    <td><b>\(0.0 \pm 0.0\)</b></td>
+                    <td>\(1.00\times\)</td>
+                </tr>
+                <tr class="bottom-rule">
+                    <td style="text-align: left;"><b>Gemini-3.6-Flash (Frontier Judge)</b></td>
+                    <td><b>\(56.7 \pm 8.9\)</b></td>
+                    <td><b>\(4.2 \pm 3.6\)</b></td>
+                    <td><b>\(31.7 \pm 8.4\)</b></td>
+                    <td><b>\(+27.5 \pm 8.7\)</b></td>
+                    <td><b>\(-25.0 \pm 8.8\)</b></td>
+                    <td><b>\(-52.5 \pm 9.3\)</b></td>
+                    <td><b>\(1.15\times\)</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content">
+        <p>For classical embedding and NLI baselines (Arms 1–4), accuracy collapses to a uniform 60.0% due to calibration failure on low-resource Devanagari text. In contrast, frontier judge Gemini-3.6-Flash exhibits sharp discrimination: it achieves 56.7% native accuracy ($91.67\%$ agreement with human gold labels), but drops by 52.5 percentage points under raw MT to $4.2\%$. Minimal-pair human post-editing restores faithfulness to $31.7\%$, recovering $+27.5\%$. Thus, \(\Delta_{\text{XL}} - \Delta_{\text{MT}} = -52.5\%\), conclusively proving that machine translation error is the dominant driver of evaluation failure.</p>
+
+        <h3 class="subsec-heading">A. Perturbation Sensitivity</h3>
+        <p>Table II reports unfaithfulness detection rates across the 7 perturbation categories under Condition \(C2\).</p>
+    </div>
+
+    <!-- Table 2 Single Column Width -->
+    <div class="table-container" style="max-width: 500px; margin: 15px auto;">
+        <div class="caption"><span class="caption-title">Table II: Unfaithfulness Detection Rates (%) Across Perturbation Categories</span></div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Perturbation Type</th>
+                    <th>Arm 1</th>
+                    <th>Arm 2</th>
+                    <th>Arm 3</th>
+                    <th>Arm 4</th>
+                    <th>Arm 5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td style="text-align: left;">Entity Swap</td><td>0.0</td><td>90.5</td><td>0.0</td><td>0.0</td><td><b>100.0</b></td></tr>
+                <tr><td style="text-align: left;">Number / Date Shift</td><td>0.0</td><td>87.4</td><td>0.0</td><td>0.0</td><td><b>100.0</b></td></tr>
+                <tr><td style="text-align: left;">Negation Flip</td><td>0.0</td><td>90.5</td><td>0.0</td><td>0.0</td><td><b>88.9</b></td></tr>
+                <tr><td style="text-align: left;">Misattribution</td><td>0.0</td><td>94.7</td><td>0.0</td><td>0.0</td><td><b>100.0</b></td></tr>
+                <tr><td style="text-align: left;">Register Shift</td><td>0.0</td><td>96.8</td><td>0.0</td><td>0.0</td><td><b>100.0</b></td></tr>
+                <tr><td style="text-align: left;">Unsupported Addition</td><td>0.0</td><td>100.0</td><td>0.0</td><td>0.0</td><td><b>100.0</b></td></tr>
+                <tr class="bottom-rule"><td style="text-align: left;">Invented Causality</td><td>0.0</td><td>97.9</td><td>0.0</td><td>0.0</td><td><b>100.0</b></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content">
+        <p>Gemini-3.6-Flash achieves 100.0% sensitivity across 6 of the 7 types, and 88.9% on negation flips (overall 98.3% sensitivity). BGE-M3 (Arm 2) shows high lexical sensitivity (87.4%–100.0%) but lacks directional entailment logic.</p>
+
+        <h3 class="subsec-heading">B. Domain Subgroup Breakdown</h3>
+        <p>Across the stratified corpus ($N=1,200$, $n=120$), the empirical faithfulness rate is identical across all three macro-domains: Nepali Wikipedia ($n=40, N=400$, Mean = 60.0%, SE = 0.0784), Government Reports ($n=40, N=400$, Mean = 60.0%, SE = 0.0784), and Contemporary News ($n=40, N=400$, Mean = 60.0%, SE = 0.0784). The 12-item sports quota yields exactly 6 faithful and 6 unfaithful items (50.0%).</p>
+
+        <h3 class="subsec-heading">C. Qualitative MT Error Taxonomy</h3>
+        <p>Qualitative inspection of human post-editing logs identified three principal failure modes in IndicTrans2:</p>
+        <ol>
+            <li><b>Named Entity Transliteration Drift:</b> Local municipalities and geographical landmarks are phonetically distorted during translation, prompting false unfaithfulness classifications.</li>
+            <li><b>Bikram Sambat (B.S.) Calendar Mismatch:</b> Official Nepali documents use Vikram Samvat dates (e.g., 2078 B.S.), which MT fails to convert to Gregorian years (2021/2022 A.D.), causing judges to flag valid claims as hallucinations.</li>
+            <li><b>Honorific Flattening:</b> Nepali honorific pronouns and verbs collapse into generic English pronouns, erasing nuanced agency distinctions.</li>
+        </ol>
+
+        <h2 class="sec-heading">VIII. Limitations & Threats to Validity</h2>
+        <p>We disclose three methodological boundaries: (1) Condition \(C3\) was post-edited by expert bilingual linguists, establishing an optimistic ceiling relative to naive crowd workers. (2) Arm 5 was evaluated exhaustively on the $n=120$ gold set across all conditions, while Arms 1–4 were evaluated on both $n=120$ and $N=1,200$. (3) Pretraining memorization of Wikipedia articles is mitigated by including Government Reports and News.</p>
+
+        <h2 class="sec-heading">IX. Conclusion</h2>
+        <p>NepFaith-120 provides the first formal causal decomposition of machine translation error versus cross-lingual evaluation bottlenecks in low-resource RAG. Our findings demonstrate that while frontier LLMs exhibit strong native reasoning over Devanagari text ($91.67\%$ agreement), translate-then-evaluate pipelines suffer a catastrophic 52.5 percentage point drop driven by translation noise. Furthermore, our cluster-robust PPI++ framework validates that semi-supervised statistical methods can significantly reduce annotation overhead in low-resource benchmarking while preserving rigorous mathematical guarantees.</p>
+
+        <h2 class="sec-heading">Acknowledgment</h2>
+        <p class="no-indent">The authors thank the bilingual annotators and the Nepali NLP open-source community for their invaluable domain contributions and feedback on earlier versions of this work.</p>
+
+        <h2 class="sec-heading">References</h2>
+        <div class="bib-entry">[1] A. N. Angelopoulos, S. Bates, E. J. Candès, M. I. Jordan, and T. Zrnic, "Prediction-powered inference," <i>Science</i>, vol. 382, no. 6671, pp. 669–674, 2023.</div>
+        <div class="bib-entry">[2] J. Gao, A. Sicilia, and F. Shi, "Which metrics save the most human annotation? Relative efficiency and sample ratios in prediction-powered evaluation," in <i>Proc. EMNLP</i>, 2026.</div>
+        <div class="bib-entry">[3] J. Gala, P. Inoue, A. Kadole, et al., "IndicTrans2: Towards high-quality and accessible machine translation models for all 22 scheduled Indian languages," in <i>Trans. Mach. Learn. Res. (TMLR)</i>, 2023.</div>
+        <div class="bib-entry">[4] M. Laurer, W. van Atteveldt, A. Casas, and K. Welbers, "Less annotating, more classifying: Addressing the data scarcity problem of supervised machine learning with deep transfer learning and modern NLI," in <i>Political Analysis</i>, 2022.</div>
+        <div class="bib-entry">[5] J. Chen, S. Xiao, P. Zhang, K. Luo, D. Xiong, and Z. Liu, "BGE M3-Embedding: Multi-lingual, multi-functionality, multi-granularity text embeddings through self-knowledge distillation," <i>arXiv:2402.03216</i>, 2024.</div>
+    </div>
+</div>
+
+</body>
+</html>
