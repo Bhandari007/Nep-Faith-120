@@ -2,7 +2,7 @@
 
 Type: document compilation / publication
 Cap: 2 hours
-Status: Clearance proposed — awaiting researcher
+Status: Cleared — MB
 
 ## Question
 
@@ -32,3 +32,4 @@ Can we compile a unified, publication-ready LaTeX manuscript incorporating the b
 ## Verdict (researcher)
 
 <!-- Researcher signs verdict with initials and date below -->
+MB, November 5, 2026

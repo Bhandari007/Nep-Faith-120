@@ -32,10 +32,11 @@ Exit criteria:
 ## Verdicts (researcher)
 
 - 2026-11-05 · [T01 · Dossier Section Harmonization & Raw Material Verification](issues/01-dossier-harmonization.md): Cleared — MB
+- 2026-11-05 · [T02 · Unified Publication LaTeX Document Assembly](issues/02-latex-manuscript-assembly.md): Cleared — MB
 
 ## Active Frontier Tickets
 
 - [x] [01 · Dossier Section Harmonization & Raw Material Verification](issues/01-dossier-harmonization.md) (Cleared — MB)
-- [ ] [02 · Unified Publication LaTeX Document Assembly](issues/02-latex-manuscript-assembly.md) (Clearance proposed — awaiting researcher)
-- [ ] [03 · BibTeX Human Citation Verification Audit](issues/03-bibtex-citation-audit.md) (Pending)
+- [x] [02 · Unified Publication LaTeX Document Assembly](issues/02-latex-manuscript-assembly.md) (Cleared — MB)
+- [ ] [03 · BibTeX Human Citation Verification Audit](issues/03-bibtex-citation-audit.md) (Active — Frontier)
 - [ ] [04 · Final 6-Question Paper Gate Clearance](issues/04-final-paper-gate-clearance.md) (Pending)
