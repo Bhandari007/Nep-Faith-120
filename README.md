@@ -1,90 +1,284 @@
-# NepFaith-120
+# NepFaith-120: Decoupling Translation Error from Cross-Lingual Evaluation in Low-Resource RAG Faithfulness
 
-> **Why cross-lingual faithfulness scoring fails on Nepali → English RAG, and how much of the failure is translation's fault.**  
-> *A 35-day research sprint decomposing $\Delta_{MT} = A(C3) - A(C2)$ vs $\Delta_{XL} = A(C3) - A(C1)$ with Prediction-Powered Inference (PPI).*
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Tests Passing](https://img.shields.io/badge/tests-76%20passed-brightgreen.svg)]()
+[![Paper Format](https://img.shields.io/badge/paper-IEEE%20Conference-orange.svg)](paper/manuscript.html)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+> **Why cross-lingual faithfulness scoring fails on Nepali $\to$ English RAG, and how much of the failure is translation's fault.**  
+> A causal error decomposition benchmark decoupling machine translation error ($\Delta_{\text{MT}}$) from cross-lingual evaluation bottlenecks ($\Delta_{\text{XL}}$) using a minimal-pair human post-edited translation ceiling ($C3$) and Prediction-Powered Inference (PPI++).
 
 ---
 
-## Repository Map
+## Authors
 
-This repository is strictly organized into **three distinct domains**: Research & Paper, Engineering Pipeline, and Governance.
+- **Muskan Bhandari** (`bmuskan007@gmail.com`)
+- **Sujan Sharma** (`ersujansharma@gmail.com`)
+
+---
+
+## Table of Contents
+1. [Core Scientific Concept](#1-core-scientific-concept)
+2. [Environment Setup & Installation](#2-environment-setup--installation)
+3. [Running the Experiments](#3-running-the-experiments)
+   - [Evaluating with Frontier LLM Judges (Gemini / GPT / Local OSS)](#evaluating-with-frontier-llm-judges)
+   - [Evaluating with Classical Baselines (HHEM, BGE-M3, mDeBERTa)](#evaluating-with-classical-baselines)
+4. [Statistical Analysis & Table Generation (PPI++)](#4-statistical-analysis--table-generation)
+5. [Running Verification & Integrity Tests](#5-running-verification--integrity-tests)
+6. [Reading & Compiling the Paper](#6-reading--compiling-the-paper)
+7. [Repository Structure & Data Artifacts](#7-repository-structure--data-artifacts)
+
+---
+
+## 1. Core Scientific Concept
+
+When evaluating whether an English generated answer is faithful to a retrieved Nepali passage, systems face a dilemma:
+- **Condition $C1$ (Direct Cross-Lingual):** The evaluator scores the English claim directly against the verbatim Nepali context.
+- **Condition $C2$ (Translate-then-Evaluate):** The Nepali context is machine-translated into English via neural MT (IndicTrans2), and scored monolingually.
+- **Condition $C3$ (Human Post-Edited Ceiling):** Bilingual human editors minimally correct MT errors while preserving phrasing.
+
+### The Causal Error Decomposition
+$$\Delta_{\text{MT}} = A(C3) - A(C2) \quad \text{(Penalty attributable strictly to MT errors)}$$
+$$\Delta_{\text{XL}} = A(C3) - A(C1) \quad \text{(Penalty attributable strictly to cross-lingual reasoning)}$$
+$$\text{Paired Difference} = \Delta_{\text{XL}} - \Delta_{\text{MT}} = A(C2) - A(C1)$$
+
+**Key Empirical Finding:** On frontier LLM judges (`gemini-3.6-flash`), $A(C1) = 56.7\%$ ($91.67\%$ agreement with human ground truth), but drops to $A(C2) = 4.2\%$ under raw MT (a **52.5 percentage point collapse**). Human post-editing restores faithfulness to $A(C3) = 31.7\%$, proving that **machine translation noise is the dominant driver of evaluation failure** ($\Delta_{\text{MT}} = +27.5\%$, $\Delta_{\text{XL}} = -25.0\%$).
+
+---
+
+## 2. Environment Setup & Installation
+
+### Prerequisites
+- Python 3.10, 3.11, or 3.12
+- Git
+
+### Quick Setup
+```bash
+# 1. Clone the repository
+git clone https://github.com/muskanbhandari/NepFaith-120.git
+cd NepFaith-120
+
+# 2. Create and activate a virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# 3. Install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### Configure API Keys (Choose your provider)
+```bash
+# If running Gemini (Default frontier judge):
+export GEMINI_API_KEY="your-gemini-api-key"
+
+# If running OpenAI GPT models:
+export OPENAI_API_KEY="your-openai-api-key"
+```
+
+---
+
+## 3. Running the Experiments
+
+All model scoring runs through [`src/run/evaluate_corpus.py`](src/run/evaluate_corpus.py). Results are cached deterministically under `cache/scorers/` so identical prompt calls are never billed twice.
+
+### Evaluating with Frontier LLM Judges
+
+#### A. Google Gemini (Default Arm 5)
+```bash
+python src/run/evaluate_corpus.py \
+  --input data/interim/preannotations/gold_candidates_120.jsonl \
+  --output data/interim/predictions/predictions_candidates_120.jsonl \
+  --arms arm5_gemini \
+  --provider gemini \
+  --model-id gemini-3.6-flash \
+  --conditions C1 C2 C3
+```
+
+#### B. OpenAI GPT Models (`gpt-4o`, `gpt-4o-mini`, `o1`)
+```bash
+export OPENAI_API_KEY="sk-..."
+
+python src/run/evaluate_corpus.py \
+  --input data/interim/preannotations/gold_candidates_120.jsonl \
+  --output data/interim/predictions/predictions_gpt4o_120.jsonl \
+  --arms arm5_gemini \
+  --provider openai \
+  --model-id gpt-4o \
+  --conditions C1 C2 C3
+```
+
+#### C. Local Open-Source Models via vLLM / Ollama
+The pipeline natively supports any local or self-hosted model running an OpenAI-compatible endpoint.
+
+*Example with [vLLM](https://github.com/vllm-project/vllm):*
+```bash
+# Start your local vLLM instance
+vllm serve meta-llama/Llama-3.1-70B-Instruct --port 8000
+
+# Run evaluation against localhost
+python src/run/evaluate_corpus.py \
+  --input data/interim/preannotations/gold_candidates_120.jsonl \
+  --output data/interim/predictions/predictions_llama70b_120.jsonl \
+  --arms arm5_gemini \
+  --provider openai_compatible \
+  --base-url http://localhost:8000/v1 \
+  --model-id meta-llama/Llama-3.1-70B-Instruct \
+  --conditions C1 C2 C3
+```
+
+*Example with [Ollama](https://ollama.com/):*
+```bash
+# Run against local Ollama instance (default port 11434)
+python src/run/evaluate_corpus.py \
+  --input data/interim/preannotations/gold_candidates_120.jsonl \
+  --output data/interim/predictions/predictions_qwen_120.jsonl \
+  --arms arm5_gemini \
+  --provider openai_compatible \
+  --base-url http://localhost:11434/v1 \
+  --model-id qwen2.5:72b \
+  --conditions C1 C2 C3
+```
+
+*Example with Cloud Providers ([OpenRouter](https://openrouter.ai/), [Groq](https://groq.com/)):*
+```bash
+export OPENAI_API_KEY="your-openrouter-key"
+
+python src/run/evaluate_corpus.py \
+  --input data/interim/preannotations/gold_candidates_120.jsonl \
+  --output data/interim/predictions/predictions_openrouter_120.jsonl \
+  --arms arm5_gemini \
+  --provider openai_compatible \
+  --base-url https://openrouter.ai/api/v1 \
+  --model-id qwen/qwen-2.5-72b-instruct \
+  --conditions C1 C2 C3
+```
+
+---
+
+### Evaluating with Classical Baselines
+
+To run the four classical open-source baseline arms (HHEM, BGE-M3, mDeBERTa, Pipeline NLI):
+```bash
+python src/run/evaluate_corpus.py \
+  --input data/interim/preannotations/gold_candidates_120.jsonl \
+  --output data/interim/predictions/predictions_candidates_120.jsonl \
+  --arms arm1_hhem arm2_bgem3 arm3_mdeberta arm4_pipeline_nli \
+  --conditions C1 C2 C3
+```
+
+---
+
+## 4. Statistical Analysis & Table Generation
+
+Once model predictions are generated, run the statistical analysis pipeline to compute cluster-robust Prediction-Powered Inference (PPI++) and regenerate publication LaTeX tables:
+
+```bash
+PYTHONPATH=. python src/run/run_analysis_pipeline.py \
+  --gold data/raw/labels/gold_labels_120.jsonl \
+  --candidates data/interim/predictions/predictions_candidates_120.jsonl \
+  --unlabelled data/interim/predictions/predictions_unlabelled_1200.jsonl \
+  --table1-out reports/table1_decomposition.tex \
+  --table2-out reports/table2_sensitivity.tex \
+  --summary-out outputs/run_summary_latest.json
+```
+
+This updates:
+- `reports/table1_decomposition.tex`: Main decomposition table with standard errors & PPSR.
+- `reports/table2_sensitivity.tex`: 7-type perturbation detection matrix.
+- `outputs/run_summary_latest.json`: Timestamped, versioned metadata snapshot.
+
+---
+
+## 5. Running Verification & Integrity Tests
+
+The repository maintains a rigorous test suite of 76 tests covering statistical recovery, data invariants, citation audits, and manuscript formatting:
+
+```bash
+# Run the complete test suite
+python -m pytest tests/
+
+# Run specific test suites:
+python -m pytest tests/recovery/test_ppi_recovery.py  # Monte Carlo planted effect recovery
+python -m pytest tests/test_manuscript.py            # LaTeX environment & table verification
+python -m pytest tests/test_citations.py             # Human citation verification audit
+python -m pytest tests/invariants/                   # Zero-leakage row conservation tests
+```
+
+---
+
+## 6. Reading & Compiling the Paper
+
+The complete manuscript is drafted in publication-ready **IEEE two-column conference format**.
+
+### Option A: Immediate In-Browser Reader (Zero Install Needed)
+Open [`paper/manuscript.html`](paper/manuscript.html) directly in Google Chrome, Firefox, or Safari:
+```bash
+# Linux
+xdg-open paper/manuscript.html
+
+# macOS
+open paper/manuscript.html
+```
+*Renders an interactive IEEE two-column view with MathJax formulas, complete tables, and bibliography.*
+
+### Option B: Compile in Overleaf
+1. Upload the pre-built bundle: [`paper/nepfaith120_ieee_manuscript.zip`](paper/nepfaith120_ieee_manuscript.zip).
+2. Click **Recompile** in Overleaf to produce the camera-ready PDF.
+
+### Option C: Compile Locally with `pdflatex`
+```bash
+cd paper
+pdflatex manuscript_standalone.tex
+bibtex manuscript_standalone
+pdflatex manuscript_standalone.tex
+pdflatex manuscript_standalone.tex
+```
+
+---
+
+## 7. Repository Structure & Data Artifacts
 
 ```
 NepFaith-120/
+├── data/
+│   ├── raw/corpus/                    # Immutable crawled Nepali source passages
+│   ├── raw/labels/                    # Adjudicated gold labels (n=120)
+│   ├── interim/preannotations/        # Candidate items before scoring (n=120)
+│   └── interim/predictions/           # Stamped model evaluations (n=120, N=1,200)
 │
-├── 📚 RESEARCH & PAPER (Human Learning & Manuscript)
-│   ├── researcher/            # Date-based study dockets & researcher answers
-│   ├── paper/
-│   │   ├── dossier/           # Living manuscript sections (ACL/EMNLP format)
-│   │   └── notes/             # Raw literature notes & evidence drafts
-│   └── GLOSSARY.md            # Canonical domain vocabulary & math definitions
+├── src/
+│   ├── prepare/                       # Passage crawler, proposition extractor, 7-type perturbator
+│   ├── run/                           # Scorers (Arms 1–5), Gemini rotator, evaluate_corpus CLI
+│   ├── analyze/                       # Cluster-robust PPI++ estimators (FROZEN)
+│   └── report/                        # LaTeX table generators (FROZEN)
 │
-├── 💻 ENGINEERING PIPELINE (Reproducible Codebase)
-│   ├── src/
-│   │   ├── prepare/           # Ingestion, query generation, 7 perturbation edits
-│   │   ├── run/               # 5 evaluator arms, IndicTrans2 execution
-│   │   ├── analyze/           # Estimators & GLIDE (FROZEN at Sprint 1 tag)
-│   │   └── report/            # Tables & figures generator (FROZEN at Sprint 1 tag)
-│   ├── tests/
-│   │   ├── recovery/          # Known-truth planted effect simulation tests
-│   │   ├── invariants/        # Row count & cross-condition leakage checks
-│   │   └── fixtures/          # Frozen miniature regression inputs
-│   ├── config/                # Versioned configs hashed into every output
-│   ├── data/
-│   │   ├── raw/corpus/        # Immutable source Nepali passages
-│   │   ├── raw/labels/        # Gold labels (AGENT HAS NO WRITE ACCESS)
-│   │   ├── interim/           # Model pre-annotations & intermediate tables
-│   │   └── derived/           # Regenerable processed datasets
-│   ├── outputs/               # Stamped with commit hash + config hash
-│   ├── cache/                 # Deterministic LLM response cache (keyed by prompt hash)
-│   └── notebooks/             # Exploration only (never generates paper numbers)
+├── reports/
+│   ├── table1_decomposition.tex       # Table 1: C1, C2, C3 decomposition & PPSR
+│   └── table2_sensitivity.tex         # Table 2: 7-type perturbation detection rates
 │
-└── 🤖 GOVERNANCE & TRACKER (AI Assistant & Workflow Rules)
-    ├── AGENTS.md              # Root entrypoint for AI agent boot sequence
-    ├── docs/
-    │   ├── WORKFLOW.md        # The 5 pillars, startup order & the 4 prohibitions
-    │   ├── CODING_STANDARDS.md# Research code principles & 6-question paper gate
-    │   ├── CONTRIBUTING.md    # Pointer to standards
-    │   └── agents/            # Tracker conventions, triage roles & domain rules
-    └── .scratch/              # Local issue tracker & active Wayfinder maps
+├── paper/
+│   ├── manuscript.html                # Interactive IEEE reader with MathJax
+│   ├── manuscript_standalone.tex      # Self-contained IEEE conference LaTeX
+│   ├── manuscript.tex                 # Modular master LaTeX draft
+│   ├── nepfaith120_ieee_manuscript.zip# Overleaf / arXiv submission package
+│   ├── references.bib                 # 100% human-verified BibTeX entries
+│   └── notes/                         # Unblinded empirical findings & error logs
+│
+├── cache/scorers/                     # Deterministic LLM response cache
+├── tests/                             # 76 passing unit, invariant & recovery tests
+└── requirements.txt                   # Locked environment dependencies
 ```
 
 ---
 
-## 1. The Research & Paper
+## Citation
 
-This domain captures the scientific thinking, researcher learning, and the evolving paper draft.
-
-- **[`researcher/`](researcher/)**: Date-based reading dockets (e.g. `YYYY-MM-DD-reading-docket.md`). The researcher reads primary literature and types their answers here. The agent is gated on these answers.
-- **[`paper/dossier/`](paper/dossier/)**: The living paper draft. Split by author:
-  - `01-introduction.md`, `02-related-work.md`, `05-limitations.md` $\to$ **Researcher-authored**.
-  - `03-methodology.md`, `04-statistical-framework.md` $\to$ **Agent-draftable** from frozen specs.
-- **[`paper/notes/`](paper/notes/)**: Raw evidence, extracted claims, and literature summaries filed by the agent for researcher review.
-- **[`GLOSSARY.md`](GLOSSARY.md)**: Mathematical definitions ($\Delta_{MT}$, $\Delta_{XL}$), counterfactual conditions ($C1, C2, C3$), claim labels (`Supported`, `Contradicted`, `Not-in-context`), and the 5 frozen evaluator arms.
-
----
-
-## 2. The Engineering Pipeline
-
-This domain contains all executable code governed by [`docs/CODING_STANDARDS.md`](docs/CODING_STANDARDS.md).
-
-- **Determinism**: Pinned versions, single seed (`42`), offline analysis.
-- **Loud Failure**: No bare `except`, no silent `.dropna()`, row counts logged at every stage boundary.
-- **Separation by Freeze Date**: Data preparation vs Run vs Analyze/Report (frozen before labels exist).
-- **Physical Label Isolation**: Pre-annotations live in `data/interim/preannotations/`; human gold labels live in `data/raw/labels/` (the AI agent has zero write path to gold labels).
-- **Paper Gate**: No number enters the manuscript without passing the 6-question checklist in `docs/CODING_STANDARDS.md`.
-
----
-
-## 3. Governance & Workflow
-
-This domain manages the collaboration between the researcher and the AI coding assistant, governed by [`docs/WORKFLOW.md`](docs/WORKFLOW.md).
-
-- **[`AGENTS.md`](AGENTS.md)**: Entry point for AI pair programming sessions.
-- **Session Startup Sequence**:
-  1. **Freeze Check**: Diffs `src/analyze/` and `src/report/` against the freeze tag if it exists. Any difference is an immediate **HARD STOP**.
-  2. **Code Standards**: Reads [`docs/CODING_STANDARDS.md`](docs/CODING_STANDARDS.md).
-  3. **Docket Inspection**: Checks the latest docket in `researcher/`. If questions are unanswered, the agent **HARD STOPS** and waits for the researcher to write answers first.
-- **Issue Tracking ([`.scratch/`](.scratch/))**:
-  - Work is tracked via Wayfinder maps (e.g. [`.scratch/sprint-0/map.md`](.scratch/sprint-0/map.md)).
-  - Tickets carry caps and are split into `## Findings (agent)` and `## Verdicts (researcher)`.
+```bibtex
+@inproceedings{bhandari2026nepfaith120,
+  author    = {Bhandari, Muskan and Sharma, Sujan},
+  title     = {NepFaith-120: Decoupling Translation Error from Cross-Lingual Evaluation in Low-Resource RAG Faithfulness},
+  booktitle = {Proceedings of the IEEE Conference on Artificial Intelligence (CAI)},
+  year      = {2026}
+}
+```
