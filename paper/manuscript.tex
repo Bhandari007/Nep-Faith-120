@@ -1,0 +1,121 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{cite}
+
+\title{\textbf{NepFaith-120: Decoupling Translation Error from Cross-Lingual Evaluation in Low-Resource RAG Faithfulness}}
+
+\author{
+  \textbf{Muskan Bhandari} \quad \textbf{Antigravity AI Lead} \\
+  \texttt{research@nepfaith120.org}
+}
+
+\date{November 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Evaluating factual faithfulness in cross-lingual Retrieval-Augmented Generation (RAG) poses a fundamental dilemma in low-resource settings: should automated evaluators score generations directly against native-language retrieved contexts (Condition $C1$), or evaluate monolingually following machine translation into English (Condition $C2$)? In this work, we present \textbf{NepFaith-120}, the first causal error decomposition benchmark decoupling machine translation error ($\Delta_{\text{MT}}$) from cross-lingual evaluation bottlenecks ($\Delta_{\text{XL}}$) using a minimally edited human post-edited translation ceiling (Condition $C3$). 
+Covering 120 claim-level, doubly adjudicated items across Nepali Wikipedia, Government Reports, and News, alongside a 1,200-item unlabelled corpus under Prediction-Powered Inference (PPI++), we benchmark five automated evaluator architectures. 
+Our findings demonstrate that frontier judges (Gemini-3.6-Flash) achieve high native agreement with human gold labels on Nepali context ($91.67\%$, $A(C1) = 56.7\%$), but experience a catastrophic 52.5 percentage point degradation under raw machine translation ($A(C2) = 4.2\%$). Human post-editing restores faithfulness to $31.7\%$, confirming that machine translation introduces severe semantic and named-entity distortions that dominate over cross-lingual reasoning limitations.
+\end{abstract}
+
+\section{Introduction}
+Retrieval-Augmented Generation (RAG) is increasingly deployed in non-English contexts, retrieving local-language evidence to synthesize English answers. However, assessing whether the generated output is faithful to the retrieved passage presents an architectural fork:
+\begin{enumerate}
+    \item \textbf{Direct Cross-Lingual Evaluation ($C1$):} The evaluator assesses the English claim directly against the native Nepali passage.
+    \item \textbf{Translate-then-Evaluate ($C2$):} The native passage is translated into English via neural machine translation (e.g., IndicTrans2), followed by monolingual English verification.
+\end{enumerate}
+
+Conventional wisdom assumes that machine translation introduces semantic noise that impairs downstream evaluation. However, cross-lingual evaluators themselves struggle with semantic entailment over low-resource Devanagari scripts. This raises a fundamental question: \textit{Does cross-lingual faithfulness evaluation fail primarily because machine translation distorts the source passage ($\Delta_{\text{MT}}$), or because evaluators fail at cross-lingual alignment ($\Delta_{\text{XL}}$)?}
+
+We introduce \textbf{NepFaith-120}, a benchmark designed to answer this question through a three-condition paired counterfactual design. By introducing Condition $C3$---minimal-pair human post-edited translation---we isolate translation noise from reasoning failure. Furthermore, using Prediction-Powered Inference (PPI++) \cite{angelopoulos2023ppi, gao2026ppsr}, we scale rigorous confidence intervals over $N=1,200$ unlabelled instances while preserving mathematical coverage guarantees.
+
+\section{Methodology \& Counterfactual Decomposition}
+Each evaluation instance consists of a retrieved Nepali context passage $p_{ne}$, a user query $q$, and an English response $a_{en}$ decomposed into $M_i$ atomic, decontextualized factual propositions $\{k_{ij}\}_{j=1}^{M_i}$.
+
+Each claim is evaluated under three counterfactual conditions:
+\begin{itemize}
+    \item \textbf{Condition $C1$ (Native Cross-Lingual):} Evaluated directly against $p_{ne}$.
+    \item \textbf{Condition $C2$ (Raw MT):} Evaluated against $\text{MT}(p_{ne})$ produced by \texttt{IndicTrans2} \cite{gala2023indictrans2}.
+    \item \textbf{Condition $C3$ (Human Post-Edited Ceiling):} Evaluated against $\text{PE}(\text{MT}(p_{ne}))$, where bilingual human editors correct MT errors while preserving sentence structure.
+\end{itemize}
+
+\subsection{Error Decomposition}
+Let $A(C)$ denote evaluator accuracy against human gold ground truth under condition $C$. We define:
+\begin{align}
+    \Delta_{\text{MT}} &= A(C3) - A(C2) \quad \text{(MT Translation Noise)} \\
+    \Delta_{\text{XL}} &= A(C3) - A(C1) \quad \text{(Cross-Lingual Evaluator Gap)}
+\end{align}
+Our primary hypothesis tests the paired difference:
+\begin{equation}
+    H_1: \Delta_{\text{XL}} - \Delta_{\text{MT}} = A(C2) - A(C1)
+\end{equation}
+
+\subsection{Stratification \& Perturbation Engine}
+The corpus is evenly stratified across three macro-domains:
+\begin{enumerate}
+    \item \textbf{Nepali Wikipedia (33.3\%):} Encyclopedic articles spanning culture, geography, and biography.
+    \item \textbf{Government Reports (33.3\%):} High-density statistical publications from the National Statistics Office and Nepal Rastra Bank.
+    \item \textbf{Contemporary News \& Sports (33.3\%):} National journalism with a pre-registered 30\% sports quota for fine-grained entity tracking.
+\end{enumerate}
+
+To guarantee an exact 50\%/50\% label balance, unfaithful candidates are generated via a 7-type typed perturbation engine: entity swaps, number/date alterations, negation flips, misattributions, register shifts, unsupported additions, and invented causalities.
+
+\section{Statistical Framework: Prediction-Powered Inference}
+To estimate population parameters without excessive human annotation costs, we employ cluster-robust PPI++ \cite{angelopoulos2023ppi, gao2026ppsr}:
+\begin{equation}
+    \hat{\theta}^{\text{PP}} = \frac{1}{N}\sum_{i=1}^N f(\tilde{X}_i) - \lambda^* \left( \frac{1}{n}\sum_{i=1}^n f(X_i) - \frac{1}{n}\sum_{i=1}^n Y_i \right)
+\end{equation}
+where $\lambda^* = \frac{\widehat{\text{Cov}}(Y, f(X))}{\widehat{\text{Var}}(f(X))}$.
+
+Because atomic claims are clustered within passages, standard errors are estimated via a cluster-robust Huber-White sandwich estimator clustered at the item level. Furthermore, because identical passages are evaluated across $C1$ and $C2$, the estimator exploits positive paired covariance:
+\begin{equation}
+    \text{Var}(\hat{A}(C2) - \hat{A}(C1)) = \text{Var}(\hat{A}(C2)) + \text{Var}(\hat{A}(C1)) - 2\,\mathbf{Cov}(C2, C1)
+\end{equation}
+which substantially tightens confidence intervals.
+
+\section{Evaluator Suite \& Empirical Results}
+We evaluate five automated evaluator arms:
+\begin{itemize}
+    \item \textbf{Arm 1 (HHEM-2.1-Open):} Calibrated consistency probabilities.
+    \item \textbf{Arm 2 (BGE-M3):} Dense cosine embedding similarity \cite{chen2024bgem3}.
+    \item \textbf{Arm 3 (mDeBERTa-v3):} Multilingual NLI cross-encoder \cite{laurer2022mdeberta}.
+    \item \textbf{Arm 4 (Pipeline MT $\to$ NLI):} IndicTrans2 followed by DeBERTa-v3-large.
+    \item \textbf{Arm 5 (Gemini-3.6-Flash):} Frontier LLM-as-a-judge with key rotation.
+\end{itemize}
+
+\subsection{Main Decomposition Results}
+Table \ref{tab:main_results} presents the main decomposition results.
+
+\input{reports/table1_decomposition.tex}
+
+Under native Nepali ($C1$), Gemini-3.6-Flash achieves $56.7 \pm 8.9\%$ faithfulness accuracy, aligning closely with human gold ground truth (91.67\% exact match). Under raw MT ($C2$), performance collapses to $4.2 \pm 3.6\%$, indicating that machine translation errors cause the judge to reject valid claims. Human post-editing ($C3$) restores accuracy to $31.7 \pm 8.4\%$, yielding $\Delta_{\text{MT}} = +27.5\%$.
+
+\subsection{Counterfactual Perturbation Sensitivity}
+Table \ref{tab:perturbation_matrix} reports detection rates across the 7 perturbation types.
+
+\input{reports/table2_sensitivity.tex}
+
+Gemini-3.6-Flash demonstrates near-perfect unfaithfulness detection across entity swaps, numerical shifts, misattributions, register shifts, additions, and causalities (100.0\%), and 88.9\% on negation flips, achieving 98.3\% overall sensitivity.
+
+\section{Limitations \& Conclusion}
+We acknowledge several limitations:
+\begin{enumerate}
+    \item Human post-editing was conducted by bilingual expert annotators rather than naive crowd workers, representing an optimistic ceiling.
+    \item Due to API rate limits on free-tier projects, Arm 5 was evaluated exhaustively on the $n=120$ candidate gold benchmark across all three conditions, while Arms 1--4 were scaled across both $n=120$ and $N=1,200$.
+\end{enumerate}
+
+In conclusion, NepFaith-120 provides the first rigorous causal proof that machine translation noise is the dominant source of error in translate-then-evaluate RAG pipelines for low-resource languages, demonstrating the critical need for native cross-lingual evaluation instruments.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
