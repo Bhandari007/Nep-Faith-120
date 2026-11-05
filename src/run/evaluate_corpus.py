@@ -256,10 +256,28 @@ if __name__ == "__main__":
         help="Evaluator arms to run (e.g. arm1_hhem arm2_bgem3 arm3_mdeberta arm4_pipeline_nli arm5_gemini)",
     )
     parser.add_argument(
+        "--provider",
+        type=str,
+        default="gemini",
+        help="LLM provider for Arm 5 ('gemini', 'openai', 'openai_compatible')",
+    )
+    parser.add_argument(
         "--model-id",
         type=str,
         default="gemini-3.6-flash",
-        help="Model ID for Arm 5 LLM Judge",
+        help="Model ID for Arm 5 LLM Judge (e.g., 'gpt-4o', 'gemini-3.6-flash', 'meta-llama/Llama-3.1-70B-Instruct')",
+    )
+    parser.add_argument(
+        "--base-url",
+        type=str,
+        default=None,
+        help="Base URL for OpenAI-compatible endpoint (e.g., 'http://localhost:8000/v1' for vLLM/Ollama, 'https://openrouter.ai/api/v1')",
+    )
+    parser.add_argument(
+        "--api-key",
+        type=str,
+        default=None,
+        help="API Key for LLM provider (or read from OPENAI_API_KEY / GEMINI_API_KEY environment variables)",
     )
     parser.add_argument(
         "--conditions",
@@ -269,7 +287,16 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    full_suite = get_evaluator_suite(llm_judge_config={"provider": "gemini", "model_id": args.model_id})
+    llm_config = {
+        "provider": args.provider,
+        "model_id": args.model_id,
+    }
+    if args.base_url:
+        llm_config["base_url"] = args.base_url
+    if args.api_key:
+        llm_config["api_key"] = args.api_key
+
+    full_suite = get_evaluator_suite(llm_judge_config=llm_config)
     selected_scorers = {k: full_suite[k] for k in args.arms if k in full_suite}
     count = evaluate_dataset(args.input, args.output, selected_scorers, conditions=args.conditions)
     print(f"Evaluated {count} items. Saved to {args.output}")
