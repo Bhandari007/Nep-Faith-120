@@ -30,6 +30,7 @@ Exit criteria:
 - 2026-11-02 · [T05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md): Resumed run. Upgraded per-item atomic checkpointing. Evaluated items 31–56 on candidates (328 claims cached). All 10 keys reached daily free-tier limit. Progress safely checkpointed to `predictions_candidates_120.jsonl` (56/120 candidate items complete). Next run resumes from item 57. Zero diff on frozen layers; zero writes to `data/raw/labels/`. Status: In Progress — Paused for Quota Reset.
 - 2026-11-03 · [T05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md): Resumed run. Integrated TDD request tracking and progress bar. Evaluated items 57–81 on candidates (455 claims cached, 125 successful API calls dispatched across 10 keys). Progress safely checkpointed (81/120 candidate items complete, 67.5%). All 10 keys reached daily free-tier limit. Next run resumes from item 82. Freeze check clean (0 diff); zero writes to `data/raw/labels/`. Status: In Progress — Paused for Quota Reset.
 - 2026-11-04 · [T05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md): Resumed run. Evaluated items 82–112 on candidates (611 claims cached, 156 successful API calls dispatched across 10 keys). Progress safely checkpointed (112/120 candidate items complete, 93.3%). 8 items remain (24 claims). All 10 keys reached daily limit. Next run finishes candidate corpus. Status: In Progress — Paused for Quota Reset.
+- 2026-11-05 · [T05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md): Completed candidate benchmark (120/120 items complete, 100%). Evaluated remaining items 113–120 in 4 mins (38 API calls). All 5 arms now 100% complete across C1, C2, C3. Arm 5 C1 human gold agreement: 91.67% (110/120). Raw MT drops faithfulness by 52.5 percentage points (56.7% C1 -> 4.2% C2); human PE-MT recovers to 31.7% C3. Freeze check clean (0 diff); zero writes to `data/raw/labels/`. Status: Clearance proposed — awaiting researcher.
 
 ## Verdicts (researcher)
 
@@ -44,7 +45,7 @@ Exit criteria:
 - [x] [02 · Publication LaTeX Tables & Figures](issues/02-publication-tables-and-figures.md) (Cleared — MB)
 - [x] [03 · Subgroup Sensitivity & PPSR Efficiency Audit](issues/03-subgroup-sensitivity-and-ppsr.md) (Cleared — MB)
 - [x] [04 · Manuscript Empirical Integration & Paper Gate Clearance](issues/04-manuscript-empirical-integration.md) (Cleared — MB)
-- [ ] [05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md) (Active — In Progress)
+- [ ] [05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md) (Clearance proposed — awaiting researcher)
 
 
 

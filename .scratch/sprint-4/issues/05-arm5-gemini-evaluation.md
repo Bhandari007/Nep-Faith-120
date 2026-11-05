@@ -1,7 +1,7 @@
 # Ticket 05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run
 
 Type: model evaluation / scoring
-Status: In Progress — Paused for Daily Quota Reset
+Status: Clearance proposed — awaiting researcher
 
 ## Question
 
@@ -54,6 +54,18 @@ Can we execute Arm 5 (Frontier LLM Judge) using `gemini-3.6-flash` (governed by 
   - Only **8 items remain** (items 113–120; 24 claims; ~72 calls).
   - State safely checkpointed to `data/interim/predictions/predictions_candidates_120.jsonl`.
   - Tomorrow's run (Nov 5) will easily finish the candidate benchmark in a single session.
+- 2026-11-05: **Final Run Completed — 100% Evaluation of Candidate Benchmark (120/120 items)**:
+  - Resumed execution from item 113 across conditions $C1, C2, C3$.
+  - Successfully evaluated the remaining 8 items (items 113 through 120; 24 claims) in 4 minutes with 38 successful API calls.
+  - Benchmark completion: **120 / 120 items 100% complete** across all 5 arms in `data/interim/predictions/predictions_candidates_120.jsonl`.
+  - **Empirical Findings for Arm 5 (`gemini-3.6-flash`)**:
+    - Condition $C1$ (Nepali original): 68 / 120 (56.7%) faithful.
+    - Condition $C2$ (Raw MT): 5 / 120 (4.2%) faithful (catastrophic 52.5% drop due to cross-lingual MT errors).
+    - Condition $C3$ (Human PE-MT): 38 / 120 (31.7%) faithful (recovers 27.5% faithfulness).
+    - Human Gold Agreement: **110 / 120 (91.67%) agreement** on Condition $C1$.
+  - All 67 regression & invariant tests passing.
+  - Zero diff against `sprint-1-frozen`; zero writes to `data/raw/labels/`.
+  - Status: Clearance proposed — awaiting researcher verdict.
 - **Prohibitions**: Absolute Prohibition 1 (The Freeze) strictly upheld (0 diff on `sprint-1-frozen` for `src/analyze/` and `src/report/`). Absolute Prohibition 2 upheld (zero writes to `data/raw/labels/`).
 
 ## Verdict (researcher)
