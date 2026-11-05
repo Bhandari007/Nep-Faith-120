@@ -26,6 +26,7 @@ Exit criteria:
 ## Findings (agent)
 
 - 2026-11-05 · Sprint 5 initialized following 100% clearance of Sprint 4.
+- 2026-11-05 · [T01 · Dossier Section Harmonization & Raw Material Verification](issues/01-dossier-harmonization.md): Harmonized methodology dossier (`03-methodology.md`), statistical framework (`04-statistical-framework.md`), and raw notes (`01-intro`, `02-related-work`, `05-limitations`, `06-unblinded-empirical-results`) with 5-arm candidate benchmark numbers, ADR 0002 model specs (`gemini-3.6-flash`), and empirical MT error qualitative taxonomy. Freeze check clean (0 diff); 67/67 tests passing. Status: Clearance proposed.
 
 ## Verdicts (researcher)
 
@@ -33,7 +34,7 @@ Exit criteria:
 
 ## Active Frontier Tickets
 
-- [ ] [01 · Dossier Section Harmonization & Raw Material Verification](issues/01-dossier-harmonization.md) (Active — Frontier)
+- [ ] [01 · Dossier Section Harmonization & Raw Material Verification](issues/01-dossier-harmonization.md) (Clearance proposed — awaiting researcher)
 - [ ] [02 · Unified Publication LaTeX Document Assembly](issues/02-latex-manuscript-assembly.md) (Pending)
 - [ ] [03 · BibTeX Human Citation Verification Audit](issues/03-bibtex-citation-audit.md) (Pending)
 - [ ] [04 · Final 6-Question Paper Gate Clearance](issues/04-final-paper-gate-clearance.md) (Pending)

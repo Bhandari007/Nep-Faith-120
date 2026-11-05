@@ -31,4 +31,5 @@ Nepali represents a critical low-resource stress-test:
 ## 5. Summary of Contributions
 1. **The First Causal Error Decomposition:** Formal decoupling of MT error ($\Delta_{MT}$) vs cross-lingual evaluator alignment error ($\Delta_{XL}$) via a human post-edited MT ceiling ($C3$).
 2. **The NepFaith-120 Benchmark:** A claim-level, human-adjudicated benchmark of 120 items with 7 typed perturbation edits (attribution, register, numbers, causal links) and consensus gold labels.
-3. **Prediction-Powered Scaling:** Scaling rigorous statistical confidence intervals over $\sim 1,500$ items using cluster-robust stratified paired PPI (via GLIDE).
+3. **Prediction-Powered Scaling:** Scaling rigorous statistical confidence intervals over $N=1,200$ unlabelled items using cluster-robust stratified paired PPI++ (Angelopoulos et al., 2023; Gao et al., 2026), achieving sample efficiency gains of $1.15\times$ to $1.73\times$.
+4. **Empirical Benchmarking of Frontier Evaluators:** Comprehensive evaluation across 5 evaluator arms, showing that frontier judges (`gemini-3.6-flash`) achieve 91.67% agreement with human gold on native Nepali ($C1$), but suffer a catastrophic 52.5% accuracy drop under raw MT ($C2$), which human post-editing ($C3$) only partially recovers (+27.5%).

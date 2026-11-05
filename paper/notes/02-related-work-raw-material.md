@@ -20,4 +20,4 @@
 
 ## 4. Prediction-Powered Inference (PPI) in NLP
 - **Annotation Cost Reduction:** Angelopoulos et al. (Science 2023) formalized PPI, and Gao et al. (EMNLP 2026 / arXiv:2608.26638) demonstrated that neural metrics save 50%–80% of human annotation via Prediction-Powered Saving Ratios (PPSR). StratPPI (Fisch et al., NeurIPS 2024) demonstrated a $2\times$ sample efficiency gain in multilingual summarization.
-- **NepFaith-120 Framing:** We do not claim PPI sample savings as our primary novelty. Instead, we employ cluster-robust stratified paired PPI as a rigorous statistical engine to project claim-level evaluations over 1,500 items while preserving valid coverage guarantees.
+- **NepFaith-120 Framing:** We do not claim PPI sample savings as our primary novelty. Instead, we employ cluster-robust stratified paired PPI as a rigorous statistical engine to project claim-level evaluations over $N=1,200$ items while preserving valid coverage guarantees.
