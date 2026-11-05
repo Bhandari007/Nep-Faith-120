@@ -38,6 +38,7 @@ Exit criteria:
 - 2026-10-31 · [T02 · Publication LaTeX Tables & Figures](issues/02-publication-tables-and-figures.md): Cleared — MB
 - 2026-10-31 · [T03 · Subgroup Sensitivity & PPSR Efficiency Audit](issues/03-subgroup-sensitivity-and-ppsr.md): Cleared — MB
 - 2026-10-31 · [T04 · Manuscript Empirical Integration & Paper Gate Clearance](issues/04-manuscript-empirical-integration.md): Cleared — MB
+- 2026-11-05 · [T05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md): Cleared — MB
 
 ## Active Frontier Tickets
 
@@ -45,7 +46,7 @@ Exit criteria:
 - [x] [02 · Publication LaTeX Tables & Figures](issues/02-publication-tables-and-figures.md) (Cleared — MB)
 - [x] [03 · Subgroup Sensitivity & PPSR Efficiency Audit](issues/03-subgroup-sensitivity-and-ppsr.md) (Cleared — MB)
 - [x] [04 · Manuscript Empirical Integration & Paper Gate Clearance](issues/04-manuscript-empirical-integration.md) (Cleared — MB)
-- [ ] [05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md) (Clearance proposed — awaiting researcher)
+- [x] [05 · Arm 5 Frontier LLM Judge (Gemini-3.6-Flash) Evaluation Run](issues/05-arm5-gemini-evaluation.md) (Cleared — MB)
 
 
 
